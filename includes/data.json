@@ -1,0 +1,1321 @@
+{
+  "site": {
+    "name": "Kuje Connect",
+    "tagline": "Connect. Discover. Grow.",
+    "description": "Connecting businesses with customers in Kuje, FCT Nigeria",
+    "logo": "images/kuje.png",
+    "favicon": "images/kuje.jfif",
+    "phone": "+234 801 234 5678",
+    "email": "info@kujeconnect.com",
+    "address": "12 Market Road, Kuje, FCT, Nigeria",
+    "hours": "Mon-Sat: 8:00 AM - 6:00 PM",
+    "whatsapp": "+2348012345678",
+    "social": {
+      "facebook": "#",
+      "twitter": "#",
+      "instagram": "#",
+      "whatsapp": "#"
+    }
+  },
+  "stats": [
+    {"number": "500+", "label": "Businesses", "icon": "fas fa-store"},
+    {"number": "10K+", "label": "Customers", "icon": "fas fa-users"},
+    {"number": "50+", "label": "Categories", "icon": "fas fa-th-large"},
+    {"number": "4.8", "label": "Avg Rating", "icon": "fas fa-star"}
+  ],
+  "heroSlides": [
+    {
+      "badge": "Welcome to Kuje Connect",
+      "title": "Discover Local <span class='highlight-white'>Businesses</span> Near You",
+      "description": "From restaurants to fashion stores, electronics to home services — find everything you need in Kuje, all in one place.",
+      "bg": "linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%)",
+      "cards": [
+        {"icon": "fas fa-utensils", "label": "Restaurants"},
+        {"icon": "fas fa-tshirt", "label": "Fashion"},
+        {"icon": "fas fa-laptop", "label": "Tech"}
+      ],
+      "displayIcon": "fas fa-store-alt",
+      "tags": [
+        {"icon": "fas fa-star", "label": "Top Rated", "pos": "1"},
+        {"icon": "fas fa-map-marker-alt", "label": "Kuje, FCT", "pos": "2"},
+        {"icon": "fas fa-users", "label": "500+ Businesses", "pos": "3"}
+      ]
+    },
+    {
+      "badge": "Delicious Food",
+      "title": "Taste the Best <span class='highlight-white'>Local Cuisine</span> in Kuje",
+      "description": "Order from top-rated restaurants and food vendors. Jollof rice, suya, shawarma, and more — delivered fresh to your door.",
+      "bg": "linear-gradient(135deg, #7c2d12 0%, #dc2626 100%)",
+      "cards": [
+        {"icon": "fas fa-drumstick-bite", "label": "Chicken"},
+        {"icon": "fas fa-pepper-hot", "label": "Spicy Dishes"},
+        {"icon": "fas fa-blender", "label": "Smoothies"}
+      ],
+      "displayIcon": "fas fa-utensils",
+      "tags": [
+        {"icon": "fas fa-fire", "label": "Hot Deals", "pos": "1"},
+        {"icon": "fas fa-truck", "label": "Fast Delivery", "pos": "2"},
+        {"icon": "fas fa-leaf", "label": "Fresh Ingredients", "pos": "3"}
+      ]
+    },
+    {
+      "badge": "Fashion Hub",
+      "title": "Upgrade Your <span class='highlight-white'>Style</span> with Local Fashion",
+      "description": "Browse the latest men's and women's fashion from Kuje's best tailors, boutiques and fashion designers.",
+      "bg": "linear-gradient(135deg, #701a75 0%, #c026d3 100%)",
+      "cards": [
+        {"icon": "fas fa-tshirt", "label": "Clothing"},
+        {"icon": "fas fa-shoe-prints", "label": "Footwear"},
+        {"icon": "fas fa-gem", "label": "Accessories"}
+      ],
+      "displayIcon": "fas fa-tshirt",
+      "tags": [
+        {"icon": "fas fa-crown", "label": "Latest Styles", "pos": "1"},
+        {"icon": "fas fa-tag", "label": "Best Prices", "pos": "2"},
+        {"icon": "fas fa-heart", "label": "Customer Faves", "pos": "3"}
+      ]
+    },
+    {
+      "badge": "Tech & Gadgets",
+      "title": "Find the Best <span class='highlight-white'>Electronics</span> and Gadgets",
+      "description": "Phones, laptops, accessories and home electronics from trusted vendors in Kuje. Quality guaranteed.",
+      "bg": "linear-gradient(135deg, #134e4a 0%, #0d9488 100%)",
+      "cards": [
+        {"icon": "fas fa-mobile-alt", "label": "Phones"},
+        {"icon": "fas fa-headphones", "label": "Audio"},
+        {"icon": "fas fa-tv", "label": "TVs"}
+      ],
+      "displayIcon": "fas fa-laptop",
+      "tags": [
+        {"icon": "fas fa-shield-alt", "label": "Warranty", "pos": "1"},
+        {"icon": "fas fa-bolt", "label": "Latest Models", "pos": "2"},
+        {"icon": "fas fa-cogs", "label": "Repairs Available", "pos": "3"}
+      ]
+    },
+    {
+      "badge": "Events & Catering",
+      "title": "Plan Your <span class='highlight-white'>Perfect Event</span> in Kuje",
+      "description": "From weddings to birthdays, find event planners, caterers, decorators and venue providers all in one place.",
+      "bg": "linear-gradient(135deg, #92400e 0%, #f59e0b 100%)",
+      "cards": [
+        {"icon": "fas fa-ring", "label": "Weddings"},
+        {"icon": "fas fa-birthday-cake", "label": "Birthdays"},
+        {"icon": "fas fa-glass-cheers", "label": "Parties"}
+      ],
+      "displayIcon": "fas fa-calendar-star",
+      "tags": [
+        {"icon": "fas fa-glass-cheers", "label": "Top Planners", "pos": "1"},
+        {"icon": "fas fa-palette", "label": "Decorators", "pos": "2"},
+        {"icon": "fas fa-utensils", "label": "Caterers", "pos": "3"}
+      ]
+    },
+    {
+      "badge": "Home Services",
+      "title": "Reliable <span class='highlight-white'>Construction</span> and Home Services",
+      "description": "Find skilled builders, plumbers, electricians and interior designers for your home and office projects.",
+      "bg": "linear-gradient(135deg, #3f3f46 0%, #71717a 100%)",
+      "cards": [
+        {"icon": "fas fa-hammer", "label": "Building"},
+        {"icon": "fas fa-paint-roller", "label": "Painting"},
+        {"icon": "fas fa-bolt", "label": "Electrical"}
+      ],
+      "displayIcon": "fas fa-hard-hat",
+      "tags": [
+        {"icon": "fas fa-tools", "label": "Verified Pros", "pos": "1"},
+        {"icon": "fas fa-map-pin", "label": "Local Workers", "pos": "2"},
+        {"icon": "fas fa-check-circle", "label": "Quality Work", "pos": "3"}
+      ]
+    },
+    {
+      "badge": "Transport & Logistics",
+      "title": "Fast and Affordable <span class='highlight-white'>Delivery</span> Across Kuje",
+      "description": "Need something delivered? Find bike riders, truck drivers and logistics companies to move your goods quickly.",
+      "bg": "linear-gradient(135deg, #1e3a5f 0%, #3b82f6 100%)",
+      "cards": [
+        {"icon": "fas fa-motorcycle", "label": "Bike Riders"},
+        {"icon": "fas fa-truck", "label": "Trucks"},
+        {"icon": "fas fa-shipping-fast", "label": "Express"}
+      ],
+      "displayIcon": "fas fa-truck-moving",
+      "tags": [
+        {"icon": "fas fa-clock", "label": "Fast Delivery", "pos": "1"},
+        {"icon": "fas fa-naira-sign", "label": "Affordable", "pos": "2"},
+        {"icon": "fas fa-map-marked-alt", "label": "All Kuje", "pos": "3"}
+      ]
+    },
+    {
+      "badge": "Agriculture & Farms",
+      "title": "Fresh <span class='highlight-white'>Farm Produce</span> Direct from Farmers",
+      "description": "Buy yam, rice, vegetables and livestock directly from local farmers. Support Kuje agriculture.",
+      "bg": "linear-gradient(135deg, #14532d 0%, #22c55e 100%)",
+      "cards": [
+        {"icon": "fas fa-seedling", "label": "Crops"},
+        {"icon": "fas fa-egg", "label": "Poultry"},
+        {"icon": "fas fa-apple-alt", "label": "Fruits"}
+      ],
+      "displayIcon": "fas fa-tractor",
+      "tags": [
+        {"icon": "fas fa-leaf", "label": "Organic", "pos": "1"},
+        {"icon": "fas fa-hand-holding-heart", "label": "Farmer Direct", "pos": "2"},
+        {"icon": "fas fa-tag", "label": "Fair Prices", "pos": "3"}
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "food",
+      "name": "Food & Restaurants",
+      "icon": "fas fa-utensils",
+      "description": "Fast food, bakeries, catering, lounges",
+      "image": "https://picsum.photos/seed/foodcat/600/400",
+      "count": 120,
+      "subcategories": ["Restaurants", "Fast Food", "Bakeries", "Catering", "Lounges", "Juice Bars", "Shawarma", "Suya Spots"]
+    },
+    {
+      "id": "fashion",
+      "name": "Fashion & Clothing",
+      "icon": "fas fa-tshirt",
+      "description": "Boutiques, tailors, shoes, accessories",
+      "image": "https://picsum.photos/seed/fashioncat/600/400",
+      "count": 85,
+      "subcategories": ["Men's Fashion", "Women's Fashion", "Tailoring", "Shoes", "Accessories", "Watches", "Bags", "Ankara"]
+    },
+    {
+      "id": "electronics",
+      "name": "Electronics & Gadgets",
+      "icon": "fas fa-laptop",
+      "description": "Phones, computers, home appliances",
+      "image": "https://picsum.photos/seed/eleccat/600/400",
+      "count": 65,
+      "subcategories": ["Mobile Phones", "Laptops", "TVs", "Speakers", "Home Appliances", "Phone Accessories", "Generators", "CCTV"]
+    },
+    {
+      "id": "home",
+      "name": "Home & Furniture",
+      "icon": "fas fa-couch",
+      "description": "Furniture, home decor, interior design",
+      "image": "https://picsum.photos/seed/homecat/600/400",
+      "count": 40,
+      "subcategories": ["Furniture", "Home Decor", "Curtains", "Tiles", "Kitchenware", "Bedding", "Lighting", "Carpets"]
+    },
+    {
+      "id": "beauty",
+      "name": "Beauty & Wellness",
+      "icon": "fas fa-spa",
+      "description": "Salons, spas, skincare, makeup",
+      "image": "https://picsum.photos/seed/beautycat/600/400",
+      "count": 55,
+      "subcategories": ["Hair Salons", "Spas", "Nail Studios", "Skincare", "Makeup", "Barbing", "Henna", "Perfumes"]
+    },
+    {
+      "id": "auto",
+      "name": "Automobile & Transport",
+      "icon": "fas fa-car",
+      "description": "Car sales, mechanics, logistics",
+      "image": "https://picsum.photos/seed/autocat/600/400",
+      "count": 35,
+      "subcategories": ["Car Dealers", "Mechanics", "Car Wash", "Spare Parts", "Logistics", "Driving Schools", "Towing", "Fleet Management"]
+    },
+    {
+      "id": "events",
+      "name": "Events & Entertainment",
+      "icon": "fas fa-calendar-alt",
+      "description": "Event planners, DJs, venues",
+      "image": "https://picsum.photos/seed/eventscat/600/400",
+      "count": 30,
+      "subcategories": ["Event Planners", "Photographers", "DJs", "MCs", "Venues", "Decorators", "Sound Engineers", "Videographers"]
+    },
+    {
+      "id": "construction",
+      "name": "Construction & Building",
+      "icon": "fas fa-hard-hat",
+      "description": "Builders, plumbers, electricians",
+      "image": "https://picsum.photos/seed/buildcat/600/400",
+      "count": 45,
+      "subcategories": ["Builders", "Plumbers", "Electricians", "Painters", "Roofing", "Tiling", "Welding", "Carpentry"]
+    },
+    {
+      "id": "health",
+      "name": "Health & Fitness",
+      "icon": "fas fa-heartbeat",
+      "description": "Hospitals, pharmacies, gyms",
+      "image": "https://picsum.photos/seed/healthcat/600/400",
+      "count": 25,
+      "subcategories": ["Hospitals", "Pharmacies", "Clinics", "Gyms", "Laboratories", "Dental", "Optical", "Traditional Medicine"]
+    },
+    {
+      "id": "education",
+      "name": "Education & Training",
+      "icon": "fas fa-graduation-cap",
+      "description": "Schools, tutorials, skill acquisition",
+      "image": "https://picsum.photos/seed/educat/600/400",
+      "count": 30,
+      "subcategories": ["Schools", "Tutorials", "Skill Acquisition", "Tutoring", "Language Classes", "Coding Classes", "Driving Schools", "Adult Education"]
+    },
+    {
+      "id": "tech",
+      "name": "Tech & Digital Services",
+      "icon": "fas fa-code",
+      "description": "Web design, software, IT support",
+      "image": "https://picsum.photos/seed/techcat/600/400",
+      "count": 20,
+      "subcategories": ["Web Design", "Software Development", "Digital Marketing", "Data Recovery", "Networking", "Graphic Design", "Video Editing", "ICT Training"]
+    },
+    {
+      "id": "agriculture",
+      "name": "Agriculture & Farming",
+      "icon": "fas fa-tractor",
+      "description": "Farms, poultry, livestock, crops",
+      "image": "https://picsum.photos/seed/agricat/600/400",
+      "count": 18,
+      "subcategories": ["Crop Farming", "Poultry", "Livestock", "Fishery", "Agricultural Supplies", "Farm Equipment", "Organic Produce", "Agro-Processing"]
+    },
+    {
+      "id": "logistics",
+      "name": "Logistics & Delivery",
+      "icon": "fas fa-shipping-fast",
+      "description": "Courier, bike delivery, freight",
+      "image": "https://picsum.photos/seed/logcat/600/400",
+      "count": 15,
+      "subcategories": ["Bike Delivery", "Truck Haulage", "Courier Services", "Freight Forwarding", "Packaging", "Warehousing", "Last-Mile Delivery", "Relocation"]
+    },
+    {
+      "id": "realestate",
+      "name": "Real Estate & Property",
+      "icon": "fas fa-home",
+      "description": "Rent, sale, agents, property management",
+      "image": "https://picsum.photos/seed/realestatecat/600/400",
+      "count": 28,
+      "subcategories": ["Property Sales", "Rentals", "Agents", "Property Management", "Land Sales", "Shortlets", "Office Space", "Event Venues"]
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing & Industry",
+      "icon": "fas fa-industry",
+      "description": "Local production, packaging, processing",
+      "image": "https://picsum.photos/seed/mfgcat/600/400",
+      "count": 12,
+      "subcategories": ["Food Processing", "Beverages", "Textile Production", "Packaging", "Plastics", "Metal Works", "Soap Making", "Block Making"]
+    },
+    {
+      "id": "creative",
+      "name": "Creative & Media",
+      "icon": "fas fa-palette",
+      "description": "Artists, photographers, content creators",
+      "image": "https://picsum.photos/seed/creativecat/600/400",
+      "count": 22,
+      "subcategories": ["Photography", "Videography", "Graphic Design", "Music", "Art & Crafts", "Fashion Design", "Content Creation", "Animation"]
+    },
+    {
+      "id": "professional",
+      "name": "Professional Services",
+      "icon": "fas fa-briefcase",
+      "description": "Legal, consulting, accounting",
+      "image": "https://picsum.photos/seed/profcat/600/400",
+      "count": 16,
+      "subcategories": ["Lawyers", "Accountants", "Consultants", "Recruitment", "Insurance", "Financial Advisors", "Tax Services", "Business Registration"]
+    },
+    {
+      "id": "retail",
+      "name": "Retail & Shopping",
+      "icon": "fas fa-shopping-bag",
+      "description": "Supermarkets, shops, online stores",
+      "image": "https://picsum.photos/seed/retailcat/600/400",
+      "count": 70,
+      "subcategories": ["Supermarkets", "Mini Marts", "Boutiques", "Open Markets", "Online Shops", "Wholesale", "Second-Hand", "Baby Shops"]
+    }
+  ],
+  "businesses": [
+    {
+      "id": "aminas-kitchen",
+      "name": "Amina's Kitchen",
+      "category": "food",
+      "categoryName": "Food & Restaurants",
+      "description": "Best jollof rice, fried rice and local dishes in Kuje. Open for delivery and dine-in.",
+      "longDescription": "Amina's Kitchen has been serving the Kuje community for over 5 years. We specialize in authentic Nigerian cuisine including jollof rice, fried rice, pounded yam, egusi soup, and more. Our ingredients are fresh and our recipes are passed down through generations. We offer both dine-in and delivery services.",
+      "image": "https://picsum.photos/seed/aminaskitchen/600/400",
+      "gallery": ["https://picsum.photos/seed/amina1/600/400", "https://picsum.photos/seed/amina2/600/400", "https://picsum.photos/seed/amina3/600/400"],
+      "location": "Kuje Town",
+      "address": "15 Market Road, Kuje, FCT",
+      "phone": "+234 802 345 6789",
+      "whatsapp": "+2348023456789",
+      "email": "aminas@email.com",
+      "rating": 4.8,
+      "reviews": 124,
+      "priceRange": "₦1,500 - ₦3,500",
+      "badge": "Featured",
+      "hours": "Mon-Sun: 7:00 AM - 10:00 PM",
+      "owner": "Amina Ibrahim",
+      "since": "2021",
+      "verified": true,
+      "featured": true
+    },
+    {
+      "id": "style-hub-fashion",
+      "name": "Style Hub Fashion",
+      "category": "fashion",
+      "categoryName": "Fashion & Clothing",
+      "description": "Trendy men's and women's fashion, Ankara styles, agbada, and accessories. Custom tailoring available.",
+      "longDescription": "Style Hub Fashion is Kuje's go-to destination for trendy and affordable fashion. We stock the latest styles for men and women, including ready-to-wear and custom tailoring. From corporate wear to casual styles, Ankara to lace, we have something for every occasion. We also offer bespoke tailoring services with quick turnaround times. Visit us to see our latest collection.",
+      "image": "https://picsum.photos/seed/stylehub/600/400",
+      "gallery": ["https://picsum.photos/seed/style1/600/400", "https://picsum.photos/seed/style2/600/400", "https://picsum.photos/seed/style3/600/400"],
+      "location": "Kuje Market",
+      "address": "8 Kuje Market Road, Kuje, FCT",
+      "phone": "+234 803 456 7890",
+      "whatsapp": "+2348034567890",
+      "email": "stylehub@email.com",
+      "rating": 4.6,
+      "reviews": 98,
+      "priceRange": "₦3,000 - ₦25,000",
+      "badge": "Popular",
+      "hours": "Mon-Sat: 9:00 AM - 8:00 PM",
+      "owner": "Blessing Okonkwo",
+      "since": "2022",
+      "verified": true,
+      "featured": true
+    },
+    {
+      "id": "techzone-electronics",
+      "name": "TechZone Electronics",
+      "category": "electronics",
+      "categoryName": "Electronics & Gadgets",
+      "description": "Latest phones, laptops, generators and home appliances. All products come with warranty.",
+      "longDescription": "TechZone Electronics is your trusted electronics dealer in Kuje. We sell brand new and fairly used phones, laptops, tablets, generators, home appliances, and accessories. All our new products come with manufacturer warranty. We also provide technical support and repair services. Our team of trained technicians can help you with installation, troubleshooting and maintenance of any electronic device. Visit our showroom to see our full range of products.",
+      "image": "https://picsum.photos/seed/techzone/600/400",
+      "gallery": ["https://picsum.photos/seed/techz1/600/400", "https://picsum.photos/seed/techz2/600/400", "https://picsum.photos/seed/techz3/600/400"],
+      "location": "Kuje Main Road",
+      "address": "22 Main Road, Kuje, FCT",
+      "phone": "+234 805 678 9012",
+      "whatsapp": "+2348056789012",
+      "email": "techzone@email.com",
+      "rating": 4.5,
+      "reviews": 87,
+      "priceRange": "₦2,000 - ₦500,000",
+      "badge": "Trusted",
+      "hours": "Mon-Sat: 8:30 AM - 7:00 PM",
+      "owner": "Emeka Okafor",
+      "since": "2020",
+      "verified": true,
+      "featured": true
+    },
+    {
+      "id": "cleanhome-services",
+      "name": "CleanHome Services",
+      "category": "home",
+      "categoryName": "Home & Furniture",
+      "description": "Professional cleaning, fumigation, and home maintenance services for homes and offices.",
+      "longDescription": "CleanHome Services provides top-quality cleaning and home maintenance solutions in Kuje and the greater FCT area. Our trained and vetted staff handle everything from regular house cleaning to deep carpet shampooing, office cleaning, post-construction cleanup and fumigation. We use eco-friendly cleaning products and modern equipment. We offer both one-time and weekly/monthly subscription cleaning packages. Fully insured for your peace of mind.",
+      "image": "https://picsum.photos/seed/cleanhome/600/400",
+      "gallery": ["https://picsum.photos/seed/clean1/600/400", "https://picsum.photos/seed/clean2/600/400", "https://picsum.photos/seed/clean3/600/400"],
+      "location": "Kuje Phase 2",
+      "address": "7 Phase 2 Estate, Kuje, FCT",
+      "phone": "+234 806 789 0123",
+      "whatsapp": "+2348067890123",
+      "email": "cleanhome@email.com",
+      "rating": 4.7,
+      "reviews": 63,
+      "priceRange": "₦3,000 - ₦50,000",
+      "badge": "Verified",
+      "hours": "Mon-Sat: 6:00 AM - 6:00 PM",
+      "owner": "Fatima Abubakar",
+      "since": "2023",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "id": "glow-beauty-spa",
+      "name": "Glow Beauty Spa",
+      "category": "beauty",
+      "categoryName": "Beauty & Wellness",
+      "description": "Hair styling, spa treatments, manicure, pedicure and makeup services for all occasions.",
+      "longDescription": "Glow Beauty Spa is a premium beauty destination in Kuje offering a wide range of beauty and wellness services. Our skilled beauticians specialize in hair styling (braids, weaves, twists, natural hair care), relaxing spa treatments, manicure and pedicure, facials, waxing and professional makeup for weddings, events and photoshoots. We stock quality hair products, skincare brands and beauty accessories. Walk in or book your appointment today.",
+      "image": "https://picsum.photos/seed/glowbeauty/600/400",
+      "gallery": ["https://picsum.photos/seed/glow1/600/400", "https://picsum.photos/seed/glow2/600/400", "https://picsum.photos/seed/glow3/600/400"],
+      "location": "Kuje Town Center",
+      "address": "3 Town Center Lane, Kuje, FCT",
+      "phone": "+234 807 890 1234",
+      "whatsapp": "+2348078901234",
+      "email": "glowbeauty@email.com",
+      "rating": 4.9,
+      "reviews": 156,
+      "priceRange": "₦500 - ₦30,000",
+      "badge": "Top Rated",
+      "hours": "Mon-Sat: 8:00 AM - 7:00 PM",
+      "owner": "Chioma Nwosu",
+      "since": "2020",
+      "verified": true,
+      "featured": true
+    },
+    {
+      "id": "quickfix-auto",
+      "name": "QuickFix Auto Garage",
+      "category": "auto",
+      "categoryName": "Automobile & Transport",
+      "description": "Expert car servicing, engine repair, body work and auto diagnostics. Fast and reliable.",
+      "longDescription": "QuickFix Auto Garage is Kuje's most trusted auto repair and maintenance center. Our team of certified mechanics handles everything from routine oil changes and brake repairs to full engine overhauls, transmission repairs and electrical diagnostics. We have a well-equipped workshop with modern diagnostic tools. We also offer car washing, detailing and tinting services. All our repairs come with a service warranty. We stock genuine spare parts for Toyota, Honda, Nissan, Mercedes and other popular brands.",
+      "image": "https://picsum.photos/seed/quickfixauto/600/400",
+      "gallery": ["https://picsum.photos/seed/auto1/600/400", "https://picsum.photos/seed/auto2/600/400", "https://picsum.photos/seed/auto3/600/400"],
+      "location": "Kuje Ring Road",
+      "address": "19 Ring Road, Kuje, FCT",
+      "phone": "+234 808 901 2345",
+      "whatsapp": "+2348089012345",
+      "email": "quickfix@email.com",
+      "rating": 4.4,
+      "reviews": 52,
+      "priceRange": "₦2,000 - ₦200,000",
+      "badge": "Reliable",
+      "hours": "Mon-Sat: 7:30 AM - 6:30 PM",
+      "owner": "Abdullahi Musa",
+      "since": "2019",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "id": "kuje-digital-hub",
+      "name": "Kuje Digital Hub",
+      "category": "tech",
+      "categoryName": "Tech & Digital Services",
+      "description": "Web design, graphic design, social media management, printing and ICT training.",
+      "longDescription": "Kuje Digital Hub is a one-stop digital services center offering web design, graphic design, logo creation, social media management, business card printing, banner printing, T-shirt printing, photocopier services, passport photographs, and ICT training. We help businesses establish their online presence and create professional branding materials. Our rates are affordable and our turnaround is fast. We also run regular training sessions on digital marketing, Microsoft Office, and graphic design.",
+      "image": "https://picsum.photos/seed/kujedigital/600/400",
+      "gallery": ["https://picsum.photos/seed/digi1/600/400", "https://picsum.photos/seed/digi2/600/400", "https://picsum.photos/seed/digi3/600/400"],
+      "location": "Kuje Town",
+      "address": "4 Main Street, Kuje, FCT",
+      "phone": "+234 809 012 3456",
+      "whatsapp": "+2348090123456",
+      "email": "kujedigital@email.com",
+      "rating": 4.6,
+      "reviews": 74,
+      "priceRange": "₦500 - ₦150,000",
+      "badge": "Popular",
+      "hours": "Mon-Sat: 8:00 AM - 7:00 PM",
+      "owner": "Ibrahim Yusuf",
+      "since": "2022",
+      "verified": true,
+      "featured": true
+    },
+    {
+      "id": "green-valley-farms",
+      "name": "Green Valley Farms",
+      "category": "agriculture",
+      "categoryName": "Agriculture & Farming",
+      "description": "Fresh farm produce — yam, rice, vegetables, poultry eggs and catfish. Direct from our farm.",
+      "longDescription": "Green Valley Farms is an integrated farm located on the outskirts of Kuje. We produce and supply fresh farm produce including yam, rice, maize, fresh vegetables (ugu, spinach, bitter leaf), poultry eggs, broiler chickens, and catfish. Our farm uses sustainable and environmentally friendly practices. We sell directly to households, restaurants, hotels and market traders. We offer bulk supply discounts and can deliver within Kuje and the FCT. Join our farm subscription program for weekly fresh produce deliveries.",
+      "image": "https://picsum.photos/seed/greenvalley/600/400",
+      "gallery": ["https://picsum.photos/seed/farm1/600/400", "https://picsum.photos/seed/farm2/600/400", "https://picsum.photos/seed/farm3/600/400"],
+      "location": "Kuje Outskirts",
+      "address": "Kuje-Suleja Road, Km 5, Kuje, FCT",
+      "phone": "+234 810 123 4567",
+      "whatsapp": "+2348101234567",
+      "email": "greenvalley@email.com",
+      "rating": 4.7,
+      "reviews": 45,
+      "priceRange": "₦200 - ₦50,000",
+      "badge": "Farm Direct",
+      "hours": "Mon-Sat: 6:00 AM - 5:00 PM",
+      "owner": "Sunday Danladi",
+      "since": "2018",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "id": "crystal-events",
+      "name": "Crystal Events & Catering",
+      "category": "events",
+      "categoryName": "Events & Entertainment",
+      "description": "Event planning, catering, decoration, MC and entertainment for weddings, birthdays and corporate events.",
+      "longDescription": "Crystal Events & Catering is a full-service event management company in Kuje. We handle everything from venue selection and decoration to catering, entertainment and coordination. Our catering service offers a wide menu including Nigerian, continental and Chinese cuisines. Our team of experienced decorators can transform any space into a stunning event venue. We also provide MCs, DJs, photographers and live band entertainment. Whether it is a wedding reception, birthday party, naming ceremony, funeral reception or corporate dinner, we make your event memorable.",
+      "image": "https://picsum.photos/seed/crystalevents/600/400",
+      "gallery": ["https://picsum.photos/seed/event1/600/400", "https://picsum.photos/seed/event2/600/400", "https://picsum.photos/seed/event3/600/400"],
+      "location": "Kuje Area 1",
+      "address": "11 Area 1, Kuje, FCT",
+      "phone": "+234 811 234 5678",
+      "whatsapp": "+2348112345678",
+      "email": "crystalevents@email.com",
+      "rating": 4.8,
+      "reviews": 89,
+      "priceRange": "₦50,000 - ₦5,000,000",
+      "badge": "Premium",
+      "hours": "Mon-Sun: 8:00 AM - 9:00 PM",
+      "owner": "Grace Adeyemi",
+      "since": "2019",
+      "verified": true,
+      "featured": true
+    },
+    {
+      "id": 10,
+      "name": "KujeWeb Solutions",
+      "category": "Technology",
+      "description": "Professional web development, mobile apps, and digital solutions for businesses in Kuje.",
+      "location": "Kuje Town",
+      "rating": 4.9,
+      "reviews": 67,
+      "priceRange": "₦50,000 - ₦500,000",
+      "badge": "Featured",
+      "image": "https://picsum.photos/seed/websolutions/600/400",
+      "featured": true,
+      "tags": ["web design", "mobile apps", "software", "digital marketing"]
+    },
+    {
+      "id": 11,
+      "name": "GreenField Properties",
+      "category": "Real Estate",
+      "description": "Real estate agency specializing in land sales, house rentals, and short-let apartments in Kuje and FCT.",
+      "location": "Kuje",
+      "rating": 4.7,
+      "reviews": 43,
+      "priceRange": "₦100,000 - ₦5,000,000",
+      "badge": "Verified",
+      "image": "https://picsum.photos/seed/greenfield/600/400",
+      "featured": true,
+      "tags": ["real estate", "land", "rent", "property"]
+    },
+    {
+      "id": 12,
+      "name": "Kuje International School",
+      "category": "Education",
+      "description": "Quality education from nursery to secondary school. Modern facilities and experienced teachers.",
+      "location": "Byazhin",
+      "rating": 4.8,
+      "reviews": 215,
+      "priceRange": "₦50,000 - ₦150,000/term",
+      "badge": "Top Rated",
+      "image": "https://picsum.photos/seed/school1/600/400",
+      "featured": true,
+      "tags": ["school", "education", "nursery", "secondary"]
+    },
+    {
+      "id": 13,
+      "name": "Mama Ngozi Market Store",
+      "category": "Retail & Trading",
+      "description": "Fresh foodstuff, spices, grains, and household items at wholesale prices.",
+      "location": "Kuje Market",
+      "rating": 4.6,
+      "reviews": 189,
+      "priceRange": "₦200 - ₦50,000",
+      "badge": "Popular",
+      "image": "https://picsum.photos/seed/mamangozi/600/400",
+      "featured": true,
+      "tags": ["foodstuff", "spices", "grains", "wholesale"]
+    },
+    {
+      "id": 14,
+      "name": "SurveyPro Nigeria",
+      "category": "Professional Services",
+      "description": "Licensed surveyor and mapping services. Land survey, property documentation, and GIS solutions.",
+      "location": "Kuje Town",
+      "rating": 4.8,
+      "reviews": 31,
+      "priceRange": "₦80,000 - ₦1,000,000",
+      "badge": "Verified",
+      "image": "https://picsum.photos/seed/surveyor/600/400",
+      "featured": false,
+      "tags": ["surveyor", "mapping", "land survey", "property"]
+    },
+    {
+      "id": 15,
+      "name": "Bright Minds Academy",
+      "category": "Education",
+      "description": "After-school tutoring, JAMB preparation, and skill acquisition programs for students and adults.",
+      "location": "Kuje Town",
+      "rating": 4.7,
+      "reviews": 98,
+      "priceRange": "₦10,000 - ₦50,000",
+      "badge": "Popular",
+      "image": "https://picsum.photos/seed/academy/600/400",
+      "featured": false,
+      "tags": ["tutoring", "JAMB", "skills", "training"]
+    }
+  ],
+  "products": [
+    {
+      "id": "jollof-rice-special",
+      "name": "Jollof Rice Special",
+      "businessId": "aminas-kitchen",
+      "businessName": "Amina's Kitchen",
+      "category": "food",
+      "description": "Our signature jollof rice cooked with fresh tomatoes, peppers, and special spices. Served with chicken or beef.",
+      "image": "https://picsum.photos/seed/jollof/400/400",
+      "gallery": ["https://picsum.photos/seed/jollof1/400/400", "https://picsum.photos/seed/jollof2/400/400"],
+      "price": 2500,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "hot",
+      "rating": 4.8,
+      "reviews": 89,
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "fried-rice-chicken",
+      "name": "Fried Rice with Chicken",
+      "businessId": "aminas-kitchen",
+      "businessName": "Amina's Kitchen",
+      "category": "food",
+      "description": "Delicious Chinese-style fried rice with mixed vegetables and grilled chicken. Generous portion guaranteed.",
+      "image": "https://picsum.photos/seed/friedrice/400/400",
+      "gallery": ["https://picsum.photos/seed/fried1/400/400", "https://picsum.photos/seed/fried2/400/400"],
+      "price": 3000,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "popular",
+      "rating": 4.6,
+      "reviews": 67,
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "suya-platter",
+      "name": "Suya Platter (Large)",
+      "businessId": "aminas-kitchen",
+      "businessName": "Amina's Kitchen",
+      "category": "food",
+      "description": "Freshly grilled beef suya with yaji spice, served with onions, tomatoes and cabbage on the side.",
+      "image": "https://picsum.photos/seed/suya/400/400",
+      "gallery": ["https://picsum.photos/seed/suya1/400/400", "https://picsum.photos/seed/suya2/400/400"],
+      "price": 1800,
+      "oldPrice": 2200,
+      "currency": "₦",
+      "tag": "deal",
+      "rating": 4.9,
+      "reviews": 102,
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "shawarma-wrap",
+      "name": "Shawarma Wrap",
+      "businessId": "aminas-kitchen",
+      "businessName": "Amina's Kitchen",
+      "category": "food",
+      "description": "Chicken and vegetable shawarma wrapped in pita bread with our special garlic sauce.",
+      "image": "https://picsum.photos/seed/shawarma/400/400",
+      "gallery": ["https://picsum.photos/seed/shaw1/400/400", "https://picsum.photos/seed/shaw2/400/400"],
+      "price": 1500,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "new",
+      "rating": 4.5,
+      "reviews": 45,
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "meat-pie",
+      "name": "Meat Pie (Pack of 4)",
+      "businessId": "aminas-kitchen",
+      "businessName": "Amina's Kitchen",
+      "category": "food",
+      "description": "Flaky pastry filled with seasoned minced meat, potatoes and carrots. Baked fresh daily.",
+      "image": "https://picsum.photos/seed/meatpie/400/400",
+      "gallery": ["https://picsum.photos/seed/pie1/400/400", "https://picsum.photos/seed/pie2/400/400"],
+      "price": 500,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "budget",
+      "rating": 4.4,
+      "reviews": 38,
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "orange-juice",
+      "name": "Fresh Orange Juice (1L)",
+      "businessId": "aminas-kitchen",
+      "businessName": "Amina's Kitchen",
+      "category": "food",
+      "description": "Freshly squeezed orange juice with no added sugar or preservatives. Natural goodness in every sip.",
+      "image": "https://picsum.photos/seed/orangejuice/400/400",
+      "gallery": ["https://picsum.photos/seed/juice1/400/400", "https://picsum.photos/seed/juice2/400/400"],
+      "price": 800,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "healthy",
+      "rating": 4.3,
+      "reviews": 29,
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "pounded-yam-soup",
+      "name": "Pounded Yam with Egusi Soup",
+      "businessId": "aminas-kitchen",
+      "businessName": "Amina's Kitchen",
+      "category": "food",
+      "description": "Smooth pounded yam served with rich egusi soup, assorted meat, stockfish and fresh spinach.",
+      "image": "https://picsum.photos/seed/poundedyam/400/400",
+      "gallery": ["https://picsum.photos/seed/pound1/400/400", "https://picsum.photos/seed/pound2/400/400"],
+      "price": 2000,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "hot",
+      "rating": 4.7,
+      "reviews": 76,
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "mini-chops-plate",
+      "name": "Mini Chops Party Plate",
+      "businessId": "aminas-kitchen",
+      "businessName": "Amina's Kitchen",
+      "category": "food",
+      "description": "Assorted mini chops — spring rolls, samosa, puff puff, chicken wings, and gizdodo. Perfect for parties.",
+      "image": "https://picsum.photos/seed/minichops/400/400",
+      "gallery": ["https://picsum.photos/seed/mini1/400/400", "https://picsum.photos/seed/mini2/400/400"],
+      "price": 2200,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "party",
+      "rating": 4.6,
+      "reviews": 53,
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "mens-casual-outfit",
+      "name": "Men's Casual Outfit Set",
+      "businessId": "style-hub-fashion",
+      "businessName": "Style Hub Fashion",
+      "category": "fashion",
+      "description": "Trendy men's casual wear — stylish top and matching trousers. Available in multiple colors and sizes.",
+      "image": "https://picsum.photos/seed/mensoutfit/400/400",
+      "gallery": ["https://picsum.photos/seed/menout1/400/400", "https://picsum.photos/seed/menout2/400/400"],
+      "price": 8500,
+      "oldPrice": 12000,
+      "currency": "₦",
+      "tag": "deal",
+      "rating": 4.5,
+      "reviews": 41,
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "wireless-earbuds-pro",
+      "name": "Wireless Earbuds Pro",
+      "businessId": "techzone-electronics",
+      "businessName": "TechZone Electronics",
+      "category": "electronics",
+      "description": "Bluetooth 5.0 wireless earbuds with noise cancellation, 24hr battery life and charging case.",
+      "image": "https://picsum.photos/seed/earbuds/400/400",
+      "gallery": ["https://picsum.photos/seed/earb1/400/400", "https://picsum.photos/seed/earb2/400/400"],
+      "price": 4500,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "new",
+      "rating": 4.4,
+      "reviews": 33,
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "deep-cleaning-service",
+      "name": "Deep Cleaning Service",
+      "businessId": "cleanhome-services",
+      "businessName": "CleanHome Services",
+      "category": "home",
+      "description": "Professional deep cleaning for your home or office. Includes kitchen, bathrooms, living areas and bedrooms.",
+      "image": "https://picsum.photos/seed/deepclean/400/400",
+      "gallery": ["https://picsum.photos/seed/cleanS1/400/400", "https://picsum.photos/seed/cleanS2/400/400"],
+      "price": 5000,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "popular",
+      "rating": 4.7,
+      "reviews": 48,
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "full-body-massage",
+      "name": "Full Body Massage",
+      "businessId": "glow-beauty-spa",
+      "businessName": "Glow Beauty Spa",
+      "category": "beauty",
+      "description": "Relaxing 60-minute full body massage with essential oils. Relieves stress and tension.",
+      "image": "https://picsum.photos/seed/massage/400/400",
+      "gallery": ["https://picsum.photos/seed/mass1/400/400", "https://picsum.photos/seed/mass2/400/400"],
+      "price": 3500,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "relax",
+      "rating": 4.9,
+      "reviews": 92,
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "full-car-service",
+      "name": "Full Car Service Package",
+      "businessId": "quickfix-auto",
+      "businessName": "QuickFix Auto Garage",
+      "category": "auto",
+      "description": "Complete car servicing — oil change, filter replacement, brake check, battery test and engine diagnostics.",
+      "image": "https://picsum.photos/seed/carservice/400/400",
+      "gallery": ["https://picsum.photos/seed/carS1/400/400", "https://picsum.photos/seed/carS2/400/400"],
+      "price": 8000,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "essential",
+      "rating": 4.5,
+      "reviews": 37,
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "ladies-gown",
+      "name": "Elegant Ladies Gown",
+      "businessId": "style-hub-fashion",
+      "businessName": "Style Hub Fashion",
+      "category": "fashion",
+      "description": "Beautiful floor-length gown perfect for weddings, parties and special occasions. Available in multiple colors.",
+      "image": "https://picsum.photos/seed/ladiesgown/400/400",
+      "gallery": ["https://picsum.photos/seed/gown1/400/400", "https://picsum.photos/seed/gown2/400/400"],
+      "price": 6500,
+      "oldPrice": null,
+      "currency": "₦",
+      "tag": "style",
+      "rating": 4.6,
+      "reviews": 55,
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "laptop-hp",
+      "name": "HP Laptop 15-dy Series",
+      "businessId": "techzone-electronics",
+      "businessName": "TechZone Electronics",
+      "category": "electronics",
+      "description": "HP 15.6 inch laptop, Intel Core i5, 8GB RAM, 512GB SSD. Perfect for work and school.",
+      "image": "https://picsum.photos/seed/hplaptop/400/400",
+      "gallery": ["https://picsum.photos/seed/lap1/400/400", "https://picsum.photos/seed/lap2/400/400"],
+      "price": 185000,
+      "oldPrice": 210000,
+      "currency": "₦",
+      "tag": "deal",
+      "rating": 4.7,
+      "reviews": 24,
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "website-design-package",
+      "name": "Business Website Design",
+      "businessId": "kuje-digital-hub",
+      "businessName": "Kuje Digital Hub",
+      "category": "tech",
+      "description": "Professional 5-page responsive website design with domain name, hosting for 1 year and SSL certificate.",
+      "image": "https://picsum.photos/seed/websitedesign/400/400",
+      "gallery": ["https://picsum.photos/seed/web1/400/400", "https://picsum.photos/seed/web2/400/400"],
+      "price": 35000,
+      "oldPrice": 50000,
+      "currency": "₦",
+      "tag": "deal",
+      "rating": 4.8,
+      "reviews": 31,
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": 17,
+      "name": "Website Design Package",
+      "business": "KujeWeb Solutions",
+      "price": 150000,
+      "rating": 4.9,
+      "reviews": 34,
+      "tag": "new",
+      "image": "https://picsum.photos/seed/websitedesign/400/400"
+    },
+    {
+      "id": 18,
+      "name": "School Uniform Set",
+      "business": "Kuje International School",
+      "price": 12000,
+      "rating": 4.5,
+      "reviews": 67,
+      "tag": "new",
+      "image": "https://picsum.photos/seed/uniform/400/400"
+    },
+    {
+      "id": 19,
+      "name": "Full Body Massage",
+      "business": "Glow Beauty Spa",
+      "price": 3500,
+      "rating": 4.8,
+      "reviews": 67,
+      "tag": "new",
+      "image": "https://picsum.photos/seed/beautyspa/400/400"
+    },
+    {
+      "id": 20,
+      "name": "Fresh Tomato Stew Mix",
+      "business": "Mama Ngozi Market Store",
+      "price": 2500,
+      "rating": 4.6,
+      "reviews": 145,
+      "tag": "hot",
+      "image": "https://picsum.photos/seed/tomato/400/400"
+    }
+  ],
+  "blogPosts": [
+    {
+      "id": "10-ways-grow-business",
+      "title": "10 Ways to Grow Your Business in Kuje",
+      "excerpt": "Discover proven strategies to expand your local business and reach more customers in Kuje and surrounding areas.",
+      "content": "Growing a business in Kuje requires understanding the local market and leveraging the right tools. Here are 10 proven strategies:\n\n**1. List on Kuje Connect**\nThe fastest way to get discovered by local customers is to create a listing on Kuje Connect. Thousands of people search our platform every week for businesses like yours. A complete profile with photos, contact info and reviews will set you apart.\n\n**2. Use Social Media**\nCreate Facebook and Instagram pages for your business. Post your products, share customer testimonials and engage with your audience regularly. Social media is free marketing — use it wisely.\n\n**3. WhatsApp Marketing**\nWhatsApp is the most popular messaging app in Nigeria. Create a business WhatsApp account, build broadcast lists and status updates. Share your catalog, prices and any ongoing promotions daily.\n\n**4. Customer Reviews**\nAsk satisfied customers to leave reviews on your Kuje Connect listing. Positive reviews build trust and influence new customers to choose your business over competitors.\n\n**5. Quality Products**\nNever compromise on quality. Your product quality is your brand. Customers remember great quality and will recommend you to others.\n\n**6. Competitive Pricing**\nResearch your competitors and price fairly. You don't have to be the cheapest, but you should offer good value for money. Consider offering bundle deals and loyalty discounts.\n\n**7. Delivery Service**\nOffering delivery can significantly increase your sales. Many customers prefer the convenience of having products brought to their doorstep. Partner with bike riders for quick local deliveries.\n\n**8. Networking**\nConnect with other business owners in Kuje. Join local business associations and attend community events. Collaboration and referrals are powerful growth tools.\n\n**9. Promotions**\nRun discounts, flash sales and special offers regularly. Seasonal promotions during Sallah, Christmas and back-to-school periods can drive significant traffic to your business.\n\n**10. Online Presence**\nKeep your business information updated online. Ensure your phone number, address and business hours are current. An updated Kuje Connect listing helps customers find and contact you easily.\n\nBy implementing these strategies consistently, you will see noticeable growth in your business within a few months.",
+      "image": "https://picsum.photos/seed/biztips/800/400",
+      "author": "Amina Ibrahim",
+      "authorImage": "https://picsum.photos/seed/author1/100/100",
+      "date": "2026-01-15",
+      "category": "Business Growth",
+      "readTime": "5 min read",
+      "tags": ["business", "growth", "marketing", "kuje"]
+    },
+    {
+      "id": "social-media-marketing",
+      "title": "Social Media Marketing Tips for Local Businesses",
+      "excerpt": "Learn how to use Facebook, Instagram and WhatsApp to promote your business and attract more customers in Kuje.",
+      "content": "Social media is a game changer for local businesses. Here is how to make the most of it:\n\n**Start with Facebook**\nFacebook remains the most used social platform in Nigeria. Create a professional business page with a clear profile picture (your logo), cover photo (your products or storefront), and complete business information. Post at least 3 times a week showing your products, customer reviews and behind-the-scenes content.\n\n**Instagram for Visual Businesses**\nIf you sell fashion, food or beauty products, Instagram is essential. Use high-quality photos and Reels to showcase your work. Use hashtags like #KujeBusiness, #MadeInKuje and #KujeMarket to reach local customers. Engage with your followers by responding to every comment and DM.\n\n**WhatsApp Business**\nWhatsApp Business is a must for every Kuje business owner. Set up your business profile with your catalog, auto-reply messages and away messages. Use the Status feature daily to showcase new products and promotions. Create broadcast lists for different customer segments — one for regular customers, another for bulk buyers.\n\n**Content Ideas**\nNot sure what to post? Here are ideas: product photos, customer testimonials, before and after photos, staff introductions, how-to videos, special offers, and behind-the-scenes content. Mix up your content to keep your audience engaged.\n\n**Consistency is Key**\nPost consistently. Set a schedule and stick to it. Use free tools like Canva to create professional-looking graphics even if you are not a designer. Track what content performs best and double down on it.\n\n**Engage Your Community**\nDon't just post and disappear. Reply to comments, join local Facebook groups and participate in conversations. Offer value before asking for sales. When people see you as helpful, they will naturally choose your business when they need what you sell.\n\nStart small, be consistent and watch your customer base grow through social media.",
+      "image": "https://picsum.photos/seed/socialmedia/800/400",
+      "author": "Ibrahim Yusuf",
+      "authorImage": "https://picsum.photos/seed/author2/100/100",
+      "date": "2026-02-01",
+      "category": "Digital Marketing",
+      "readTime": "6 min read",
+      "tags": ["social-media", "marketing", "facebook", "whatsapp"]
+    },
+    {
+      "id": "customer-service-tips",
+      "title": "How to Provide Excellent Customer Service",
+      "excerpt": "Customer service can make or break your business. Learn how to keep your customers happy and coming back for more.",
+      "content": "Excellent customer service is the foundation of any successful business. In a competitive market like Kuje, the businesses that thrive are the ones that treat their customers well. Here are practical tips:\n\n**Respond Quickly**\nWhen a customer messages you on WhatsApp or calls your business line, respond as fast as possible. Speed shows professionalism and respect for their time. Set up auto-replies if you are busy and follow up promptly.\n\n**Be Polite and Professional**\nAlways greet customers warmly, even when they are complaining. A simple 'Good morning, how can I help you today?' goes a long way. Train your staff to be courteous and patient with every customer interaction.\n\n**Listen to Complaints**\nDon't ignore complaints — they are opportunities to improve. Listen carefully, apologize sincerely and take action to fix the issue. A customer whose complaint is resolved well often becomes more loyal than one who never had a problem.\n\n**Go the Extra Mile**\nSmall gestures make a big difference. Offer free delivery for regular customers, include a small gift with purchases, or follow up after a sale to ensure satisfaction. These touches create loyal customers who refer others.\n\n**Keep Your Promises**\nIf you promise delivery by 2pm, make sure it arrives by 2pm. If you say you will call back, call back. Broken promises destroy trust faster than anything else. Under-promise and over-deliver.\n\n**Handle Money Matters with Transparency**\nBe clear about prices upfront. Don't surprise customers with hidden charges. If there is a price change, communicate it early. Transparent pricing builds trust.\n\n**Train Your Team**\nYour customers interact with your staff as much as they interact with you. Invest in regular training on customer service, product knowledge and communication skills. Your team represents your brand.\n\n**Ask for Feedback**\nRegularly ask customers how you are doing. Simple questions like 'How was your experience?' or 'Is there anything we can improve?' show you care about their opinion and helps you identify areas for improvement.\n\nRemember, word of mouth is powerful in Kuje. One happy customer tells ten people. One unhappy customer tells twenty. Invest in customer service and your business will grow.",
+      "image": "https://picsum.photos/seed/customerservice/800/400",
+      "author": "Fatima Abubakar",
+      "authorImage": "https://picsum.photos/seed/author3/100/100",
+      "date": "2026-02-15",
+      "category": "Business Tips",
+      "readTime": "5 min read",
+      "tags": ["customer-service", "business-tips", "customer-care"]
+    },
+    {
+      "id": "pricing-right",
+      "title": "How to Price Your Products and Services Right",
+      "excerpt": "Pricing too high drives customers away. Pricing too low kills your profit. Learn the art of pricing in the Nigerian market.",
+      "content": "Pricing is one of the most important decisions you will make as a business owner. Set it wrong and you lose customers or profits. Here's a comprehensive guide to pricing right in Kuje:\n\n**Know Your Costs**\nBefore you set a price, calculate everything that goes into producing or acquiring your product. Include raw materials, transport, packaging, rent, staff salaries, utilities and any other overheads. Your selling price must cover all these costs and still leave a profit margin.\n\n**Research the Market**\nWalk around Kuje Market and check what competitors charge for similar products. Check online platforms too. You don't always have to be the cheapest — but you must be in the right range. Being significantly more expensive requires a clear reason like better quality or unique features.\n\n**Understand Your Customer**\nDifferent customers have different budgets. A product priced for office workers may not sell well in a student area. Know your target customer and price accordingly. Consider offering different sizes or packages for different budgets.\n\n**Use the Cost-Plus Method**\nThe simplest pricing method: add your desired profit margin to your total cost. For example, if a product costs you ₦1,000 to make and you want a 30% profit, your selling price is ₦1,300. This ensures you always make a profit.\n\n**Consider Value-Based Pricing**\nSometimes the value you provide is worth more than your cost. A hairstyle that makes a customer feel beautiful is worth more than the cost of hair extensions. A website that brings a business more customers is worth more than the hours it took to build.\n\n**Test and Adjust**\nDon't be afraid to experiment. Try different prices and observe how customers respond. If products fly off the shelf too fast, you might be underpricing. If nobody is buying, your price might be too high or your marketing needs work.\n\n**Offer Bundles and Discounts**\nBundles increase your average sale. Instead of selling one shirt for ₦5,000, offer two shirts for ₦9,000. The customer feels they got a deal and you sell more. Run time-limited promotions to create urgency.\n\n**Don't Race to the Bottom**\nCompeting only on price is a dangerous game. It erodes your profits and devalues your brand. Instead, compete on quality, service, reliability and convenience. Customers will pay fair prices for exceptional value.\n\nPricing is not a one-time decision. Review your prices regularly as your costs change and as the market evolves.",
+      "image": "https://picsum.photos/seed/pricing/800/400",
+      "author": "Emeka Okafor",
+      "authorImage": "https://picsum.photos/seed/author4/100/100",
+      "date": "2026-03-01",
+      "category": "Business Strategy",
+      "readTime": "6 min read",
+      "tags": ["pricing", "strategy", "profit", "business"]
+    },
+    {
+      "id": "whatsapp-business",
+      "title": "Complete Guide to Using WhatsApp Business for Your Shop",
+      "excerpt": "WhatsApp Business is free and powerful. Learn how to set it up and use it to grow your sales in Kuje.",
+      "content": "WhatsApp Business is the most powerful free tool available to small business owners in Kuje. Here is how to set it up and use it effectively:\n\n**Setting Up Your Profile**\nDownload WhatsApp Business from the Play Store or App Store. Use your business phone number (not personal). Fill in your business name, description, address, hours, email and website. Add a professional profile picture — preferably your logo.\n\n**Create Your Product Catalog**\nThe catalog feature lets you showcase your products right in WhatsApp. Add photos, names, descriptions and prices for each product. Customers can browse without needing to visit your shop. Keep your catalog updated with current stock.\n\n**Auto-Reply Messages**\nSet up greeting messages for when customers message you for the first time. Set away messages for when you are not available. Create quick replies for frequently asked questions like your prices, location and delivery options.\n\n**Labels for Organization**\nUse labels to organize your customer chats. Label customers as New, Pending Payment, Paid, Delivered, VIP etc. This helps you track orders and follow up with the right customers at the right time.\n\n**Status Updates**\nPost to your Status daily. Show new arrivals, ongoing promotions, customer testimonials and behind-the-scenes content. Status updates are visible to all your contacts and keep your business top of mind.\n\n**Broadcast Lists**\nCreate broadcast lists for different customer groups. Send targeted messages — for example, send new product alerts to your VIP customers or send promotional messages to all contacts. Broadcast messages feel personal and have higher engagement than group messages.\n\n**Business Hours**\nSet your business hours so customers know when you are available. Outside business hours, your away message will let them know when to expect a reply. This manages expectations professionally.\n\n**WhatsApp Payments**\nIn Nigeria, you can receive payments through bank transfers. Add your business bank account details to your profile so customers can pay easily. Always confirm payments and send receipts.\n\n**Tips for Success**\n- Respond to messages within 5 minutes during business hours\n- Send your catalog link in every new conversation\n- Follow up with customers who viewed but did not buy\n- Ask for reviews after successful deliveries\n- Don't spam contacts with unnecessary messages\n- Use high-quality product photos\n\nWhatsApp Business is simple, free and effective. Start using it today and watch your sales grow.",
+      "image": "https://picsum.photos/seed/whatsappbiz/800/400",
+      "author": "Grace Adeyemi",
+      "authorImage": "https://picsum.photos/seed/author5/100/100",
+      "date": "2026-03-15",
+      "category": "Digital Marketing",
+      "readTime": "7 min read",
+      "tags": ["whatsapp", "marketing", "digital", "business"]
+    },
+    {
+      "id": "cash-flow-management",
+      "title": "Cash Flow Management: A Simple Guide for Small Businesses",
+      "excerpt": "Running out of money kills businesses. Learn how to manage your cash flow and keep your business financially healthy.",
+      "content": "Many small businesses in Kuje fail not because they don't make sales, but because they run out of cash. Cash flow management is the skill of tracking money coming in and going out of your business. Here's a simple guide:\n\n**Track Every Naira**\nWrite down every amount that comes in and every amount that goes out. Use a notebook, spreadsheet or a simple app. Don't rely on memory. At the end of each day, count your cash and reconcile with your records.\n\n**Separate Personal and Business Money**\nThis is the most common mistake. Open a separate bank account for your business. Pay yourself a fixed salary instead of taking money随意. When personal and business money mix, you lose track of your true business performance.\n\n**Invoice Promptly**\nIf you provide services on credit or to businesses, send invoices immediately. Follow up on payments aggressively. A sale is not complete until the money is in your account. Don't be shy about asking for payment.\n\n**Manage Inventory Wisely**\nDon't tie up cash in too much stock. Know what sells fast and keep more of that. For slow-moving items, reduce your order quantity or run promotions to clear them. Dead stock is dead money.\n\n**Negotiate Payment Terms**\nIf you buy from suppliers, negotiate for longer payment terms. Instead of paying upfront, try to get 7 or 14 day credit. This keeps cash in your business longer. Likewise, encourage customers to pay quickly by offering small discounts for early payment.\n\n**Build a Cash Reserve**\nSave a portion of your profits every month for emergencies. Aim to have at least one month of expenses saved. This buffer will keep you afloat during slow periods or unexpected expenses.\n\n**Cut Unnecessary Expenses**\nReview your expenses regularly. Cancel subscriptions you don't use. Negotiate better rates with suppliers. Reduce waste. Every naira saved is a naira earned.\n\n**Use the 50-30-20 Rule**\nA simple framework: 50% of revenue goes to business expenses (rent, stock, transport), 30% goes to growth (marketing, new products, training), and 20% goes to savings and emergencies.\n\n**Monitor Your Cash Flow Weekly**\nAt the end of each week, review how much came in, how much went out and what your balance is. This habit helps you spot problems early and make adjustments before it's too late.\n\n**Get Help When Needed**\nIf cash flow management feels overwhelming, consult an accountant or bookkeeper. Kuje has professionals who can set up a simple system for your business at an affordable cost.\n\nGood cash flow management doesn't require a finance degree. It requires discipline, record-keeping and consistency. Start today and your business will be stronger for it.",
+      "image": "https://picsum.photos/seed/cashflow/800/400",
+      "author": "Abdullahi Musa",
+      "authorImage": "https://picsum.photos/seed/author6/100/100",
+      "date": "2026-04-01",
+      "category": "Finance",
+      "readTime": "6 min read",
+      "tags": ["finance", "cash-flow", "small-business", "management"]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Amina Ibrahim",
+      "role": "Business Owner",
+      "business": "Amina's Kitchen",
+      "image": "https://picsum.photos/seed/test1/100/100",
+      "text": "Kuje Connect helped me reach more customers than ever before. My sales have increased by 40% since joining!",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Emeka Okafor",
+      "role": "Business Owner",
+      "business": "TechZone Electronics",
+      "image": "https://picsum.photos/seed/test2/100/100",
+      "text": "I get at least 3 new customers every week through Kuje Connect. The platform is easy to use and my listing looks professional.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "Blessing Okonkwo",
+      "role": "Business Owner",
+      "business": "Style Hub Fashion",
+      "image": "https://picsum.photos/seed/test3/100/100",
+      "text": "Before Kuje Connect, most people didn't know about my fashion store. Now customers come from all over Kuje to shop with me.",
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "name": "Grace Adeyemi",
+      "role": "Event Planner",
+      "business": "Crystal Events & Catering",
+      "image": "https://picsum.photos/seed/test4/100/100",
+      "text": "The featured listing option is worth every naira. I get consistent bookings from people who found me on Kuje Connect.",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "name": "Sunday Danladi",
+      "role": "Farmer",
+      "business": "Green Valley Farms",
+      "image": "https://picsum.photos/seed/test5/100/100",
+      "text": "As a farmer, getting my produce to market used to be a struggle. Kuje Connect connected me directly with restaurants and buyers. Game changer!",
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "name": "Chioma Nwosu",
+      "role": "Salon Owner",
+      "business": "Glow Beauty Spa",
+      "image": "https://picsum.photos/seed/test6/100/100",
+      "text": "My client base has doubled in 6 months. The review system builds trust and new clients mention finding me on Kuje Connect all the time.",
+      "rating": 4
+    }
+  ],
+  "team": [
+    {
+      "name": "Amina Ibrahim",
+      "role": "Founder & CEO",
+      "image": "https://picsum.photos/seed/team1/400/400",
+      "bio": "Passionate about connecting local businesses with their community.",
+      "social": {"facebook": "#", "twitter": "#", "instagram": "#"}
+    },
+    {
+      "name": "Ibrahim Yusuf",
+      "role": "Head of Technology",
+      "image": "https://picsum.photos/seed/team2/400/400",
+      "bio": "Building digital solutions for the Kuje community.",
+      "social": {"facebook": "#", "twitter": "#", "instagram": "#"}
+    },
+    {
+      "name": "Fatima Abubakar",
+      "role": "Marketing Manager",
+      "image": "https://picsum.photos/seed/team3/400/400",
+      "bio": "Spreading the word about Kuje Connect across the FCT.",
+      "social": {"facebook": "#", "twitter": "#", "instagram": "#"}
+    },
+    {
+      "name": "Emeka Okafor",
+      "role": "Business Relations",
+      "image": "https://picsum.photos/seed/team4/400/400",
+      "bio": "Helping businesses succeed on the platform every day.",
+      "social": {"facebook": "#", "twitter": "#", "instagram": "#"}
+    }
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price": "₦0",
+      "period": "/month",
+      "description": "Perfect for getting started",
+      "popular": false,
+      "features": [
+        {"text": "1 business listing", "included": true},
+        {"text": "Basic profile", "included": true},
+        {"text": "5 photos", "included": true},
+        {"text": "Customer reviews", "included": true},
+        {"text": "Search listing", "included": true},
+        {"text": "Featured listing", "included": false},
+        {"text": "Analytics dashboard", "included": false}
+      ],
+      "button": "Get Started"
+    },
+    {
+      "name": "Business",
+      "price": "₦5,000",
+      "period": "/month",
+      "description": "Best for growing businesses",
+      "popular": true,
+      "features": [
+        {"text": "3 business listings", "included": true},
+        {"text": "Enhanced profile", "included": true},
+        {"text": "20 photos", "included": true},
+        {"text": "Priority support", "included": true},
+        {"text": "Featured listing", "included": true},
+        {"text": "Analytics dashboard", "included": true},
+        {"text": "Social media links", "included": true}
+      ],
+      "button": "Choose Plan"
+    },
+    {
+      "name": "Enterprise",
+      "price": "₦15,000",
+      "period": "/month",
+      "description": "For large businesses",
+      "popular": false,
+      "features": [
+        {"text": "Unlimited listings", "included": true},
+        {"text": "Premium profile", "included": true},
+        {"text": "Unlimited photos", "included": true},
+        {"text": "24/7 support", "included": true},
+        {"text": "Top featured", "included": true},
+        {"text": "Advanced analytics", "included": true},
+        {"text": "API access", "included": true}
+      ],
+      "button": "Contact Sales"
+    }
+  ],
+  "faq": [
+    {"question": "How do I list my business?", "answer": "Click Sign Up, choose Business Owner, fill in your details and start listing your products and services."},
+    {"question": "Is it free to join?", "answer": "Yes! We have a free plan that lets you list your business. Premium plans offer extra features."},
+    {"question": "How do customers contact businesses?", "answer": "Customers can message businesses directly through the platform, call, or send WhatsApp messages."},
+    {"question": "Can I advertise my business?", "answer": "Yes! We offer featured listings, banner ads, social media boosts, and premium packages."},
+    {"question": "How do I leave a review?", "answer": "Visit the business page and click the review section. You need an account to leave reviews."},
+    {"question": "What payment methods do you accept?", "answer": "We accept bank transfers, card payments, and mobile money."}
+  ],
+  "advertisingOptions": [
+    {
+      "name": "Featured Listing",
+      "price": "₦3,000",
+      "period": "/month",
+      "icon": "fas fa-crown",
+      "features": ["Top of search results", "Highlighted listing", "Priority badge", "30-day duration"]
+    },
+    {
+      "name": "Banner Ad",
+      "price": "₦10,000",
+      "period": "/month",
+      "icon": "fas fa-image",
+      "features": ["Homepage banner", "Category pages", "30-day rotation", "Analytics tracking"]
+    },
+    {
+      "name": "Social Media Boost",
+      "price": "₦5,000",
+      "period": "/month",
+      "icon": "fas fa-share-alt",
+      "features": ["Facebook/Instagram posts", "WhatsApp broadcasts", "30-day promotion", "Reach 10K+ users"]
+    },
+    {
+      "name": "Premium Package",
+      "price": "₦20,000",
+      "period": "/month",
+      "icon": "fas fa-gem",
+      "features": ["All features combined", "Analytics reports", "Dedicated support", "Maximum visibility"]
+    }
+  ],
+  "helpCategories": [
+    {"name": "Getting Started", "icon": "fas fa-rocket", "description": "Learn the basics of using Kuje Connect", "articles": 5},
+    {"name": "Account & Profile", "icon": "fas fa-user-cog", "description": "Manage your account settings", "articles": 8},
+    {"name": "Business Listings", "icon": "fas fa-store", "description": "Create and manage listings", "articles": 12},
+    {"name": "Payments & Billing", "icon": "fas fa-credit-card", "description": "Payment methods and invoices", "articles": 6},
+    {"name": "Advertising", "icon": "fas fa-bullhorn", "description": "Promote your business", "articles": 4},
+    {"name": "Technical Support", "icon": "fas fa-headset", "description": "Get help with technical issues", "articles": 10}
+  ],
+  "helpArticles": [
+    {"title": "How to create your account", "category": "Getting Started"},
+    {"title": "Setting up your business profile", "category": "Getting Started"},
+    {"title": "Adding products and services", "category": "Business Listings"},
+    {"title": "Uploading photos to your listing", "category": "Business Listings"},
+    {"title": "Responding to customer messages", "category": "Account & Profile"},
+    {"title": "Managing your reviews", "category": "Account & Profile"},
+    {"title": "Upgrading your plan", "category": "Payments & Billing"},
+    {"title": "Requesting a refund", "category": "Payments & Billing"}
+  ],
+  "privacyPolicy": {
+    "lastUpdated": "January 1, 2026",
+    "sections": [
+      {
+        "title": "Information We Collect",
+        "content": "We collect information you provide directly, including your name, email address, phone number, business details, photos, and payment information when you create an account or list a business on Kuje Connect."
+      },
+      {
+        "title": "How We Use Your Information",
+        "content": "We use your information to provide and improve our services, process transactions, send promotional communications, and connect customers with businesses listed on our platform."
+      },
+      {
+        "title": "Information Sharing",
+        "content": "We do not sell your personal information to third parties. We may share your business information (name, address, phone number) with customers who visit your listing. We may share data with service providers who help us operate the platform."
+      },
+      {
+        "title": "Data Security",
+        "content": "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure or destruction. However, no internet transmission is 100% secure."
+      },
+      {
+        "title": "Cookies",
+        "content": "We use cookies and similar technologies to enhance your experience, analyze usage patterns and personalize content. You can control cookie settings through your browser."
+      },
+      {
+        "title": "Your Rights",
+        "content": "You have the right to access, update, or delete your personal information at any time through your account settings. You can also contact us for any data-related requests."
+      },
+      {
+        "title": "Children's Privacy",
+        "content": "Kuje Connect is not intended for children under 13. We do not knowingly collect personal information from children under 13 years of age."
+      },
+      {
+        "title": "Changes to This Policy",
+        "content": "We may update this privacy policy from time to time. We will notify you of any significant changes by posting the new policy on this page and updating the last updated date."
+      },
+      {
+        "title": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy, please contact us at info@kujeconnect.com or call +234 801 234 5678."
+      }
+    ]
+  },
+  "termsOfService": {
+    "lastUpdated": "January 1, 2026",
+    "sections": [
+      {
+        "title": "Acceptance of Terms",
+        "content": "By accessing and using Kuje Connect, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, please do not use our platform."
+      },
+      {
+        "title": "User Accounts",
+        "content": "You must be at least 18 years old to create an account. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account."
+      },
+      {
+        "title": "Business Listings",
+        "content": "Business owners are solely responsible for the accuracy of their listings. All information including business name, address, products, prices and contact details must be truthful and up to date. Kuje Connect reserves the right to remove listings that violate our guidelines."
+      },
+      {
+        "title": "Prohibited Activities",
+        "content": "You may not use Kuje Connect to post false or misleading information, sell prohibited items, spam other users, impersonate any person or entity, or engage in any activity that violates Nigerian law."
+      },
+      {
+        "title": "Payments and Subscriptions",
+        "content": "Premium plans are billed monthly. Payment is required in advance. Refunds are available within 7 days of purchase if you have not used the premium features. All prices are in Nigerian Naira (₦)."
+      },
+      {
+        "title": "Intellectual Property",
+        "content": "All content on Kuje Connect including logos, text, images and code is the property of Kuje Connect or its licensors. You may not reproduce, distribute or create derivative works without our express written permission."
+      },
+      {
+        "title": "Limitation of Liability",
+        "content": "Kuje Connect is a platform that connects businesses with customers. We are not a party to any transaction between users. We are not liable for the quality, safety or legality of products and services listed on the platform."
+      },
+      {
+        "title": "Termination",
+        "content": "We reserve the right to suspend or terminate your account at any time for violation of these terms. You may also close your account at any time by contacting us."
+      },
+      {
+        "title": "Governing Law",
+        "content": "These terms are governed by the laws of the Federal Republic of Nigeria. Any disputes shall be resolved in the courts of the FCT, Abuja."
+      },
+      {
+        "title": "Contact",
+        "content": "For questions about these Terms of Service, contact us at info@kujeconnect.com or visit our office at 12 Market Road, Kuje, FCT, Nigeria."
+      }
+    ]
+  }
+}

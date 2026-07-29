@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Kuje Connect</title>
+    <meta name="description" content="Your Kuje Connect notifications. Stay updated on messages, reviews, and business activity in Kuje, FCT Nigeria.">
+    <meta name="keywords" content="Kuje Connect, notifications, alerts, updates, messages, reviews, business">
+    <meta name="author" content="Kuje Connect">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Notifications - Kuje Connect">
+    <meta property="og:description" content="Stay updated on messages, reviews, and business activity.">
+    <meta property="og:image" content="../images/kuje.png">
+    <meta property="og:url" content="https://kujeconnect.com/user/notifications">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kuje Connect">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Notifications - Kuje Connect">
+    <meta name="twitter:description" content="Stay updated on messages, reviews, and business activity.">
+    <meta name="twitter:image" content="../images/kuje.png">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .notif-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--light);
+            transition: background 0.15s;
+            cursor: pointer;
+            position: relative;
+        }
+        .notif-item:hover { background: var(--light); }
+        .notif-item.unread { background: #f0fdf4; }
+        .notif-item.unread:hover { background: #ecfdf5; }
+        .notif-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+        .notif-body { flex: 1; min-width: 0; }
+        .notif-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+        .notif-message {
+            font-size: 0.85rem;
+            color: var(--dark-light);
+            line-height: 1.5;
+            margin: 0;
+        }
+        .notif-time {
+            font-size: 0.73rem;
+            color: var(--gray-light);
+            margin-top: 4px;
+        }
+        .notif-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+        .notif-delete {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 26px;
+            height: 26px;
+            border: none;
+            background: transparent;
+            color: var(--gray-light);
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: all 0.15s;
+        }
+        .notif-item:hover .notif-delete { opacity: 1; }
+        .notif-delete:hover {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        .notif-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 20px;
+            background: var(--light);
+            border-radius: var(--radius-sm);
+            padding: 4px;
+            overflow-x: auto;
+        }
+        .notif-tab {
+            flex: 1;
+            padding: 10px 8px;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: transparent;
+            border: none;
+            color: var(--gray);
+            font-family: 'Poppins', sans-serif;
+            white-space: nowrap;
+        }
+        .notif-tab:hover { color: var(--dark); }
+        .notif-tab.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .notif-tab .tab-count {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            font-size: 0.7rem;
+            padding: 1px 6px;
+            border-radius: 10px;
+            margin-left: 4px;
+            font-weight: 600;
+        }
+        .notif-tab.active .tab-count {
+            background: rgba(255,255,255,0.3);
+        }
+        .notif-empty {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .notif-empty i {
+            font-size: 3rem;
+            color: var(--gray-light);
+            margin-bottom: 14px;
+            display: block;
+        }
+        .notif-empty h4 {
+            color: var(--gray);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .notif-empty p {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+        }
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .page-header h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0;
+        }
+        .page-header p {
+            color: var(--gray);
+            font-size: 0.88rem;
+            margin: 2px 0 0;
+        }
+        .unread-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: #dcfce7;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        @media (max-width: 600px) {
+            .notif-tabs {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .notif-tab {
+                font-size: 0.78rem;
+                padding: 8px 6px;
+            }
+            .notif-item { padding: 14px 16px; }
+            .notif-delete { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar">A</div>
+                <h4>Amina Ibrahim</h4>
+                <span class="user-badge"><i class="fas fa-briefcase"></i> Business Owner</span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item active"><i class="fas fa-bell"></i> Notifications <span class="notif-badge" style="display:none;">0</span></a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>Notifications</h2>
+                    <p>Stay updated on your activity.</p>
+                </div>
+                <button class="btn-sm" id="markAllReadBtn"><i class="fas fa-check-double"></i> Mark All Read</button>
+            </div>
+
+            <div class="notif-tabs" id="notifTabs">
+                <button class="notif-tab active" data-filter="all">All <span class="tab-count" id="countAll">0</span></button>
+                <button class="notif-tab" data-filter="unread">Unread <span class="tab-count" id="countUnread">0</span></button>
+                <button class="notif-tab" data-filter="message">Messages <span class="tab-count" id="countMessages">0</span></button>
+                <button class="notif-tab" data-filter="review">Reviews <span class="tab-count" id="countReviews">0</span></button>
+                <button class="notif-tab" data-filter="system">System <span class="tab-count" id="countSystem">0</span></button>
+            </div>
+
+            <div class="user-card" id="notifListCard" style="padding:0;"></div>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../data/data.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+    (function() {
+        var user = getCurrentUser();
+        if (!user) return;
+
+        var currentFilter = 'all';
+        var listCard = document.getElementById('notifListCard');
+        var tabsContainer = document.getElementById('notifTabs');
+
+        function getNotifIconInfo(type) {
+            switch (type) {
+                case 'message':
+                    return { icon: 'fa-envelope', bg: '#dbeafe', color: '#2563eb', title: 'Message' };
+                case 'review':
+                    return { icon: 'fa-star', bg: '#fef3c7', color: '#d97706', title: 'Review' };
+                case 'business_approved':
+                    return { icon: 'fa-check-circle', bg: '#dcfce7', color: '#16a34a', title: 'Business' };
+                case 'system':
+                    return { icon: 'fa-info-circle', bg: '#e5e7eb', color: '#6b7280', title: 'System' };
+                case 'promo':
+                    return { icon: 'fa-tag', bg: '#fce7f3', color: '#db2777', title: 'Promo' };
+                default:
+                    return { icon: 'fa-bell', bg: '#dbeafe', color: '#2563eb', title: 'Notification' };
+            }
+        }
+
+        function updateCounts() {
+            var all = getUserNotifications(user.id);
+            var unread = all.filter(function(n) { return !n.read; });
+            var messages = all.filter(function(n) { return n.type === 'message'; });
+            var reviews = all.filter(function(n) { return n.type === 'review'; });
+            var system = all.filter(function(n) { return n.type === 'system' || n.type === 'business_approved' || n.type === 'promo'; });
+
+            document.getElementById('countAll').textContent = all.length;
+            document.getElementById('countUnread').textContent = unread.length;
+            document.getElementById('countMessages').textContent = messages.length;
+            document.getElementById('countReviews').textContent = reviews.length;
+            document.getElementById('countSystem').textContent = system.length;
+        }
+
+        function renderNotifications() {
+            var notifications = getUserNotifications(user.id);
+            var filtered = notifications;
+
+            if (currentFilter === 'unread') {
+                filtered = notifications.filter(function(n) { return !n.read; });
+            } else if (currentFilter !== 'all') {
+                filtered = notifications.filter(function(n) {
+                    if (currentFilter === 'system') {
+                        return n.type === 'system' || n.type === 'business_approved' || n.type === 'promo';
+                    }
+                    return n.type === currentFilter;
+                });
+            }
+
+            listCard.innerHTML = '';
+
+            if (filtered.length === 0) {
+                var emptyMsg = 'You\'re all caught up!';
+                var emptyIcon = 'fa-bell-slash';
+                if (currentFilter === 'unread') {
+                    emptyMsg = 'No unread notifications.';
+                    emptyIcon = 'fa-check-double';
+                } else if (currentFilter === 'message') {
+                    emptyMsg = 'No message notifications yet.';
+                    emptyIcon = 'fa-envelope-open';
+                } else if (currentFilter === 'review') {
+                    emptyMsg = 'No review notifications yet.';
+                    emptyIcon = 'fa-star';
+                } else if (currentFilter === 'system') {
+                    emptyMsg = 'No system notifications yet.';
+                    emptyIcon = 'fa-cog';
+                } else if (notifications.length === 0) {
+                    emptyMsg = 'You have no notifications yet.';
+                    emptyIcon = 'fa-bell-slash';
+                }
+
+                listCard.innerHTML =
+                    '<div class="notif-empty">' +
+                        '<i class="fas ' + emptyIcon + '"></i>' +
+                        '<h4>No notifications</h4>' +
+                        '<p>' + emptyMsg + '</p>' +
+                    '</div>';
+                updateCounts();
+                return;
+            }
+
+            var sorted = filtered.slice().sort(function(a, b) {
+                return new Date(b.timestamp) - new Date(a.timestamp);
+            });
+
+            sorted.forEach(function(n) {
+                var iconInfo = getNotifIconInfo(n.type);
+                var unreadClass = n.read ? '' : ' unread';
+                var dotHtml = n.read ? '' : '<div class="notif-dot"></div>';
+                var unreadLabel = n.read ? '' : '<span class="unread-label">New</span>';
+
+                var item = document.createElement('div');
+                item.className = 'notif-item' + unreadClass;
+                item.setAttribute('data-notif-id', n.id);
+
+                var titleText = n.title || iconInfo.title;
+
+                item.innerHTML =
+                    '<div class="notif-icon" style="background:' + iconInfo.bg + ';color:' + iconInfo.color + ';">' +
+                        '<i class="fas ' + iconInfo.icon + '"></i>' +
+                    '</div>' +
+                    '<div class="notif-body">' +
+                        '<div class="notif-title">' + escapeHtml(titleText) + unreadLabel + '</div>' +
+                        '<p class="notif-message">' + escapeHtml(n.message) + '</p>' +
+                        '<div class="notif-time">' + timeAgo(n.timestamp) + '</div>' +
+                    '</div>' +
+                    dotHtml +
+                    '<button class="notif-delete" data-notif-id="' + n.id + '" title="Delete notification">' +
+                        '<i class="fas fa-times"></i>' +
+                    '</button>';
+
+                item.addEventListener('click', function(e) {
+                    if (e.target.closest('.notif-delete')) return;
+                    markNotifRead(n.id);
+                    this.classList.remove('unread');
+                    var dot = this.querySelector('.notif-dot');
+                    if (dot) dot.remove();
+                    var label = this.querySelector('.unread-label');
+                    if (label) label.remove();
+                    updateCounts();
+                    updateNotifBadge();
+                    if (n.link) {
+                        window.location.href = n.link;
+                    }
+                });
+
+                listCard.appendChild(item);
+            });
+
+            listCard.querySelectorAll('.notif-delete').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var notifId = this.getAttribute('data-notif-id');
+                    var notifItem = this.closest('.notif-item');
+                    if (notifItem) {
+                        notifItem.style.transition = 'opacity 0.25s, transform 0.25s';
+                        notifItem.style.opacity = '0';
+                        notifItem.style.transform = 'translateX(30px)';
+                        setTimeout(function() {
+                            deleteNotification(notifId);
+                            renderNotifications();
+                            updateCounts();
+                            updateNotifBadge();
+                        }, 250);
+                    }
+                });
+            });
+
+            updateCounts();
+        }
+
+        tabsContainer.addEventListener('click', function(e) {
+            var tab = e.target.closest('.notif-tab');
+            if (!tab) return;
+
+            tabsContainer.querySelectorAll('.notif-tab').forEach(function(t) {
+                t.classList.remove('active');
+            });
+            tab.classList.add('active');
+            currentFilter = tab.getAttribute('data-filter');
+            renderNotifications();
+        });
+
+        document.getElementById('markAllReadBtn').addEventListener('click', function() {
+            markAllNotifsRead(user.id);
+            document.querySelectorAll('.notif-item').forEach(function(item) {
+                item.classList.remove('unread');
+                var dot = item.querySelector('.notif-dot');
+                if (dot) dot.remove();
+                var label = item.querySelector('.unread-label');
+                if (label) label.remove();
+            });
+            updateCounts();
+            updateNotifBadge();
+            showToast('All notifications marked as read', 'success');
+        });
+
+        renderNotifications();
+        updateNotifBadge();
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food & Restaurants - Kuje Connect</title>
+    <link rel="icon" type="image/png" href="images/kuje.png">
+    <link rel="apple-touch-icon" href="images/kuje.png">
+    <meta name="description" content="Browse products and businesses by category in Kuje, FCT Nigeria.">
+    <meta property="og:title" content="Food & Restaurants - Kuje Connect">
+    <meta property="og:description" content="Browse products and businesses by category in Kuje, FCT Nigeria.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1><i class="fas fa-utensils"></i> Food & Restaurants</h1>
+            <p>Discover the best restaurants, fast food, bakeries, suya spots, and catering services in Kuje</p>
+            <div class="breadcrumb">
+                <a href="index">Home</a>
+                <span>/</span>
+                <a href="index#categories">Categories</a>
+                <span>/</span>
+                <span class="current">Food & Restaurants</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Row -->
+    <section class="content-section">
+        <div class="container">
+            <div class="stats-row">
+                <div class="stat-card">
+                    <i class="fas fa-store-alt"></i>
+                    <span class="stat-num">120+</span>
+                    <span class="stat-text">Businesses</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-box-open"></i>
+                    <span class="stat-num">500+</span>
+                    <span class="stat-text">Products</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <span class="stat-num">2.5K</span>
+                    <span class="stat-text">Reviews</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <span class="stat-num">10K+</span>
+                    <span class="stat-text">Customers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="content-section" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular <span class="highlight">Products</span></h2>
+                <p>Browse meals and dishes from top food vendors in Kuje</p>
+            </div>
+            <div class="page-layout">
+                <!-- Filter Sidebar -->
+                <aside class="filter-sidebar">
+                    <h3><i class="fas fa-filter"></i> Filters</h3>
+
+                    <div class="filter-group">
+                        <label>Search</label>
+                        <input type="text" placeholder="Search food...">
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Price Range</label>
+                        <select>
+                            <option value="">All Prices</option>
+                            <option value="0-1000">Under ₦1,000</option>
+                            <option value="1000-2000">₦1,000 - ₦2,000</option>
+                            <option value="2000-3000">₦2,000 - ₦3,000</option>
+                            <option value="3000+">Above ₦3,000</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Sort By</label>
+                        <select>
+                            <option value="popular">Most Popular</option>
+                            <option value="newest">Newest First</option>
+                            <option value="low-high">Price: Low to High</option>
+                            <option value="high-low">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Rating</label>
+                        <div class="filter-check">
+                            <input type="checkbox" id="rating5">
+                            <label for="rating5"><i class="fas fa-star" style="color: #f59e0b;"></i> 5 Stars</label>
+                        </div>
+                        <div class="filter-check">
+                            <input type="checkbox" id="rating4">
+                            <label for="rating4"><i class="fas fa-star" style="color: #f59e0b;"></i> 4+ Stars</label>
+                        </div>
+                        <div class="filter-check">
+                            <input type="checkbox" id="rating3">
+                            <label for="rating3"><i class="fas fa-star" style="color: #f59e0b;"></i> 3+ Stars</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary filter-btn"><i class="fas fa-search"></i> Apply Filters</button>
+                </aside>
+
+                <!-- Product Grid -->
+                <div class="product-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="https://picsum.photos/seed/JollofRiceSpecial/400/400" alt="Jollof Rice Special">
+                            <span class="product-tag hot">Hot</span>
+                            <button class="product-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-card-body">
+                            <h4>Jollof Rice Special</h4>
+                            <div class="product-shop">Mama Chi's Restaurant</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(4.5)</span>
+                            </div>
+                            <div class="product-pricing">
+                                <span class="product-price">₦2,500</span>
+                                <span class="product-old-price">₦3,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="https://picsum.photos/seed/FriedRiceChicken/400/400" alt="Fried Rice & Chicken">
+                            <span class="product-tag new">New</span>
+                            <button class="product-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-card-body">
+                            <h4>Fried Rice & Chicken</h4>
+                            <div class="product-shop">Fresh Bite Fast Food</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(5.0)</span>
+                            </div>
+                            <div class="product-pricing">
+                                <span class="product-price">₦3,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="https://picsum.photos/seed/SuyaPlatter/400/400" alt="Suya Platter">
+                            <span class="product-tag sale">Sale</span>
+                            <button class="product-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-card-body">
+                            <h4>Suya Platter</h4>
+                            <div class="product-shop">Kuje Suya Spot</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.0)</span>
+                            </div>
+                            <div class="product-pricing">
+                                <span class="product-price">₦1,800</span>
+                                <span class="product-old-price">₦2,200</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="https://picsum.photos/seed/ShawarmaWrap/400/400" alt="Shawarma Wrap">
+                            <span class="product-tag hot">Hot</span>
+                            <button class="product-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-card-body">
+                            <h4>Shawarma Wrap</h4>
+                            <div class="product-shop">Fresh Bite Fast Food</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(4.5)</span>
+                            </div>
+                            <div class="product-pricing">
+                                <span class="product-price">₦1,500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="https://picsum.photos/seed/MeatPie/400/400" alt="Meat Pie">
+                            <span class="product-tag sale">Sale</span>
+                            <button class="product-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-card-body">
+                            <h4>Meat Pie</h4>
+                            <div class="product-shop">Mama Chi's Restaurant</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.0)</span>
+                            </div>
+                            <div class="product-pricing">
+                                <span class="product-price">₦500</span>
+                                <span class="product-old-price">₦700</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="https://picsum.photos/seed/FreshOrangeJuice/400/400" alt="Fresh Orange Juice">
+                            <span class="product-tag new">New</span>
+                            <button class="product-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-card-body">
+                            <h4>Fresh Orange Juice</h4>
+                            <div class="product-shop">Fresh Bite Fast Food</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(5.0)</span>
+                            </div>
+                            <div class="product-pricing">
+                                <span class="product-price">₦800</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="https://picsum.photos/seed/PoundedYamSoup/400/400" alt="Pounded Yam Soup">
+                            <span class="product-tag hot">Hot</span>
+                            <button class="product-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-card-body">
+                            <h4>Pounded Yam Soup</h4>
+                            <div class="product-shop">Mama Chi's Restaurant</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(4.5)</span>
+                            </div>
+                            <div class="product-pricing">
+                                <span class="product-price">₦2,000</span>
+                                <span class="product-old-price">₦2,500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="https://picsum.photos/seed/MiniChopsPlate/400/400" alt="Mini Chops Plate">
+                            <span class="product-tag new">New</span>
+                            <button class="product-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-card-body">
+                            <h4>Mini Chops Plate</h4>
+                            <div class="product-shop">Kuje Suya Spot</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.0)</span>
+                            </div>
+                            <div class="product-pricing">
+                                <span class="product-price">₦2,200</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Listings -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Top <span class="highlight">Businesses</span> in This Category</h2>
+                <p>Featured food and restaurant businesses in Kuje</p>
+            </div>
+            <div class="business-grid">
+                <!-- Business 1 -->
+                <div class="business-card">
+                    <div class="business-card-img">
+                        <img src="https://picsum.photos/seed/MamaChisRestaurant/600/400" alt="Mama Chi's Restaurant">
+                        <span class="business-badge featured">Featured</span>
+                        <button class="business-fav"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="business-card-body">
+                        <div class="business-card-cat">Food & Restaurants</div>
+                        <h3>Mama Chi's Restaurant</h3>
+                        <p>Authentic Nigerian cuisine with a modern twist. Specializing in jollof rice, pounded yam, and traditional soups.</p>
+                        <div class="business-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Kuje, FCT</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                            <span><i class="fas fa-users"></i> 1.2K Customers</span>
+                        </div>
+                    </div>
+                    <div class="business-card-footer">
+                        <span class="business-price">Starting ₦500</span>
+                        <a href="#" class="btn btn-primary business-btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Business 2 -->
+                <div class="business-card">
+                    <div class="business-card-img">
+                        <img src="https://picsum.photos/seed/KujeSuyaSpot/600/400" alt="Kuje Suya Spot">
+                        <span class="business-badge">Popular</span>
+                        <button class="business-fav"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="business-card-body">
+                        <div class="business-card-cat">Food & Restaurants</div>
+                        <h3>Kuje Suya Spot</h3>
+                        <p>The best suya in Kuje! Grilled to perfection with our secret spice blend. Open every evening from 6PM.</p>
+                        <div class="business-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Kuje Market, FCT</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.5</span>
+                            <span><i class="fas fa-users"></i> 890 Customers</span>
+                        </div>
+                    </div>
+                    <div class="business-card-footer">
+                        <span class="business-price">Starting ₦1,500</span>
+                        <a href="#" class="btn btn-primary business-btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Business 3 -->
+                <div class="business-card">
+                    <div class="business-card-img">
+                        <img src="https://picsum.photos/seed/FreshBiteFastFood/600/400" alt="Fresh Bite Fast Food">
+                        <span class="business-badge featured">Featured</span>
+                        <button class="business-fav"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="business-card-body">
+                        <div class="business-card-cat">Food & Restaurants</div>
+                        <h3>Fresh Bite Fast Food</h3>
+                        <p>Quick service restaurant serving shawarma, fried rice, chicken, and fresh juices. Fast delivery available.</p>
+                        <div class="business-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Kuje Road, FCT</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                            <span><i class="fas fa-users"></i> 1.5K Customers</span>
+                        </div>
+                    </div>
+                    <div class="business-card-footer">
+                        <span class="business-price">Starting ₦800</span>
+                        <a href="#" class="btn btn-primary business-btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Stay Updated on Food Deals</h2>
+            <p>Get the latest restaurant deals, new food spots, and promotions delivered to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit" class="btn btn-white">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="js/includes.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Business - Kuje Connect</title>
+    <meta name="description" content="List your business on Kuje Connect. Reach thousands of local customers in Kuje, Byazhin, Chukuku, and across FCT Nigeria.">
+    <meta name="keywords" content="Kuje Connect, add business, list business, business directory, Kuje, FCT Nigeria, local business">
+    <meta name="author" content="Kuje Connect">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Add New Business - Kuje Connect">
+    <meta property="og:description" content="List your business on Kuje Connect and reach thousands of local customers in FCT.">
+    <meta property="og:image" content="../images/kuje.png">
+    <meta property="og:url" content="https://kujeconnect.com/user/add-business">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kuje Connect">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Add New Business - Kuje Connect">
+    <meta name="twitter:description" content="List your business on Kuje Connect and reach local customers.">
+    <meta name="twitter:image" content="../images/kuje.png">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .form-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-lighter);
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+        .form-card h3 {
+            font-size: 1.05rem; font-weight: 600; color: var(--dark);
+            margin-bottom: 18px; padding-bottom: 12px;
+            border-bottom: 1px solid var(--gray-lighter);
+        }
+        .form-card h3 i { margin-right: 8px; color: var(--primary); }
+        .form-card p.form-hint {
+            font-size: 0.82rem; color: var(--gray); margin: -10px 0 16px 0;
+        }
+        .form-group select {
+            width: 100%; padding: 10px 14px; border: 1.5px solid var(--gray-lighter);
+            border-radius: var(--radius-sm); font-size: 0.9rem; color: var(--dark);
+            font-family: 'Poppins', sans-serif; background: var(--white);
+            transition: border-color 0.2s; cursor: pointer;
+        }
+        .form-group select:focus { outline: none; border-color: var(--primary); }
+        .image-inputs {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+        }
+        .image-input-group {
+            display: flex; align-items: center; gap: 8px;
+        }
+        .image-input-group input {
+            flex: 1; padding: 10px 14px; border: 1.5px solid var(--gray-lighter);
+            border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--dark);
+            font-family: 'Poppins', sans-serif;
+        }
+        .image-input-group input:focus { outline: none; border-color: var(--primary); }
+        .image-input-group .image-label {
+            font-size: 0.78rem; color: var(--gray); white-space: nowrap; min-width: 24px;
+            text-align: center; font-weight: 500;
+        }
+        .days-row {
+            display: flex; gap: 8px; flex-wrap: wrap;
+        }
+        .day-chip {
+            padding: 6px 14px; border-radius: 20px;
+            border: 1.5px solid var(--gray-lighter); font-size: 0.82rem;
+            font-weight: 500; cursor: pointer; transition: all 0.2s;
+            background: var(--white); color: var(--gray);
+            font-family: 'Poppins', sans-serif;
+        }
+        .day-chip.active {
+            border-color: var(--primary); background: #dcfce7; color: var(--primary);
+        }
+        .form-actions {
+            display: flex; gap: 12px; justify-content: flex-end;
+            padding-top: 16px; border-top: 1px solid var(--gray-lighter);
+            margin-top: 8px;
+        }
+        @media (max-width: 600px) {
+            .image-inputs { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar"></div>
+                <h4></h4>
+                <span class="user-badge"></span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item active"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item"><i class="fas fa-bell"></i> Notifications <span class="notif-badge" style="display:none;"></span></a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>Add New Business</h2>
+                    <p>Fill in the details to list your business on Kuje Connect.</p>
+                </div>
+            </div>
+
+            <form>
+                <div class="form-card">
+                    <h3><i class="fas fa-info-circle"></i> Basic Information</h3>
+                    <div class="form-group">
+                        <label for="bizName">Business Name *</label>
+                        <input type="text" id="bizName" placeholder="e.g. Amina's Kitchen" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bizCategory">Category *</label>
+                            <select id="bizCategory" required>
+                                <option value="">Select a category</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bizSubcategory">Subcategory</label>
+                            <input type="text" id="bizSubcategory" placeholder="e.g. Fast Food, Tailoring">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bizDesc">Description *</label>
+                        <textarea id="bizDesc" rows="4" placeholder="Describe what your business offers, products, and services..." required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Location & Contact</h3>
+                    <div class="form-group">
+                        <label for="bizAddress">Address *</label>
+                        <input type="text" id="bizAddress" placeholder="e.g. 123 Kuje Road, Kuje Town" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bizLocation">Location / Area</label>
+                        <select id="bizLocation">
+                            <option value="">Select area</option>
+                            <option value="Kuje">Kuje</option>
+                            <option value="Byazhin">Byazhin</option>
+                            <option value="Chukuku">Chukuku</option>
+                            <option value="Gwagwalada">Gwagwalada</option>
+                            <option value="Rubochi">Rubochi</option>
+                            <option value="Kilankwa">Kilankwa</option>
+                            <option value="Gaube">Gaube</option>
+                            <option value="Tudu">Tudu</option>
+                            <option value="Kwaku">Kwaku</option>
+                            <option value="Pandagi">Pandagi</option>
+                            <option value="Sabon-Gari">Sabon-Gari</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bizPhone">Phone Number *</label>
+                            <input type="tel" id="bizPhone" placeholder="+234 801 234 5678" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bizEmail">Email Address</label>
+                            <input type="email" id="bizEmail" placeholder="business@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bizWebsite">Website</label>
+                        <input type="url" id="bizWebsite" placeholder="https://yourbusiness.com">
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <h3><i class="fas fa-clock"></i> Opening Hours</h3>
+                    <div class="form-group">
+                        <label for="bizOpeningHours">Business Hours</label>
+                        <input type="text" id="bizOpeningHours" placeholder="e.g. Mon-Sat: 8:00 AM - 8:00 PM">
+                    </div>
+                    <div class="form-group">
+                        <label>Open Days</label>
+                        <div class="days-row">
+                            <button type="button" class="day-chip active">Mon</button>
+                            <button type="button" class="day-chip active">Tue</button>
+                            <button type="button" class="day-chip active">Wed</button>
+                            <button type="button" class="day-chip active">Thu</button>
+                            <button type="button" class="day-chip active">Fri</button>
+                            <button type="button" class="day-chip active">Sat</button>
+                            <button type="button" class="day-chip">Sun</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <h3><i class="fas fa-image"></i> Business Images</h3>
+                    <p class="form-hint">Add image URLs for your business. The first image will be used as the cover photo.</p>
+                    <div class="image-inputs">
+                        <div class="image-input-group">
+                            <span class="image-label">1</span>
+                            <input type="url" id="bizImg1" placeholder="https://example.com/photo1.jpg">
+                        </div>
+                        <div class="image-input-group">
+                            <span class="image-label">2</span>
+                            <input type="url" id="bizImg2" placeholder="https://example.com/photo2.jpg">
+                        </div>
+                        <div class="image-input-group">
+                            <span class="image-label">3</span>
+                            <input type="url" id="bizImg3" placeholder="https://example.com/photo3.jpg">
+                        </div>
+                        <div class="image-input-group">
+                            <span class="image-label">4</span>
+                            <input type="url" id="bizImg4" placeholder="https://example.com/photo4.jpg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="my-businesses" class="btn-sm">Cancel</a>
+                    <button type="submit" class="btn-sm btn-primary"><i class="fas fa-paper-plane"></i> Submit for Review</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../data/data.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+    (function() {
+        var catSelect = document.getElementById('bizCategory');
+        if (catSelect) {
+            DB.categories.forEach(function(cat) {
+                var opt = document.createElement('option');
+                opt.value = cat.name;
+                opt.textContent = cat.name;
+                catSelect.appendChild(opt);
+            });
+        }
+
+        document.querySelectorAll('.day-chip').forEach(function(chip) {
+            chip.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var editId = urlParams.get('edit');
+        if (editId) {
+            var biz = DB.businesses.find(function(b) { return b.id === editId; });
+            if (biz) {
+                var titleH2 = document.querySelector('.page-header h2');
+                if (titleH2) titleH2.textContent = 'Edit Business';
+
+                var nameInput = document.getElementById('bizName');
+                var descInput = document.getElementById('bizDesc');
+                var addressInput = document.getElementById('bizAddress');
+                var phoneInput = document.getElementById('bizPhone');
+                var emailInput = document.getElementById('bizEmail');
+                var websiteInput = document.getElementById('bizWebsite');
+                var openingHoursInput = document.getElementById('bizOpeningHours');
+
+                if (nameInput) nameInput.value = biz.name || '';
+                if (descInput) descInput.value = biz.description || '';
+                if (addressInput) addressInput.value = biz.address || '';
+                if (phoneInput) phoneInput.value = biz.phone || '';
+                if (emailInput) emailInput.value = biz.email || '';
+                if (websiteInput) websiteInput.value = biz.website || '';
+                if (openingHoursInput) openingHoursInput.value = biz.openingHours || '';
+
+                if (biz.location) {
+                    var locSel = document.getElementById('bizLocation');
+                    if (locSel) {
+                        for (var i = 0; i < locSel.options.length; i++) {
+                            if (locSel.options[i].value === biz.location) {
+                                locSel.selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (biz.category) {
+                    var cat = DB.categories.find(function(c) { return c.slug === biz.category; });
+                    if (cat && catSelect) {
+                        for (var j = 0; j < catSelect.options.length; j++) {
+                            if (catSelect.options[j].value === cat.name) {
+                                catSelect.selectedIndex = j;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })();
+    </script>
+</body>
+</html>

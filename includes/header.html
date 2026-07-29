@@ -1,0 +1,364 @@
+<style>
+    .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+    .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+    .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+    .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+    @keyframes loaderSpin { to { transform: rotate(360deg); } }
+    .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+
+    .navbar-double { padding: 0; background: rgba(255,255,255,0.98); }
+    .top-bar { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #e2e8f0; }
+    .top-bar .container { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
+    .top-bar .logo { font-size: 1.1rem; display: flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; }
+    .top-bar .logo img { height: 30px; width: 30px; border-radius: 50%; }
+    .top-search { flex: 1; max-width: 480px; display: flex; align-items: center; gap: 8px; background: var(--light); border-radius: 8px; padding: 4px 12px; }
+    .top-search i { color: var(--gray-light); }
+    .top-search input { flex: 1; border: none; outline: none; background: transparent; font-family: 'Poppins', sans-serif; font-size: 0.88rem; padding: 7px 0; }
+    .top-search .btn { padding: 5px 14px; font-size: 0.78rem; }
+
+    .bottom-bar { background: var(--dark); border-bottom: 1px solid var(--dark); }
+    .bottom-bar .container { display: flex; align-items: center; }
+    .bottom-bar .left-section { display: flex; align-items: center; }
+    .bottom-bar .mid-section { flex: 1; display: flex; justify-content: center; }
+    .bottom-bar .right-section { display: flex; align-items: center; gap: 8px; }
+
+    .cat-trigger { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--primary); color: #fff; border: none; border-radius: 0; font-family: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+    .cat-trigger:hover { background: var(--primary-dark, #15803d); }
+    .cat-trigger i { font-size: 0.7rem; }
+
+    .cat-mega { position: absolute; top: 100%; left: 0; width: 720px; background: #fff; border-top: 3px solid var(--primary); box-shadow: 0 12px 40px rgba(0,0,0,0.12); border-radius: 0 0 12px 12px; padding: 20px; display: none; z-index: 1000; max-height: 480px; overflow-y: auto; }
+    .cat-mega.open { display: block; }
+    .cat-mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .cat-mega-item { border-radius: 8px; transition: var(--transition); }
+    .cat-mega-item > a { display: flex; align-items: center; gap: 10px; padding: 10px 12px; text-decoration: none; color: var(--dark); font-size: 0.85rem; font-weight: 500; border-radius: 8px; transition: var(--transition); }
+    .cat-mega-item > a:hover { background: var(--light); color: var(--primary); }
+    .cat-mega-item > a i { width: 20px; text-align: center; color: var(--primary); font-size: 0.85rem; }
+    .cat-mega-item .sub-cats { padding: 0 0 8px 42px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0; }
+    .cat-mega-item.open .sub-cats { max-height: 200px; opacity: 1; }
+    .cat-mega-item .sub-cats a { display: block; padding: 4px 0; font-size: 0.78rem; color: var(--gray); text-decoration: none; transition: var(--transition); }
+    .cat-mega-item .sub-cats a:hover { color: var(--primary); }
+
+    .nav-links { display: flex; gap: 2px; align-items: center; padding: 0; margin: 0; list-style: none; }
+    .nav-links > li > a { padding: 10px 14px; font-size: 0.85rem; display: flex; align-items: center; gap: 4px; font-weight: 500; color: #fff; transition: var(--transition); position: relative; text-decoration: none; border-radius: 6px; }
+    .nav-links > li > a:hover { color: var(--light); background: var(--dark); }
+    .nav-links > li.active > a { color: var(--light); }
+    .nav-links .nav-dropdown { position: relative; }
+    .nav-links .nav-dropdown .sm-drop { position: absolute; top: 100%; left: 0; width: 240px; padding: 12px; border-top: 3px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #fff; border-radius: 0 0 12px 12px; display: none; z-index: 1000; }
+    .nav-links .nav-dropdown.open .sm-drop { display: block; }
+    .nav-links .nav-dropdown .sm-drop a { display: flex; align-items: center; gap: 10px; padding: 8px 10px; font-size: 0.85rem; color: var(--gray); text-decoration: none; border-radius: 6px; transition: var(--transition); }
+    .nav-links .nav-dropdown .sm-drop a:hover { background: var(--light); color: var(--primary); }
+    .nav-links .nav-dropdown .sm-drop a i { width: 18px; color: var(--primary); }
+
+    .request-btn { padding: 8px 20px; background: #fff; color: var(--dark); border: none; border-radius: 8px; font-family: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .request-btn:hover { background: var(--primary-dark, #15803d); }
+    .request-btn i { font-size: 0.75rem; }
+
+    .hamburger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
+
+    .bottom-bar .cat-wrapper { position: relative; }
+    .bottom-bar .left-section { position: relative; }
+    .bottom-bar .left-section .nav-links { display: none; }
+
+    @media (max-width: 1024px) {
+        .top-search { max-width: 280px; }
+        .cat-mega { width: 600px; }
+    }
+    @media (max-width: 900px) {
+        .bottom-bar .mid-section .nav-links { display: none; }
+        .bottom-bar .hamburger { display: flex; }
+        .bottom-bar .container { justify-content: space-between; }
+        .cat-trigger span { display: none; }
+        .cat-trigger { padding: 10px 12px; }
+        .cat-mega { width: 100vw; left: 0; border-radius: 0; max-height: 70vh; }
+        .request-btn span { display: none; }
+        .request-btn { padding: 8px 12px; }
+    }
+    @media (max-width: 768px) {
+        .top-search { display: none; }
+    }
+
+    .cat-mega::-webkit-scrollbar { width: 6px; }
+    .cat-mega::-webkit-scrollbar-track { background: transparent; }
+    .cat-mega::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+
+    .request-panel-overlay { position: fixed; inset: 0; z-index: 99990; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; }
+    .request-panel-overlay.active { opacity: 1; visibility: visible; }
+    .request-panel { position: fixed; top: 0; left: 0; bottom: 0; width: 420px; max-width: 90vw; z-index: 99991; background: #fff; transform: translateX(-100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; display: flex; flex-direction: column; }
+    .request-panel.active { transform: translateX(0); }
+    .request-panel .panel-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid #e2e8f0; }
+    .request-panel .panel-header h3 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+    .request-panel .panel-close { width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--light); cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--gray); font-size: 1rem; transition: var(--transition); }
+    .request-panel .panel-close:hover { background: var(--primary); color: #fff; }
+    .request-panel .panel-body { padding: 24px; flex: 1; }
+    .request-panel .panel-body p { font-size: 0.88rem; color: var(--gray); margin-bottom: 20px; }
+    .request-panel .form-group { margin-bottom: 16px; }
+    .request-panel .form-group label { display: block; font-weight: 500; font-size: 0.82rem; margin-bottom: 4px; color: var(--dark); }
+    .request-panel .form-group input,
+    .request-panel .form-group select,
+    .request-panel .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 0.88rem; transition: var(--transition); box-sizing: border-box; }
+    .request-panel .form-group input:focus,
+    .request-panel .form-group select:focus,
+    .request-panel .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(22,163,74,0.15); }
+    .request-panel .form-group textarea { resize: vertical; min-height: 90px; }
+    .request-panel .panel-footer { padding: 16px 24px; border-top: 1px solid #e2e8f0; }
+    .request-panel .panel-footer .btn { width: 100%; padding: 10px; font-size: 0.9rem; }
+</style>
+
+<nav class="navbar navbar-double">
+    <div class="top-bar">
+        <div class="container">
+            <a href="index" class="logo">
+                <img src="images/kuje.png" alt="Kuje Connect" class="logo-img">
+                Kuje Connect
+            </a>
+            <div class="top-search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search services, products, providers..." id="headerSearchInput">
+                <button class="btn btn-primary" id="headerSearchBtn">Search</button>
+            </div>
+            <div class="nav-actions" style="display:flex;gap:10px;align-items:center;">
+                <button class="btn btn-outline" data-auth-open="login" style="padding:6px 18px;font-size:0.85rem;">Login</button>
+                <button class="btn btn-primary" data-auth-open="register" style="padding:6px 18px;font-size:0.85rem;">register</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
+        <div class="container">
+            <div class="left-section">
+                <div class="cat-wrapper">
+                    <button class="cat-trigger" id="catTrigger"><i class="fas fa-bars"></i> <span>Categories</span> <i class="fas fa-chevron-down"></i></button>
+                    <div class="cat-mega" id="catMega">
+                        <div class="cat-mega-grid">
+                            <div class="cat-mega-item">
+                                <a href="service/agriculture"><i class="fas fa-tractor"></i> Agriculture</a>
+                                <div class="sub-cats"><a href="service/agriculture/farming-and-supplies">Farming & Supplies</a><a href="service/agriculture/livestock">Livestock</a><a href="service/agriculture/agricultural-equipment">Agricultural Equipment</a><a href="service/agriculture/farm-produce">Farm Produce</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/automobile"><i class="fas fa-car"></i> Automobile</a>
+                                <div class="sub-cats"><a href="service/automobile/car-sales">Car Sales</a><a href="service/automobile/auto-repair-and-maintenance">Auto Repair & Maintenance</a><a href="service/automobile/spare-parts">Spare Parts</a><a href="service/automobile/car-hire-rental">Car Hire/Rental</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/beauty-and-personal-care"><i class="fas fa-cut"></i> Beauty & Personal Care</a>
+                                <div class="sub-cats"><a href="service/beauty-and-personal-care/salons-and-barbing">Salons & Barbing</a><a href="service/beauty-and-personal-care/makeup-and-skincare">Makeup & Skincare</a><a href="service/beauty-and-personal-care/nail-and-lashes">Nail & Lashes</a><a href="service/beauty-and-personal-care/spa-and-massage">Spa & Massage</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/construction"><i class="fas fa-hard-hat"></i> Construction</a>
+                                <div class="sub-cats"><a href="service/construction/building-materials">Building Materials</a><a href="service/construction/general-contractors">General Contractors</a><a href="service/construction/architecture-and-design">Architecture & Design</a><a href="service/construction/tiling-and-finishing">Tiling & Finishing</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/creative-and-media"><i class="fas fa-camera"></i> Creative & Media</a>
+                                <div class="sub-cats"><a href="service/creative-and-media/photography-and-videography">Photography & Videography</a><a href="service/creative-and-media/graphic-design">Graphic Design</a><a href="service/creative-and-media/printing-and-branding">Printing & Branding</a><a href="service/creative-and-media/content-creation">Content Creation</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/education"><i class="fas fa-graduation-cap"></i> Education</a>
+                                <div class="sub-cats"><a href="service/education/schools-and-tutoring">Schools & Tutoring</a><a href="service/education/vocational-training">Vocational Training</a><a href="service/education/educational-supplies">Educational Supplies</a><a href="service/education/online-learning">Online Learning</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/event-and-rentals"><i class="fas fa-calendar-alt"></i> Event & Rentals</a>
+                                <div class="sub-cats"><a href="service/event-and-rentals/event-planning">Event Planning</a><a href="service/event-and-rentals/hall-and-tent-rentals">Hall & Tent Rentals</a><a href="service/event-and-rentals/catering">Catering</a><a href="service/event-and-rentals/dj-and-entertainment">DJ & Entertainment</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/fashion-and-clothing"><i class="fas fa-tshirt"></i> Fashion & Clothing</a>
+                                <div class="sub-cats"><a href="service/fashion-and-clothing/tailoring-and-sewing">Tailoring & Sewing</a><a href="service/fashion-and-clothing/boutiques-and-fashion">Boutiques & Fashion</a><a href="service/fashion-and-clothing/accessories-and-shoes">Accessories & Shoes</a><a href="service/fashion-and-clothing/fabrics-and-textiles">Fabrics & Textiles</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/food-and-restaurants"><i class="fas fa-utensils"></i> Food & Restaurants</a>
+                                <div class="sub-cats"><a href="service/food-and-restaurants/restaurants-and-eateries">Restaurants & Eateries</a><a href="service/food-and-restaurants/catering-services">Catering Services</a><a href="service/food-and-restaurants/fast-food-and-takeaways">Fast Food & Takeaways</a><a href="service/food-and-restaurants/food-suppliers">Food Suppliers</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/health-and-medical"><i class="fas fa-heartbeat"></i> Health & Medical</a>
+                                <div class="sub-cats"><a href="service/health-and-medical/hospitals-and-clinics">Hospitals & Clinics</a><a href="service/health-and-medical/pharmacy-and-drugs">Pharmacy & Drugs</a><a href="service/health-and-medical/fitness-and-wellness">Fitness & Wellness</a><a href="service/health-and-medical/medical-equipment">Medical Equipment</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/home-and-furniture"><i class="fas fa-couch"></i> Home & Furniture</a>
+                                <div class="sub-cats"><a href="service/home-and-furniture/furniture-sales">Furniture Sales</a><a href="service/home-and-furniture/home-appliances">Home Appliances</a><a href="service/home-and-furniture/interior-decoration">Interior Decoration</a><a href="service/home-and-furniture/cleaning-services">Cleaning Services</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/logistics-and-transport"><i class="fas fa-truck"></i> Logistics & Transport</a>
+                                <div class="sub-cats"><a href="service/logistics-and-transport/delivery-services">Delivery Services</a><a href="service/logistics-and-transport/moving-and-haulage">Moving & Haulage</a><a href="service/logistics-and-transport/ride-hailing">Ride Hailing</a><a href="service/logistics-and-transport/courier">Courier</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/phones-and-electronics"><i class="fas fa-mobile-alt"></i> Phones & Electronics</a>
+                                <div class="sub-cats"><a href="service/phones-and-electronics/phone-sales-and-repair">Phone Sales & Repair</a><a href="service/phones-and-electronics/computer-and-it">Computer & IT</a><a href="service/phones-and-electronics/electronics-and-gadgets">Electronics & Gadgets</a><a href="service/phones-and-electronics/accessories">Accessories</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/professional-services"><i class="fas fa-briefcase"></i> Professional Services</a>
+                                <div class="sub-cats"><a href="service/professional-services">Legal Services</a><a href="service/professional-services">Accounting & Tax</a><a href="service/professional-services">Consulting</a><a href="service/professional-services">Banking & Insurance</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/real-estate"><i class="fas fa-building"></i> Real Estate</a>
+                                <div class="sub-cats"><a href="service/real-estate">Property Sales</a><a href="service/real-estate">Rentals & Leasing</a><a href="service/real-estate">Land & Development</a><a href="service/real-estate">Property Management</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/retail-and-trading"><i class="fas fa-shopping-bag"></i> Retail & Trading</a>
+                                <div class="sub-cats"><a href="service/retail-and-trading">Supermarkets & Stores</a><a href="service/retail-and-trading">Wholesale Supply</a><a href="service/retail-and-trading">General Merchandise</a><a href="service/retail-and-trading">Import/Export</a></div>
+                            </div>
+                            <div class="cat-mega-item">
+                                <a href="service/technology"><i class="fas fa-laptop-code"></i> Technology</a>
+                                <div class="sub-cats"><a href="service/technology">Web & App Development</a><a href="service/technology">Digital Marketing</a><a href="service/technology">Software & SaaS</a><a href="service/technology">IT Support</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mid-section">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index">Home</a></li>
+                    <li><a href="businesses">Business</a></li>
+                    <li><a href="services">Service</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="nav-dropdown-trigger">Community <i class="fas fa-chevron-down" style="font-size:0.6rem;"></i></a>
+                        <div class="sm-drop">
+                            <a href="community"><i class="fas fa-project-diagram"></i> Community Development</a>
+                            <a href="opportunities"><i class="fas fa-briefcase"></i> Jobs & Events</a>
+                            <a href="get-involved"><i class="fas fa-hands-helping"></i> Get Involved</a>
+                        </div>
+                    </li>
+                    <li><a href="media">Media</a></li>
+                    <li><a href="contact">Contact</a></li>
+                    <li><a href="about">About</a></li>
+                </ul>
+            </div>
+
+            <div class="right-section">
+                <button class="request-btn" id="requestBtn"><i class="fas fa-paper-plane"></i> <span>Request</span></button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="request-panel-overlay" id="requestPanelOverlay"></div>
+<div class="request-panel" id="requestPanel">
+    <div class="panel-header">
+        <h3><i class="fas fa-paper-plane" style="color:var(--primary);margin-right:8px;"></i> Submit a Request</h3>
+        <button class="panel-close" id="requestPanelClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="panel-body">
+        <p>Tell us what you need — business listing, advertising, event promotion, partnership, or anything else.</p>
+        <form id="requestForm" onsubmit="event.preventDefault(); submitRequest();">
+            <div class="form-group">
+                <label for="reqName">Full Name <span style="color:red;">*</span></label>
+                <input type="text" id="reqName" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+                <label for="reqEmail">Email Address <span style="color:red;">*</span></label>
+                <input type="email" id="reqEmail" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label for="reqPhone">Phone Number</label>
+                <input type="tel" id="reqPhone" placeholder="+234 800 000 0000">
+            </div>
+            <div class="form-group">
+                <label for="reqType">Request Type <span style="color:red;">*</span></label>
+                <select id="reqType" required>
+                    <option value="">Select type...</option>
+                    <option value="business-listing">Business Listing</option>
+                    <option value="advertising">Advertising</option>
+                    <option value="event-promotion">Event Promotion</option>
+                    <option value="job-posting">Job Posting</option>
+                    <option value="press-release">Press Release</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="volunteer">Volunteer</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reqSubject">Subject</label>
+                <input type="text" id="reqSubject" placeholder="Brief subject">
+            </div>
+            <div class="form-group">
+                <label for="reqMessage">Message <span style="color:red;">*</span></label>
+                <textarea id="reqMessage" required placeholder="Tell us more about your request..."></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" style="width:100%;padding:10px;font-size:0.9rem;"><i class="fas fa-paper-plane"></i> Submit Request</button>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <p style="font-size:0.75rem;color:var(--gray-light);text-align:center;margin:0;">We typically respond within 24 hours.</p>
+    </div>
+</div>
+
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+        <a href="index" class="logo">
+            <img src="images/kuje.png" alt="Kuje Connect" class="logo-img">
+            Kuje Connect
+        </a>
+        <button class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="mobile-menu-search">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search services, products...">
+    </div>
+    <ul class="mobile-nav-list">
+        <li><a href="index"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="businesses"><i class="fas fa-building"></i> Business</a></li>
+        <li class="mobile-nav-dropdown">
+            <a href="#" class="mobile-nav-trigger"><i class="fas fa-th-large"></i> Categories <i class="fas fa-plus mobile-plus"></i></a>
+            <div class="mobile-submenu">
+                <div class="mobile-submenu-header">
+                    <button class="mobile-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                    <span>Categories</span>
+                </div>
+                <div class="mobile-submenu-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Filter categories...">
+                </div>
+                <ul class="mobile-submenu-list">
+                    <li><a href="service/agriculture"><i class="fas fa-tractor"></i> Agriculture</a></li>
+                    <li><a href="service/automobile"><i class="fas fa-car"></i> Automobile</a></li>
+                    <li><a href="service/beauty-and-personal-care"><i class="fas fa-cut"></i> Beauty & Personal Care</a></li>
+                    <li><a href="service/construction"><i class="fas fa-hard-hat"></i> Construction</a></li>
+                    <li><a href="service/creative-and-media"><i class="fas fa-camera"></i> Creative & Media</a></li>
+                    <li><a href="service/education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                    <li><a href="service/event-and-rentals"><i class="fas fa-calendar-alt"></i> Event & Rentals</a></li>
+                    <li><a href="service/fashion-and-clothing"><i class="fas fa-tshirt"></i> Fashion & Clothing</a></li>
+                    <li><a href="service/food-and-restaurants"><i class="fas fa-utensils"></i> Food & Restaurants</a></li>
+                    <li><a href="service/health-and-medical"><i class="fas fa-heartbeat"></i> Health & Medical</a></li>
+                    <li><a href="service/home-and-furniture"><i class="fas fa-couch"></i> Home & Furniture</a></li>
+                    <li><a href="service/logistics-and-transport"><i class="fas fa-truck"></i> Logistics & Transport</a></li>
+                    <li><a href="service/phones-and-electronics"><i class="fas fa-mobile-alt"></i> Phones & Electronics</a></li>
+                    <li><a href="service/professional-services"><i class="fas fa-briefcase"></i> Professional Services</a></li>
+                    <li><a href="service/real-estate"><i class="fas fa-building"></i> Real Estate</a></li>
+                    <li><a href="service/retail-and-trading"><i class="fas fa-shopping-bag"></i> Retail & Trading</a></li>
+                    <li><a href="service/technology"><i class="fas fa-laptop-code"></i> Technology</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="services"><i class="fas fa-concierge-bell"></i> Service</a></li>
+        <li class="mobile-nav-dropdown">
+            <a href="#" class="mobile-nav-trigger"><i class="fas fa-users"></i> Community <i class="fas fa-plus mobile-plus"></i></a>
+            <div class="mobile-submenu">
+                <div class="mobile-submenu-header">
+                    <button class="mobile-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                    <span>Community</span>
+                </div>
+                <ul class="mobile-submenu-list">
+                    <li><a href="news"><i class="fas fa-newspaper"></i> Newsroom</a></li>
+                    <li><a href="community"><i class="fas fa-project-diagram"></i> Community Development</a></li>
+                    <li><a href="opportunities"><i class="fas fa-briefcase"></i> Jobs & Events</a></li>
+                    <li><a href="get-involved"><i class="fas fa-hands-helping"></i> Get Involved</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="media"><i class="fas fa-photo-video"></i> Media</a></li>
+        <li><a href="contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="about"><i class="fas fa-info-circle"></i> About</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+        <button class="btn btn-outline" data-auth-open="login" style="width:100%;">Login</button>
+    </div>
+</div>

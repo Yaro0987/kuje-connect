@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuje Property Managers - Real Estate | Kuje Connect</title>
+    <meta name="description" content="Full property management. Tenant sourcing, rent collection, maintenance, and inspections. Located in Kuje Town, Kuje FCT Nigeria. Call 0905 7652 1652. ₦500,000 - ₦10,000,000.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kujeconnect.com/business/kuje-property-managers">
+    <meta property="og:title" content="Kuje Property Managers - Real Estate | Kuje Connect">
+    <meta property="og:description" content="Full property management. Tenant sourcing, rent collection, maintenance, and inspections.">
+    <meta property="og:image" content="https://picsum.photos/seed/kujepm/600/400">
+    <meta property="og:type" content="business.business">
+    <meta property="og:url" content="https://kujeconnect.com/business/kuje-property-managers">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://picsum.photos">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .biz-hero { background: linear-gradient(135deg, #b45309 0%, #166534 100%); padding: 120px 0 40px; color: #fff; }
+        .biz-hero .breadcrumb { font-size: 0.85rem; margin-bottom: 20px; }
+        .biz-hero .breadcrumb a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .biz-hero .breadcrumb a:hover { color: #fff; }
+        .biz-hero .biz-hero-content { display: flex; gap: 30px; align-items: center; }
+        .biz-hero .biz-hero-img { width: 200px; height: 200px; border-radius: 16px; overflow: hidden; border: 4px solid rgba(255,255,255,0.2); flex-shrink: 0; }
+        .biz-hero .biz-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+        .biz-hero h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 4px; }
+        .biz-hero .biz-hero-cat { font-size: 0.85rem; opacity: 0.85; margin-bottom: 8px; }
+        .biz-hero .biz-hero-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 12px; font-size: 0.9rem; }
+        .biz-hero .biz-hero-meta span { display: flex; align-items: center; gap: 6px; }
+        .biz-hero .biz-hero-meta .rating { color: #fbbf24; }
+        .biz-hero .biz-hero-price { display: inline-block; background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; margin-top: 12px; }
+        .biz-detail-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 40px 0; }
+        .biz-detail-grid .biz-section { margin-bottom: 28px; }
+        .biz-detail-grid .biz-section h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .biz-detail-grid .biz-section h3 i { color: var(--primary); }
+        .biz-detail-grid .biz-section p { font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+        .biz-sidebar-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .biz-sidebar-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 12px; }
+        .biz-sidebar-card .info-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 0.85rem; color: var(--gray); border-bottom: 1px solid #f1f5f9; }
+        .biz-sidebar-card .info-row i { width: 18px; color: var(--primary); }
+        .biz-sidebar-card .info-row:last-child { border-bottom: none; }
+        .biz-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .biz-gallery img { width: 100%; height: 100px; object-fit: cover; border-radius: 8px; cursor: pointer; }
+        .biz-contact-btns { display: flex; flex-direction: column; gap: 10px; }
+        .biz-contact-btns .btn { padding: 11px; font-size: 0.88rem; }
+        .biz-reviews .review-card { border-bottom: 1px solid #f1f5f9; padding: 14px 0; }
+        .biz-reviews .review-card:last-child { border-bottom: none; }
+        .biz-reviews .review-card .review-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+        .biz-reviews .review-card .review-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--light); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.85rem; color: var(--primary); }
+        .biz-reviews .review-card .review-name { font-weight: 600; font-size: 0.88rem; }
+        .biz-reviews .review-card .review-stars { color: #f59e0b; font-size: 0.78rem; }
+        .biz-reviews .review-card .review-text { font-size: 0.85rem; color: var(--gray); margin-top: 4px; }
+        .biz-map { border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .biz-map iframe { width: 100%; height: 250px; display: block; }
+        @media (max-width: 768px) { .biz-hero .biz-hero-content { flex-direction: column; text-align: center; } .biz-hero .biz-hero-img { width: 140px; height: 140px; } .biz-detail-grid { grid-template-columns: 1fr; } .biz-gallery { grid-template-columns: repeat(3, 1fr); } }
+    </style>
+</head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="../images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <section class="biz-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index">Home</a> / <a href="../businesses">Businesses</a> / <a href="../service/real-estate">Real Estate</a> / <span style="color:#fff;">Kuje Property Managers</span>
+            </div>
+            <div class="biz-hero-content">
+                <div class="biz-hero-img">
+                    <img src="https://picsum.photos/seed/kujepm/600/400" alt="Kuje Property Managers">
+                </div>
+                <div>
+                    <div class="biz-hero-cat"><i class="fas fa-building"></i> Real Estate / Property Management</div>
+                    <h1>Kuje Property Managers</h1>
+                    <div class="biz-hero-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuje Town, Kuje FCT</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.5 <span style="opacity:0.7;">(78 reviews)</span></span>
+                    </div>
+                    <div class="biz-hero-price">₦500,000 - ₦10,000,000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="biz-detail-grid">
+                <div>
+                    <div class="biz-section">
+                        <h3><i class="fas fa-info-circle"></i> About Kuje Property Managers</h3>
+                        <p>Full property management. Tenant sourcing, rent collection, maintenance, and inspections.</p>
+                        <p style="margin-top:10px;">We take pride in serving the Kuje community with excellence, integrity, and a commitment to customer satisfaction. Whether you're looking for quality products, reliable services, or expert advice, Kuje Property Managers is your trusted local partner in Kuje Town, Kuje, FCT Nigeria.</p>
+                    </div>
+                    <div class="biz-section">
+                        <h3><i class="fas fa-images"></i> Gallery</h3>
+                        <div class="biz-gallery">
+                            <img src="https://picsum.photos/seed/kujepm1/400/300" alt="Photo 1" loading="lazy">
+                            <img src="https://picsum.photos/seed/kujepm2/400/300" alt="Photo 2" loading="lazy">
+                            <img src="https://picsum.photos/seed/kujepm3/400/300" alt="Photo 3" loading="lazy">
+                            <img src="https://picsum.photos/seed/kujepm4/400/300" alt="Photo 4" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="biz-section biz-reviews">
+                        <h3><i class="fas fa-star"></i> Reviews</h3>
+                        <div class="review-card">
+                            <div class="review-header"><div class="review-avatar">M</div><div><div class="review-name">Musa A.</div><div class="review-stars">★★★★★</div></div></div>
+                            <div class="review-text">Excellent service! Highly recommend Kuje Property Managers to anyone looking for quality in Kuje.</div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header"><div class="review-avatar">F</div><div><div class="review-name">Fatima B.</div><div class="review-stars">★★★★★</div></div></div>
+                            <div class="review-text">Great customer care and professional approach. Will definitely use again.</div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header"><div class="review-avatar">C</div><div><div class="review-name">Chidi O.</div><div class="review-stars">★★★★☆</div></div></div>
+                            <div class="review-text">Very good experience. Competitive prices and friendly staff at Kuje Town.</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="biz-sidebar-card">
+                        <h4><i class="fas fa-address-card" style="color:var(--primary);"></i> Contact Information</h4>
+                        <div class="info-row"><i class="fas fa-phone"></i> <a href="tel:+234090576521652" style="color:inherit;text-decoration:none;">+234 0905 7652 1652</a></div>
+                        <div class="info-row"><i class="fas fa-map-marker-alt"></i> Kuje Town, Kuje, FCT Nigeria</div>
+                        <div class="info-row"><i class="fas fa-clock"></i> Mon-Sat: 9am-7pm</div>
+                        <div class="info-row"><i class="fas fa-tag"></i> ₦500,000 - ₦10,000,000</div>
+                        <div class="info-row"><i class="fas fa-globe"></i> <a href="#" style="color:var(--primary);text-decoration:none;">Visit Website</a></div>
+                    </div>
+                    <div class="biz-sidebar-card">
+                                            <div class="biz-sidebar-card">
+                        <h4><i class="fas fa-map-marked-alt" style="color:var(--primary);"></i> Location Map</h4>
+                        <div class="biz-map">
+                            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=7.19%2C8.8733%2C7.21%2C8.8933&layer=transportmap&marker=8.8833%2C7.2" loading="lazy" title="Map showing Kuje Property Managers location"></iframe>
+                        </div>
+                        <div><a href="https://www.openstreetmap.org/?mlat=8.8833&mlon=7.2#map=15/8.8833/7.2" target="_blank" style="font-size:0.8rem;color:var(--primary);">View larger map</a></div>
+                    </div>
+                    <div class="biz-sidebar-card">
+                        <h4><i class="fas fa-link" style="color:var(--primary);"></i> Quick Actions</h4>
+                        <div class="biz-contact-btns">
+                            <a href="tel:+234090576521652" class="btn btn-primary"><i class="fas fa-phone"></i> Call Now</a>
+                            <a href="https://wa.me/234090576521652" target="_blank" class="btn btn-success" style="background:#25D366;border-color:#25D366;display:flex;align-items:center;justify-content:center;gap:6px;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                            <a href="https://www.openstreetmap.org/directions?from=&to=8.8833%2C7.2#map=15/8.8833/7.2" target="_blank" class="btn btn-outline"><i class="fas fa-directions"></i> Get Directions</a>
+                        </div>
+                    </div>
+                    <div class="biz-sidebar-card">
+                        <h4><i class="fas fa-share-alt" style="color:var(--primary);"></i> Share</h4>
+                        <div style="display:flex;gap:8px;">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://kujeconnect.com/business/kuje-property-managers" target="_blank" class="btn btn-outline" style="flex:1;padding:8px;font-size:0.82rem;"><i class="fab fa-facebook"></i></a>
+                            <a href="https://twitter.com/intent/tweet?text=Kuje Property Managers on Kuje Connect&url=https://kujeconnect.com/business/kuje-property-managers" target="_blank" class="btn btn-outline" style="flex:1;padding:8px;font-size:0.82rem;"><i class="fab fa-twitter"></i></a>
+                            <a href="https://wa.me/?text=Check out Kuje Property Managers on Kuje Connect: https://kujeconnect.com/business/kuje-property-managers" target="_blank" class="btn btn-outline" style="flex:1;padding:8px;font-size:0.82rem;"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

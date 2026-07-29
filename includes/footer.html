@@ -1,0 +1,76 @@
+    <style>
+        @media (max-width: 768px) {
+            .footer .footer-grid { display: flex; flex-direction: column; }
+            .footer .footer-grid .footer-col:first-child { order: 2; }
+            .footer .footer-grid .footer-col:nth-child(3) { order: 1; }
+            .footer .footer-grid .footer-col:nth-child(2) { order: 3; }
+            .footer .footer-grid .footer-col:nth-child(4) { order: 4; }
+            .footer-newsletter { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+        }
+    </style>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index" class="footer-logo">
+                        <img src="images/kuje.png" alt="Kuje Connect" style="height: 32px; width: auto;">
+                        Kuje Connect
+                    </a>
+                    <p>Connecting People, Building Communities. — A community-driven organization connecting people, businesses, and opportunities in Kuje, Abuja, FCT Nigeria.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/kujeconnect/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/groups/591373768624927" target="_blank" rel="noopener noreferrer" aria-label="Facebook Group"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/kuje_connect" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/2348087627524" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <div class="footer-newsletter">
+                        <h4 style="margin:16px 0 8px;font-size:0.9rem;">Stay Updated</h4>
+                        <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                            <input type="email" placeholder="Your email address" required style="flex:1;min-width:0;padding:8px 10px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;background:rgba(255,255,255,0.1);color:#fff;font-family:inherit;font-size:0.82rem;">
+                            <button type="submit" style="padding:8px 14px;background:var(--primary);color:#fff;border:none;border-radius:6px;cursor:pointer;font-family:inherit;font-weight:600;font-size:0.82rem;white-space:nowrap;"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about">About Us</a></li>
+                        <li><a href="services">Our Services</a></li>
+                        <li><a href="news">Newsroom</a></li>
+                        <li><a href="community">Community Development</a></li>
+                        <li><a href="businesses">Business Directory</a></li>
+                        <li><a href="opportunities">Jobs & Events</a></li>
+                        <li><a href="media">Media & Blog</a></li>
+                        <li><a href="advertising">Advertise / Partner</a></li>
+                        <li><a href="get-involved">Get Involved</a></li>
+                        <li><a href="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>For Business</h4>
+                    <ul>
+                        <li><button data-auth-open="register" style="background:none;border:none;color:inherit;font:inherit;cursor:pointer;padding:0;">List Your Business</button></li>
+                        <li><a href="advertising">Advertising</a></li>
+                        <li><a href="pricing">Pricing Plans</a></li>
+                        <li><a href="business-tips">Business Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get In Touch</h4>
+                    <ul>
+                        <li><a href="tel:+2348087627524"><i class="fas fa-phone" style="width:18px;"></i> +234 808 762 7524</a></li>
+                        <li><a href="tel:+2347036825729"><i class="fas fa-phone" style="width:18px;"></i> +234 703 682 5729</a></li>
+                        <li><a href="tel:+2347031022322"><i class="fas fa-phone" style="width:18px;"></i> +234 703 102 2322</a></li>
+                        <li><a href="mailto:kujeconnect@gmail.com"><i class="fas fa-envelope" style="width:18px;"></i> kujeconnect@gmail.com</a></li>
+                        <li><address style="font-style:normal;"><i class="fas fa-map-marker-alt" style="width:18px;"></i> Kuje, Abuja, FCT, Nigeria</address></li>
+                        <li><i class="fas fa-clock" style="width:18px;"></i> Mon-Fri 9am-6pm &middot; Sat 10am-5pm</li>
+                        <li><i class="fas fa-check-circle" style="width:18px;color:var(--primary-light);"></i> CAC Registered Business</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kuje Connect. All rights reserved. &middot; CAC Registered Business &middot; Kuje, Abuja, Nigeria</p>
+            </div>
+        </div>
+    </footer>

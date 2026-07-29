@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Kuje Connect | Born in Kuje. Built for Nigeria.</title>
+    <link rel="icon" type="image/png" href="images/kuje.png">
+    <link rel="apple-touch-icon" href="images/kuje.png">
+    <meta name="description" content="Kuje Connect is a community-driven organization committed to connecting people, empowering businesses, and building stronger communities in Kuje, Abuja, FCT Nigeria.">
+    <meta name="keywords" content="about Kuje Connect, Kuje community organization, Born in Kuje Built for Nigeria, community media Abuja">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kujeconnect.org/about">
+    <meta property="og:title" content="About Kuje Connect - Born in Kuje. Built for Nigeria.">
+    <meta property="og:description" content="A community-driven organization connecting people, empowering businesses, and building stronger communities.">
+    <meta property="og:image" content="images/kuje.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            padding: 50px 0;
+        }
+        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+        .about-grid .tagline { font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+        .about-grid .tagline .highlight { color: var(--primary); }
+        .about-grid p { color: var(--gray); line-height: 1.7; margin-bottom: 16px; font-size: 0.95rem; }
+        .about-badges { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .about-badges span { background: var(--light); padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+        .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; padding: 50px 0; }
+        .mission-card { text-align: center; padding: 32px 20px; background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; }
+        .mission-card .m-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 16px; }
+        .mission-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+        .mission-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+    </style>
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <section class="page-banner">
+        <div class="container">
+            <h1>About Kuje Connect</h1>
+            <p>A community-driven organization connecting people, empowering businesses, and building stronger communities.</p>
+            <div class="breadcrumb">
+                <a href="index">Home</a>
+                <span>/</span>
+                <span class="current">About</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <div class="tagline">Born in <span class="highlight">Kuje</span>.<br>Built for <span class="highlight">Nigeria</span>.</div>
+                    <p>Kuje Connect is a community-driven organization committed to connecting people, empowering businesses, and building stronger communities through information, innovation, collaboration, and impactful community development initiatives.</p>
+                    <p>Founded with a vision to bridge gaps between people, opportunities, businesses, and organizations, Kuje Connect serves as a trusted platform where individuals can access reliable community news, discover business opportunities, find employment information, build valuable partnerships, and participate in initiatives that promote social and economic development.</p>
+                    <p style="font-size:1.2rem;font-weight:700;color:var(--primary);">Connecting People, Building Communities.</p>
+                    <div class="about-badges">
+                        <span><i class="fas fa-check-circle"></i> CAC Registered Business</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Founded in Kuje, FCT</span>
+                    </div>
+                    <a href="services" class="btn btn-primary" style="margin-top:20px;">Explore Our Services</a>
+                </div>
+                <div style="text-align:center;">
+                    <img src="images/kuje.png" alt="Kuje Connect" style="max-width:280px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background:var(--light);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Mission, Vision & <span class="highlight">Values</span></h2>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="m-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our Mission</h3>
+                    <p>To connect people, businesses, and organizations through trusted community media and digital advertising that drives real engagement and growth.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="m-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Our Vision</h3>
+                    <p>A connected, thriving community where every business, event, and voice has the platform to reach its audience and make an impact.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="m-icon"><i class="fas fa-hand-heart"></i></div>
+                    <h3>Our Values</h3>
+                    <p>Trust, community, innovation, collaboration, and impact — everything we do is built on these principles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our <span class="highlight">Reach</span></h2>
+            </div>
+            <div class="stats-row" style="justify-content:center;">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <span class="stat-num">128,500+</span>
+                    <span class="stat-text">Community Members</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="stat-num">71,000+</span>
+                    <span class="stat-text">Members in Abuja</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-globe-africa"></i>
+                    <span class="stat-num">10+</span>
+                    <span class="stat-text">Countries Reached</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-store-alt"></i>
+                    <span class="stat-num">1,000s</span>
+                    <span class="stat-text">Businesses Promoted</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="js/includes.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

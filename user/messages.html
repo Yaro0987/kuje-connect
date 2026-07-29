@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Kuje Connect</title>
+    <meta name="description" content="Your Kuje Connect messages. Chat with business owners and customers directly. Send texts, files, and voice notes.">
+    <meta name="keywords" content="Kuje Connect, messages, chat, conversations, messaging, business chat">
+    <meta name="author" content="Kuje Connect">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Messages - Kuje Connect">
+    <meta property="og:description" content="Chat with business owners and customers directly. Send texts, files, and voice notes.">
+    <meta property="og:image" content="../images/kuje.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kujeconnect.com/user/messages">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Messages - Kuje Connect">
+    <meta name="twitter:description" content="Chat with business owners and customers directly.">
+    <meta name="twitter:image" content="../images/kuje.png">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .messages-layout {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-lighter);
+            height: calc(100vh - 180px);
+            overflow: hidden;
+            min-height: 500px;
+        }
+        .conversations-list {
+            border-right: 1px solid var(--gray-lighter);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .conversations-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--gray-lighter);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            flex-shrink: 0;
+        }
+        .conv-search-wrap {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--gray-lighter);
+            flex-shrink: 0;
+        }
+        .conv-search-wrap input {
+            width: 100%;
+            padding: 9px 14px 9px 36px;
+            border: 1px solid var(--gray-lighter);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            outline: none;
+            background: var(--light);
+        }
+        .conv-search-wrap input:focus {
+            border-color: var(--primary);
+            background: var(--white);
+        }
+        .conv-search-wrap {
+            position: relative;
+        }
+        .conv-search-wrap i {
+            position: absolute;
+            left: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-light);
+            font-size: 0.8rem;
+        }
+        .conversations-items {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .conversation-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--light);
+            cursor: pointer;
+            transition: background 0.15s;
+            position: relative;
+        }
+        .conversation-item:hover {
+            background: var(--light);
+        }
+        .conversation-item.active {
+            background: #f0fdf4;
+            border-left: 3px solid var(--primary);
+        }
+        .conv-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .conv-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .conv-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+        .conv-preview {
+            font-size: 0.8rem;
+            color: var(--gray);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .conv-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+        .conv-time {
+            font-size: 0.72rem;
+            color: var(--gray-light);
+            white-space: nowrap;
+        }
+        .conv-unread {
+            background: var(--primary);
+            color: var(--white);
+            font-size: 0.65rem;
+            font-weight: 700;
+            min-width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5px;
+        }
+        .message-area {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .empty-state {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-light);
+            gap: 12px;
+        }
+        .empty-state i {
+            font-size: 3rem;
+            opacity: 0.4;
+        }
+        .empty-state p {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .empty-state span {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        .message-header {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--gray-lighter);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+            background: var(--white);
+        }
+        .message-header .conv-avatar {
+            width: 38px;
+            height: 38px;
+            font-size: 0.8rem;
+        }
+        .message-header-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+        }
+        .message-header-info span {
+            font-size: 0.78rem;
+            color: var(--primary);
+        }
+        .mobile-back-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 4px 8px 4px 0;
+        }
+        .message-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: #f8f9fa;
+        }
+        .date-divider {
+            text-align: center;
+            margin: 12px 0;
+            position: relative;
+        }
+        .date-divider span {
+            background: #f8f9fa;
+            padding: 4px 14px;
+            font-size: 0.72rem;
+            color: var(--gray);
+            border-radius: 10px;
+            border: 1px solid var(--gray-lighter);
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+        .msg-row {
+            display: flex;
+            flex-direction: column;
+            max-width: 70%;
+            margin-bottom: 2px;
+        }
+        .msg-row.sent {
+            align-self: flex-end;
+            align-items: flex-end;
+        }
+        .msg-row.received {
+            align-self: flex-start;
+            align-items: flex-start;
+        }
+        .msg-bubble {
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            position: relative;
+        }
+        .msg-received .msg-bubble {
+            background: var(--white);
+            color: var(--dark-light);
+            border-bottom-left-radius: 4px;
+            border: 1px solid var(--gray-lighter);
+        }
+        .msg-sent .msg-bubble {
+            background: var(--primary);
+            color: var(--white);
+            border-bottom-right-radius: 4px;
+        }
+        .msg-meta {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 2px;
+            padding: 0 4px;
+        }
+        .msg-time {
+            font-size: 0.68rem;
+            opacity: 0.6;
+        }
+        .msg-sent .msg-time {
+            color: var(--gray);
+        }
+        .msg-received .msg-time {
+            color: var(--gray-light);
+        }
+        .msg-read-status {
+            font-size: 0.7rem;
+        }
+        .msg-read-status.read {
+            color: #2563eb;
+        }
+        .msg-read-status.unread {
+            color: var(--gray-light);
+        }
+        .msg-document {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 8px;
+            margin-bottom: 4px;
+        }
+        .msg-sent .msg-document {
+            background: rgba(255,255,255,0.15);
+        }
+        .msg-document i {
+            font-size: 1.4rem;
+        }
+        .msg-document-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .msg-document-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .msg-document-size {
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+        .msg-voice {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 0;
+        }
+        .msg-voice-play {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            font-size: 0.75rem;
+        }
+        .msg-sent .msg-voice-play {
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+        }
+        .msg-received .msg-voice-play {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .msg-voice-waves {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            height: 24px;
+        }
+        .msg-voice-waves span {
+            width: 3px;
+            border-radius: 2px;
+            display: inline-block;
+        }
+        .msg-sent .msg-voice-waves span {
+            background: rgba(255,255,255,0.5);
+        }
+        .msg-received .msg-voice-waves span {
+            background: var(--primary);
+            opacity: 0.4;
+        }
+        .msg-voice-dur {
+            font-size: 0.72rem;
+            opacity: 0.7;
+            flex-shrink: 0;
+        }
+        .message-input-area {
+            padding: 12px 20px;
+            border-top: 1px solid var(--gray-lighter);
+            background: var(--white);
+            flex-shrink: 0;
+        }
+        .file-preview-bar {
+            display: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light);
+            margin-bottom: 8px;
+        }
+        .file-preview-bar.active {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-preview-bar i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        .file-preview-bar span {
+            flex: 1;
+            font-size: 0.82rem;
+            color: var(--dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .file-preview-bar button {
+            background: none;
+            border: none;
+            color: #dc2626;
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 2px 4px;
+        }
+        .recording-bar {
+            display: none;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+        }
+        .recording-bar.active {
+            display: flex;
+        }
+        .rec-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #dc2626;
+            animation: recPulse 1s infinite;
+        }
+        @keyframes recPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .rec-timer {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #dc2626;
+            font-variant-numeric: tabular-nums;
+            min-width: 40px;
+        }
+        .rec-wave {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            height: 24px;
+        }
+        .rec-wave span {
+            width: 3px;
+            background: #dc2626;
+            border-radius: 2px;
+            opacity: 0.4;
+            animation: recWave 0.6s ease-in-out infinite alternate;
+        }
+        .rec-wave span:nth-child(1) { height: 6px; animation-delay: 0s; }
+        .rec-wave span:nth-child(2) { height: 14px; animation-delay: 0.1s; }
+        .rec-wave span:nth-child(3) { height: 8px; animation-delay: 0.2s; }
+        .rec-wave span:nth-child(4) { height: 18px; animation-delay: 0.3s; }
+        .rec-wave span:nth-child(5) { height: 10px; animation-delay: 0.15s; }
+        .rec-wave span:nth-child(6) { height: 16px; animation-delay: 0.25s; }
+        .rec-wave span:nth-child(7) { height: 7px; animation-delay: 0.05s; }
+        .rec-wave span:nth-child(8) { height: 12px; animation-delay: 0.35s; }
+        @keyframes recWave {
+            from { transform: scaleY(0.5); }
+            to { transform: scaleY(1.3); }
+        }
+        .rec-stop-btn {
+            background: #dc2626;
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .input-row {
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+        }
+        .input-actions {
+            display: flex;
+            gap: 2px;
+            flex-shrink: 0;
+        }
+        .input-actions button {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: none;
+            color: var(--gray);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            transition: all 0.15s;
+        }
+        .input-actions button:hover {
+            color: var(--primary);
+            background: var(--light);
+        }
+        .input-actions button.recording-active {
+            color: #dc2626;
+            animation: recPulse 1s infinite;
+        }
+        .msg-text-input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--gray-lighter);
+            border-radius: 20px;
+            font-size: 0.88rem;
+            outline: none;
+            font-family: inherit;
+            resize: none;
+            max-height: 100px;
+            line-height: 1.4;
+        }
+        .msg-text-input:focus {
+            border-color: var(--primary);
+        }
+        .btn-send {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary);
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+        .btn-send:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Emoji Picker */
+        .emoji-picker-wrap {
+            position: relative;
+        }
+        .emoji-picker {
+            display: none;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            max-height: 340px;
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            z-index: 100;
+            overflow: hidden;
+        }
+        .emoji-picker.active {
+            display: block;
+        }
+        .emoji-picker-header {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--gray-lighter);
+        }
+        .emoji-picker-header input {
+            width: 100%;
+            padding: 7px 10px;
+            border: 1px solid var(--gray-lighter);
+            border-radius: 8px;
+            font-size: 0.82rem;
+            outline: none;
+        }
+        .emoji-picker-header input:focus {
+            border-color: var(--primary);
+        }
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 2px;
+            padding: 8px;
+            overflow-y: auto;
+            max-height: 270px;
+        }
+        .emoji-grid button {
+            width: 100%;
+            aspect-ratio: 1;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.1s;
+        }
+        .emoji-grid button:hover {
+            background: var(--light);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .messages-layout {
+                grid-template-columns: 1fr;
+                height: calc(100vh - 140px);
+                border: none;
+                border-radius: 0;
+            }
+            .conversations-list.mobile-hidden {
+                display: none;
+            }
+            .message-area.mobile-hidden {
+                display: none;
+            }
+            .mobile-back-btn {
+                display: block;
+            }
+            .msg-row {
+                max-width: 85%;
+            }
+            .emoji-picker {
+                width: 280px;
+                left: 0;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar">A</div>
+                <h4>Amina Ibrahim</h4>
+                <span class="user-badge"><i class="fas fa-briefcase"></i> Business Owner</span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item active"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item"><i class="fas fa-bell"></i> Notifications</a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>Messages</h2>
+                    <p>Your conversations with businesses and customers.</p>
+                </div>
+            </div>
+
+            <div class="messages-layout" id="messagesLayout">
+                <div class="conversations-list" id="convList">
+                    <div class="conversations-header">
+                        <i class="fas fa-comments" style="margin-right:8px;color:var(--primary);"></i> Conversations
+                    </div>
+                    <div class="conv-search-wrap">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="convSearch" placeholder="Search conversations...">
+                    </div>
+                    <div class="conversations-items" id="convItems"></div>
+                </div>
+
+                <div class="message-area" id="messageArea">
+                    <div class="empty-state" id="emptyState">
+                        <i class="fas fa-comments"></i>
+                        <p>Select a conversation to start messaging</p>
+                        <span>Choose from your existing conversations or start a new one</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../data/data.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+    (function() {
+        var user = getCurrentUser();
+        if (!user) return;
+
+        var activeConv = null;
+        var activeOtherName = '';
+        var activeColor = '';
+        var isMobile = window.innerWidth <= 768;
+
+        var EMOJIS = [
+            '\u{1F600}','\u{1F603}','\u{1F604}','\u{1F601}','\u{1F606}','\u{1F923}',
+            '\u{1F602}','\u{1F642}','\u{1F609}','\u{1F60A}','\u{1F607}','\u{1F970}',
+            '\u{1F929}','\u{1F618}','\u{1F617}','\u{1F619}','\u{1F61A}','\u{1F973}',
+            '\u{1F60D}','\u{1F920}','\u{1F60E}','\u{1F913}','\u{1F9D0}','\u{1F610}',
+            '\u{1F611}','\u{1F636}','\u{1F60F}','\u{1F612}','\u{1F644}','\u{1F62C}',
+            '\u{1F624}','\u{1F621}','\u{1F47F}','\u{1F47B}','\u{1F47D}','\u{1F916}',
+            '\u{1F44D}','\u{1F44E}','\u{1F44C}','\u{1F44B}','\u{1F64C}','\u{1F44F}',
+            '\u{1F64F}','\u{1F4AA}','\u{1F44A}','\u{1F91C}','\u{1F91B}','\u{1F91E}',
+            '\u{1F91D}','\u{270B}','\u{270A}','\u{1F450}','\u{1F64F}','\u{1F446}',
+            '\u{1F447}','\u{1F448}','\u{1F449}','\u{1F4AF}','\u{1F4B0}','\u{1F4B5}',
+            '\u{1F4B3}','\u{1F4B9}','\u{1F4B1}','\u{1F4B2}','\u{1F4B8}',
+            '\u{2705}','\u{274C}','\u{2714}\u{FE0F}','\u{1F534}','\u{1F535}',
+            '\u{1F7E1}','\u{1F7E2}','\u{1F7E3}','\u{2B55}','\u{274E}',
+            '\u{2764}\u{FE0F}','\u{1F494}','\u{1F495}','\u{1F496}','\u{1F493}',
+            '\u{1F497}','\u{1F498}','\u{1F499}','\u{1F49A}','\u{1F9E1}','\u{1F5A4}',
+            '\u{1F381}','\u{1F388}','\u{1F386}','\u{1F387}','\u{2B50}','\u{2728}',
+            '\u{1F31F}','\u{1F308}','\u{2600}\u{FE0F}','\u{26C5}','\u{26A1}',
+            '\u{1F525}','\u{1F3A9}','\u{1F451}','\u{1F3A8}','\u{1F3AC}','\u{1F3A4}',
+            '\u{1F3B5}','\u{1F3B6}','\u{1F3B7}','\u{1F3B8}','\u{1F3B9}',
+            '\u{1F3BA}','\u{1F3BB}','\u{1F3BE}','\u{1F3BF}','\u{1F3C0}',
+            '\u{26BD}','\u{1F3C8}','\u{1F3C9}','\u{26BE}','\u{2615}',
+            '\u{1F370}','\u{1F382}','\u{1F36B}','\u{1F37B}','\u{1F378}','\u{1F37A}',
+            '\u{1F375}','\u{1F34E}','\u{1F34A}','\u{1F34B}','\u{1F349}',
+            '\u{1F353}','\u{1F351}','\u{1F34D}','\u{1F354}','\u{1F35E}',
+            '\u{1F35D}','\u{1F9C0}','\u{1F952}','\u{1F966}','\u{1F955}',
+            '\u{1F958}','\u{1F963}','\u{1F964}','\u{1F968}','\u{1F969}',
+            '\u{1F96A}','\u{1F96B}','\u{1F338}','\u{1F33A}','\u{1F337}',
+            '\u{1F33B}','\u{1F331}','\u{1F340}','\u{1F341}','\u{1F342}',
+            '\u{1F335}','\u{1F334}','\u{1F332}','\u{1F333}',
+            '\u{1F431}','\u{1F436}','\u{1F43B}','\u{1F437}','\u{1F435}',
+            '\u{1F42F}','\u{1F43E}','\u{1F98A}','\u{1F430}','\u{1F428}',
+            '\u{1F43D}','\u{1F43C}','\u{1F434}','\u{1F414}','\u{1F427}',
+            '\u{1F426}','\u{1F41F}','\u{1F42C}','\u{1F433}','\u{1F40D}',
+            '\u{1F422}','\u{1F980}','\u{1F990}','\u{1F988}','\u{1F41B}',
+            '\u{1F41E}','\u{1F41C}','\u{1F98B}','\u{1F41D}',
+            '\u{1F4A3}','\u{1F4A5}','\u{1F4A6}','\u{1F4A8}','\u{1F4AB}',
+            '\u{1F4AC}','\u{1F4AD}','\u{1F4A4}','\u{1F4AA}',
+            '\u{1F4F1}','\u{1F4F2}','\u{1F4BB}','\u{1F4F7}','\u{1F4F9}',
+            '\u{1F4FA}','\u{1F4FB}','\u{1F4FC}','\u{1F50B}','\u{1F50C}',
+            '\u{1F5A4}','\u{1F970}','\u{1F60D}','\u{1F618}','\u{1F495}','\u{1F496}',
+            '\u{1F697}','\u{1F695}','\u{1F699}','\u{1F68C}','\u{1F691}','\u{1F692}',
+            '\u{2708}\u{FE0F}','\u{1F4BA}','\u{1F6F5}',
+            '\u{1F3E0}','\u{1F3E2}','\u{1F3E3}','\u{1F3E5}','\u{1F3E6}',
+            '\u{1F3E7}','\u{1F3E8}','\u{1F3E9}','\u{1F3EA}','\u{1F3EB}',
+            '\u{26EA}','\u{26F2}','\u{26FA}','\u{1F301}','\u{1F303}',
+            '\u{1F304}','\u{1F305}','\u{1F307}','\u{1F308}','\u{1F30A}',
+            '\u{1F30B}','\u{1F30D}','\u{1F30E}','\u{1F31F}','\u{1F320}',
+            '\u{1F525}','\u{2601}\u{FE0F}','\u{2744}\u{FE0F}','\u{2614}\u{FE0F}',
+            '\u{23F0}','\u{23F1}\u{FE0F}','\u{23F2}\u{FE0F}','\u{23F3}',
+            '\u{1F527}','\u{1F529}','\u{1F52C}','\u{1F52B}',
+            '\u{2709}\u{FE0F}','\u{2702}\u{FE0F}','\u{270D}\u{FE0F}',
+            '\u{270F}\u{FE0F}','\u{1F489}','\u{1F48A}','\u{1F48E}',
+            '\u{1F380}','\u{1F48E}','\u{1F452}',
+            '\u{2622}\u{FE0F}','\u{2623}\u{FE0F}','\u{2695}\u{FE0F}',
+            '\u{2696}\u{FE0F}','\u{2692}\u{FE0F}','\u{2693}\u{FE0F}',
+            '\u{1F3AF}','\u{1F4A4}','\u{1F4A9}','\u{1F443}','\u{1F445}',
+            '\u{1F440}','\u{1F442}','\u{1F444}','\u{1F91F}','\u{270C}\u{FE0F}',
+            '\u{2328}\u{FE0F}','\u{23CF}\u{FE0F}','\u{23E9}','\u{23EA}',
+            '\u{23EB}','\u{23EC}','\u{2757}','\u{2753}','\u{2755}','\u{2754}',
+            '\u{203C}\u{FE0F}','\u{2049}\u{FE0F}','\u{2139}\u{FE0F}',
+            '\u{2122}\u{FE0F}','\u{2763}\u{FE0F}','\u{1F918}','\u{1F919}',
+            '\u{1F4AC}','\u{1F514}','\u{1F50E}','\u{1F50D}','\u{1F4E1}',
+            '\u{1F6E1}\u{FE0F}','\u{2648}','\u{2649}','\u{264A}','\u{264B}',
+            '\u{264C}','\u{264D}','\u{264E}','\u{264F}','\u{2650}',
+            '\u{2651}','\u{2652}','\u{2653}','\u{26CE}','\u{26D4}',
+            '\u{2B05}\u{FE0F}','\u{2B06}\u{FE0F}','\u{2B07}\u{FE0F}',
+            '\u{2197}\u{FE0F}','\u{2198}\u{FE0F}','\u{2196}\u{FE0F}','\u{2199}\u{FE0F}',
+            '\u{2934}\u{FE0F}','\u{2935}\u{FE0F}','\u{3030}\u{FE0F}','\u{303D}\u{FE0F}',
+            '\u{1F536}','\u{1F537}','\u{1F538}','\u{1F539}','\u{1F53A}','\u{1F53B}',
+            '\u{25AA}\u{FE0F}','\u{25AB}\u{FE0F}','\u{2B1B}','\u{2B1C}',
+            '\u{25FC}\u{FE0F}','\u{25FB}\u{FE0F}','\u{25FD}','\u{25FE}',
+            '\u{2615}','\u{1F339}','\u{1F33C}','\u{1F343}','\u{1F3F0}',
+            '\u{1F309}','\u{1F306}','\u{2602}\u{FE0F}','\u{1F984}','\u{1F9DD}',
+            '\u{1F9DE}','\u{1F9DF}','\u{1F9CC}','\u{1F9B4}','\u{1F9B5}',
+            '\u{1F9B6}','\u{1F9B7}','\u{1F9B8}','\u{1F9B9}','\u{1F9BA}',
+            '\u{1F9BB}','\u{1FAC0}','\u{1FAC1}','\u{1F9BE}','\u{1F9BF}',
+            '\u{1F998}','\u{1F996}','\u{1F99A}','\u{1F99D}','\u{1F99B}',
+            '\u{1F9AB}','\u{1F9AC}','\u{1F9AD}','\u{1F984}','\u{1F992}',
+            '\u{1F993}','\u{1F985}','\u{1F986}','\u{1F989}','\u{1F9A3}',
+            '\u{1F9A5}','\u{1F9A6}','\u{1F9A7}','\u{1F98D}','\u{1F98E}',
+            '\u{1F98F}'
+        ];
+
+        function getConvOther(conv) {
+            var otherId = conv.participants.find(function(p) { return p !== user.id; });
+            return DB.users.find(function(u) { return u.id === otherId; });
+        }
+
+        function getAvatarColor(conv) {
+            var colors = ['#f59e0b,#d97706','#3b82f6,#2563eb','#8b5cf6,#7c3aed','#ec4899,#db2777','#10b981,#059669','#ef4444,#dc2626'];
+            return colors[conv.participants.indexOf(user.id) % colors.length];
+        }
+
+        function countUnread(conv) {
+            var msgs = getConversationMessages(conv.id);
+            var count = 0;
+            for (var i = msgs.length - 1; i >= 0; i--) {
+                if (msgs[i].senderId !== user.id && !msgs[i].read) count++;
+                else break;
+            }
+            return count || conv.unreadCount || 0;
+        }
+
+        function formatDateLabel(d) {
+            var date = new Date(d);
+            var today = new Date();
+            var yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+
+            if (date.toDateString() === today.toDateString()) return 'Today';
+            if (date.toDateString() === yesterday.toDateString()) return 'Yesterday';
+
+            var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+        }
+
+        function formatMsgTime(d) {
+            var date = new Date(d);
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var ampm = h >= 12 ? 'PM' : 'AM';
+            h = h % 12 || 12;
+            return h + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm;
+        }
+
+        function isSameDay(d1, d2) {
+            return new Date(d1).toDateString() === new Date(d2).toDateString();
+        }
+
+        function buildVoiceWaves() {
+            var heights = [4,8,12,16,10,14,6,18,8,12,5,15,9,11,7,13,6,10,14,8];
+            var html = '';
+            for (var i = 0; i < 20; i++) {
+                html += '<span style="height:' + heights[i] + 'px;"></span>';
+            }
+            return html;
+        }
+
+        function renderConvList(filter) {
+            var convs = getUserConversations(user.id);
+            convs.sort(function(a, b) {
+                return new Date(b.lastMessageTime) - new Date(a.lastMessageTime);
+            });
+
+            var container = document.getElementById('convItems');
+            container.innerHTML = '';
+
+            if (convs.length === 0) {
+                container.innerHTML = '<div style="text-align:center;padding:40px 20px;"><i class="fas fa-comments" style="font-size:2rem;color:var(--gray-light);margin-bottom:10px;display:block;"></i><p style="color:var(--gray);font-size:0.9rem;">No conversations yet.</p></div>';
+                return;
+            }
+
+            var filtered = convs;
+            if (filter && filter.trim()) {
+                var q = filter.toLowerCase().trim();
+                filtered = convs.filter(function(c) {
+                    var o = getConvOther(c);
+                    return (o && o.name.toLowerCase().indexOf(q) !== -1) ||
+                           (c.lastMessage && c.lastMessage.toLowerCase().indexOf(q) !== -1);
+                });
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<div style="text-align:center;padding:40px 20px;"><i class="fas fa-search" style="font-size:1.5rem;color:var(--gray-light);margin-bottom:10px;display:block;"></i><p style="color:var(--gray);font-size:0.85rem;">No conversations found</p></div>';
+                return;
+            }
+
+            filtered.forEach(function(conv) {
+                var other = getConvOther(conv);
+                if (!other) return;
+                var name = other.name;
+                var initials = getInitials(name);
+                var gradient = getAvatarColor(conv);
+                var unread = countUnread(conv);
+                var timeStr = timeAgo(conv.lastMessageTime);
+
+                var item = document.createElement('div');
+                item.className = 'conversation-item' + (activeConv && activeConv.id === conv.id ? ' active' : '');
+                item.setAttribute('data-conv-id', conv.id);
+
+                item.innerHTML =
+                    '<div class="conv-avatar" style="background:linear-gradient(135deg,' + gradient + ');">' + initials + '</div>' +
+                    '<div class="conv-info">' +
+                        '<div class="conv-name">' + escapeHtml(name) + '</div>' +
+                        '<div class="conv-preview">' + escapeHtml(conv.lastMessage) + '</div>' +
+                    '</div>' +
+                    '<div class="conv-meta">' +
+                        '<span class="conv-time">' + timeStr + '</span>' +
+                        (unread > 0 ? '<span class="conv-unread">' + unread + '</span>' : '') +
+                    '</div>';
+
+                item.addEventListener('click', function() {
+                    openConversation(conv);
+                });
+
+                container.appendChild(item);
+            });
+        }
+
+        function openConversation(conv) {
+            activeConv = conv;
+            var other = getConvOther(conv);
+            if (!other) return;
+            activeOtherName = other.name;
+            activeColor = getAvatarColor(conv);
+
+            renderConvList(document.getElementById('convSearch').value);
+            renderChat();
+
+            if (isMobile) {
+                document.getElementById('convList').classList.add('mobile-hidden');
+                document.getElementById('messageArea').classList.remove('mobile-hidden');
+            }
+        }
+
+        function renderChat() {
+            if (!activeConv) return;
+            var area = document.getElementById('messageArea');
+            var msgs = getConversationMessages(activeConv.id);
+            var initials = getInitials(activeOtherName);
+
+            var headerHtml =
+                '<div class="message-header">' +
+                    '<button class="mobile-back-btn" id="backBtn"><i class="fas fa-arrow-left"></i></button>' +
+                    '<div class="conv-avatar" style="width:38px;height:38px;font-size:0.8rem;background:linear-gradient(135deg,' + activeColor + ');">' + initials + '</div>' +
+                    '<div class="message-header-info">' +
+                        '<h4>' + escapeHtml(activeOtherName) + '</h4>' +
+                        '<span>Online</span>' +
+                    '</div>' +
+                '</div>';
+
+            var bodyHtml = '<div class="message-body" id="msgBody">';
+            var prevDate = null;
+
+            msgs.forEach(function(msg, idx) {
+                var isSent = msg.senderId === user.id;
+                var dir = isSent ? 'sent' : 'received';
+                var msgDate = new Date(msg.timestamp).toDateString();
+
+                if (prevDate === null || msgDate !== prevDate) {
+                    bodyHtml += '<div class="date-divider"><span>' + formatDateLabel(msg.timestamp) + '</span></div>';
+                    prevDate = msgDate;
+                }
+
+                bodyHtml += '<div class="msg-row ' + dir + '">';
+                bodyHtml += '<div class="msg-bubble msg-' + dir + '">';
+
+                if (msg.type === 'document' && msg.fileUrl) {
+                    var isImage = /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(msg.fileUrl);
+                    if (isImage) {
+                        bodyHtml += '<img src="' + escapeHtml(msg.fileUrl) + '" alt="Image" style="max-width:220px;border-radius:8px;display:block;margin-bottom:4px;">';
+                    } else {
+                        var fileName = msg.text || 'Document';
+                        bodyHtml += '<div class="msg-document">' +
+                            '<i class="fas fa-file"></i>' +
+                            '<div class="msg-document-info">' +
+                                '<div class="msg-document-name">' + escapeHtml(fileName) + '</div>' +
+                            '</div>' +
+                        '</div>';
+                    }
+                    if (msg.text && isImage) {
+                        bodyHtml += '<div>' + escapeHtml(msg.text) + '</div>';
+                    }
+                } else if (msg.type === 'voice') {
+                    var dur = msg.text || '0:03';
+                    bodyHtml += '<div class="msg-voice">' +
+                        '<button class="msg-voice-play"><i class="fas fa-play"></i></button>' +
+                        '<div class="msg-voice-waves">' + buildVoiceWaves() + '</div>' +
+                        '<span class="msg-voice-dur">' + escapeHtml(dur) + '</span>' +
+                    '</div>';
+                } else {
+                    bodyHtml += escapeHtml(msg.text);
+                }
+
+                bodyHtml += '</div>';
+
+                bodyHtml += '<div class="msg-meta">' +
+                    '<span class="msg-time">' + formatMsgTime(msg.timestamp) + '</span>';
+                if (isSent) {
+                    bodyHtml += '<span class="msg-read-status ' + (msg.read ? 'read' : 'unread') + '">' +
+                        '<i class="fas fa-check-double"></i></span>';
+                }
+                bodyHtml += '</div></div>';
+            });
+
+            bodyHtml += '</div>';
+
+            var inputHtml =
+                '<div class="message-input-area">' +
+                    '<div class="file-preview-bar" id="filePreview">' +
+                        '<i class="fas fa-file"></i>' +
+                        '<span id="fileName"></span>' +
+                        '<button id="fileRemove"><i class="fas fa-times"></i></button>' +
+                    '</div>' +
+                    '<div class="recording-bar" id="recordingBar">' +
+                        '<div class="rec-dot"></div>' +
+                        '<span class="rec-timer" id="recTimer">0:00</span>' +
+                        '<div class="rec-wave">' +
+                            '<span></span><span></span><span></span><span></span>' +
+                            '<span></span><span></span><span></span><span></span>' +
+                        '</div>' +
+                        '<button class="rec-stop-btn" id="recStopBtn"><i class="fas fa-stop"></i> Stop</button>' +
+                    '</div>' +
+                    '<div class="input-row" id="inputRow">' +
+                        '<div class="input-actions">' +
+                            '<div class="emoji-picker-wrap">' +
+                                '<button id="emojiBtn" title="Emoji"><i class="far fa-smile"></i></button>' +
+                                '<div class="emoji-picker" id="emojiPicker">' +
+                                    '<div class="emoji-picker-header">' +
+                                        '<input type="text" id="emojiSearch" placeholder="Search emoji...">' +
+                                    '</div>' +
+                                    '<div class="emoji-grid" id="emojiGrid"></div>' +
+                                '</div>' +
+                            '</div>' +
+                            '<button id="docBtn" title="Send document"><i class="fas fa-paperclip"></i></button>' +
+                            '<button id="voiceBtn" title="Voice note"><i class="fas fa-microphone"></i></button>' +
+                        '</div>' +
+                        '<textarea class="msg-text-input" id="msgInput" placeholder="Type a message..." rows="1"></textarea>' +
+                        '<button class="btn-send" id="sendBtn"><i class="fas fa-paper-plane"></i></button>' +
+                    '</div>' +
+                '</div>' +
+                '<input type="file" id="fileInput" style="display:none;" accept="image/*,video/*,.pdf,.zip,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,.rar,.7z">';
+
+            area.innerHTML = headerHtml + bodyHtml + inputHtml;
+
+            var msgBody = document.getElementById('msgBody');
+            if (msgBody) msgBody.scrollTop = msgBody.scrollHeight;
+
+            setupInputHandlers();
+
+            var backBtn = document.getElementById('backBtn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function() {
+                    document.getElementById('convList').classList.remove('mobile-hidden');
+                    document.getElementById('messageArea').classList.add('mobile-hidden');
+                });
+            }
+        }
+
+        var selectedFile = null;
+        var isRecording = false;
+        var recInterval = null;
+
+        function setupInputHandlers() {
+            selectedFile = null;
+            isRecording = false;
+            var msgInput = document.getElementById('msgInput');
+            var sendBtn = document.getElementById('sendBtn');
+            var docBtn = document.getElementById('docBtn');
+            var voiceBtn = document.getElementById('voiceBtn');
+            var fileInput = document.getElementById('fileInput');
+            var emojiBtn = document.getElementById('emojiBtn');
+            var emojiPicker = document.getElementById('emojiPicker');
+            var emojiGrid = document.getElementById('emojiGrid');
+            var emojiSearch = document.getElementById('emojiSearch');
+            var filePreview = document.getElementById('filePreview');
+            var fileRemove = document.getElementById('fileRemove');
+            var recordingBar = document.getElementById('recordingBar');
+            var recStopBtn = document.getElementById('recStopBtn');
+
+            if (msgInput) {
+                msgInput.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+                });
+                msgInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        doSend();
+                    }
+                });
+                msgInput.focus();
+            }
+
+            if (sendBtn) sendBtn.addEventListener('click', doSend);
+
+            if (docBtn) {
+                docBtn.addEventListener('click', function() {
+                    if (fileInput) fileInput.click();
+                });
+            }
+
+            if (fileInput) {
+                fileInput.addEventListener('change', function() {
+                    if (this.files && this.files[0]) {
+                        selectedFile = this.files[0];
+                        filePreview.classList.add('active');
+                        document.getElementById('fileName').textContent = selectedFile.name;
+                    }
+                });
+            }
+
+            if (fileRemove) {
+                fileRemove.addEventListener('click', function() {
+                    selectedFile = null;
+                    fileInput.value = '';
+                    filePreview.classList.remove('active');
+                });
+            }
+
+            if (voiceBtn) {
+                voiceBtn.addEventListener('click', function() {
+                    if (isRecording) {
+                        stopRecording();
+                    } else {
+                        startRecording();
+                    }
+                });
+            }
+
+            if (recStopBtn) {
+                recStopBtn.addEventListener('click', function() {
+                    stopRecording();
+                });
+            }
+
+            function startRecording() {
+                isRecording = true;
+                recordingBar.classList.add('active');
+                document.getElementById('inputRow').style.display = 'none';
+                voiceBtn.classList.add('recording-active');
+
+                var seconds = 0;
+                var timerEl = document.getElementById('recTimer');
+                recInterval = setInterval(function() {
+                    seconds++;
+                    var m = Math.floor(seconds / 60);
+                    var s = seconds % 60;
+                    timerEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+
+                    if (seconds >= 3) {
+                        stopRecording();
+                    }
+                }, 1000);
+            }
+
+            function stopRecording() {
+                clearInterval(recInterval);
+                isRecording = false;
+                recordingBar.classList.remove('active');
+                document.getElementById('inputRow').style.display = '';
+                voiceBtn.classList.remove('recording-active');
+
+                var timerEl = document.getElementById('recTimer');
+                var elapsed = timerEl.textContent || '0:03';
+
+                if (!activeConv) return;
+                sendMessage(activeConv.id, user.id, elapsed, 'voice', null);
+                renderChat();
+                renderConvList(document.getElementById('convSearch').value);
+            }
+
+            // Emoji Picker
+            var emojiOpen = false;
+            if (emojiBtn) {
+                emojiBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    emojiOpen = !emojiOpen;
+                    if (emojiOpen) {
+                        emojiPicker.classList.add('active');
+                        renderEmojiGrid('');
+                        emojiSearch.value = '';
+                        emojiSearch.focus();
+                    } else {
+                        emojiPicker.classList.remove('active');
+                    }
+                });
+            }
+
+            if (emojiSearch) {
+                emojiSearch.addEventListener('input', function() {
+                    renderEmojiGrid(this.value);
+                });
+                emojiSearch.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+
+            if (emojiGrid) {
+                emojiGrid.addEventListener('click', function(e) {
+                    var btn = e.target.closest('button');
+                    if (btn && btn.textContent) {
+                        msgInput.value += btn.textContent;
+                        msgInput.focus();
+                    }
+                });
+            }
+
+            document.addEventListener('click', function(e) {
+                if (emojiOpen && emojiPicker && !emojiPicker.contains(e.target) && e.target !== emojiBtn && !emojiBtn.contains(e.target)) {
+                    emojiOpen = false;
+                    emojiPicker.classList.remove('active');
+                }
+            });
+
+            function renderEmojiGrid(query) {
+                var grid = document.getElementById('emojiGrid');
+                if (!grid) return;
+                var filtered = EMOJIS;
+                if (query) {
+                    filtered = EMOJIS;
+                }
+                var html = '';
+                var limit = Math.min(filtered.length, 200);
+                for (var i = 0; i < limit; i++) {
+                    html += '<button type="button">' + filtered[i] + '</button>';
+                }
+                grid.innerHTML = html;
+            }
+        }
+
+        function doSend() {
+            if (!activeConv) return;
+            var msgInput = document.getElementById('msgInput');
+            var text = msgInput ? msgInput.value.trim() : '';
+
+            if (selectedFile) {
+                var fileUrl = URL.createObjectURL(selectedFile);
+                var docName = selectedFile.name;
+                sendMessage(activeConv.id, user.id, docName, 'document', fileUrl);
+                selectedFile = null;
+                var fp = document.getElementById('filePreview');
+                if (fp) fp.classList.remove('active');
+                var fi = document.getElementById('fileInput');
+                if (fi) fi.value = '';
+            } else if (text) {
+                sendMessage(activeConv.id, user.id, text, 'text', null);
+            } else {
+                return;
+            }
+
+            if (msgInput) {
+                msgInput.value = '';
+                msgInput.style.height = 'auto';
+            }
+
+            renderChat();
+            renderConvList(document.getElementById('convSearch').value);
+        }
+
+        // Search
+        var searchInput = document.getElementById('convSearch');
+        if (searchInput) {
+            var searchTimeout;
+            searchInput.addEventListener('input', function() {
+                var val = this.value;
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(function() {
+                    renderConvList(val);
+                }, 200);
+            });
+        }
+
+        // Resize handler
+        window.addEventListener('resize', function() {
+            var wasMobile = isMobile;
+            isMobile = window.innerWidth <= 768;
+            if (wasMobile !== isMobile) {
+                document.getElementById('convList').classList.remove('mobile-hidden');
+                document.getElementById('messageArea').classList.remove('mobile-hidden');
+            }
+        });
+
+        // Init
+        renderConvList('');
+
+        var convs = getUserConversations(user.id);
+        if (convs.length > 0) {
+            convs.sort(function(a, b) {
+                return new Date(b.lastMessageTime) - new Date(a.lastMessageTime);
+            });
+            openConversation(convs[0]);
+        }
+    })();
+    </script>
+</body>
+</html>

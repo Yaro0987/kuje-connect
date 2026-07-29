@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Kuje Connect</title>
+    <meta name="description" content="Manage your Kuje Connect account settings. Control notifications, privacy, appearance, security, and account status.">
+    <meta name="keywords" content="Kuje Connect, settings, account settings, notifications, privacy, password, Kuje, FCT Nigeria">
+    <meta name="author" content="Kuje Connect">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Settings - Kuje Connect">
+    <meta property="og:description" content="Manage your account settings, privacy, notifications, and security on Kuje Connect.">
+    <meta property="og:image" content="../images/kuje.png">
+    <meta property="og:url" content="https://kujeconnect.com/user/settings">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kuje Connect">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Settings - Kuje Connect">
+    <meta name="twitter:description" content="Manage your account settings on Kuje Connect.">
+    <meta name="twitter:image" content="../images/kuje.png">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; }
+        .checkbox-item {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.9rem; color: var(--dark-light); cursor: pointer;
+        }
+        .checkbox-item input[type="checkbox"] {
+            width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer;
+        }
+        .toggle-switch {
+            position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0;
+        }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider {
+            position: absolute; cursor: pointer; inset: 0;
+            background: var(--gray-lighter); border-radius: 24px; transition: 0.3s;
+        }
+        .toggle-slider::before {
+            content: ""; position: absolute; height: 18px; width: 18px;
+            left: 3px; bottom: 3px; background: var(--white); border-radius: 50%;
+            transition: 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+        .toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
+        .setting-row {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 0; border-bottom: 1px solid var(--gray-lighter);
+        }
+        .setting-row:last-child { border-bottom: none; }
+        .setting-label h4 {
+            font-size: 0.92rem; font-weight: 500; color: var(--dark); margin-bottom: 2px;
+        }
+        .setting-label p {
+            font-size: 0.8rem; color: var(--gray); margin: 0;
+        }
+        .danger-zone {
+            border: 1px solid #fecaca; background: #fef2f2;
+        }
+        .danger-zone h3 { color: var(--secondary) !important; border-bottom-color: #fecaca !important; }
+        .danger-zone p { font-size: 0.9rem; color: var(--gray); margin-bottom: 16px; }
+        .radio-group { display: flex; gap: 16px; margin-top: 8px; }
+        .radio-item {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.88rem; color: var(--dark-light); cursor: pointer;
+        }
+        .radio-item input {
+            width: 16px; height: 16px; accent-color: var(--primary); cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar"></div>
+                <h4></h4>
+                <span class="user-badge"></span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item"><i class="fas fa-bell"></i> Notifications <span class="notif-badge" style="display:none;"></span></a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item active"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>Settings</h2>
+                    <p>Manage your account settings and preferences.</p>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <h3><i class="fas fa-bell" style="margin-right:8px;"></i> Account Settings</h3>
+                <div class="setting-row">
+                    <div class="setting-label">
+                        <h4>Email Notifications</h4>
+                        <p>Receive email alerts for messages, reviews, and business updates</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="emailNotifications" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-label">
+                        <h4>Newsletter</h4>
+                        <p>Get weekly tips, news, and promotions from Kuje Connect</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="newsletterToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div style="margin-top:18px;">
+                    <button type="button" class="btn-sm btn-primary" id="saveNotifBtn"><i class="fas fa-save"></i> Save Preferences</button>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <h3><i class="fas fa-eye" style="margin-right:8px;"></i> Privacy</h3>
+                <div class="setting-row">
+                    <div class="setting-label">
+                        <h4>Profile Visibility</h4>
+                        <p>Control who can see your profile information</p>
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-item">
+                            <input type="radio" name="profileVisibility" value="public" checked> Public
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="profileVisibility" value="private"> Private
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-label">
+                        <h4>Show Phone Number</h4>
+                        <p>Allow others to see your phone number on your profile</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="showPhone">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div style="margin-top:18px;">
+                    <button type="button" class="btn-sm btn-primary" id="savePrivacyBtn"><i class="fas fa-save"></i> Save Privacy</button>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <h3><i class="fas fa-palette" style="margin-right:8px;"></i> Appearance</h3>
+                <div class="setting-row">
+                    <div class="setting-label">
+                        <h4>Dark Mode</h4>
+                        <p>Switch to a darker color theme (cosmetic only for now)</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <h3><i class="fas fa-lock" style="margin-right:8px;"></i> Change Password</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" placeholder="Enter current password">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                        </div>
+                    </div>
+                    <button type="button" class="btn-sm btn-primary"><i class="fas fa-save"></i> Update Password</button>
+                </form>
+            </div>
+
+            <div class="user-card danger-zone">
+                <h3><i class="fas fa-exclamation-triangle" style="margin-right:8px;"></i> Danger Zone</h3>
+                <p>Deactivating your account will hide your profile and remove your businesses from listings. This action can be reversed by contacting support.</p>
+                <button type="button" class="btn-sm btn-danger" id="deactivateBtn"><i class="fas fa-user-slash"></i> Deactivate Account</button>
+            </div>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../data/data.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+    (function() {
+        var saveNotifBtn = document.getElementById('saveNotifBtn');
+        if (saveNotifBtn) {
+            saveNotifBtn.addEventListener('click', function() {
+                showToast('Notification preferences saved', 'success');
+            });
+        }
+
+        var savePrivacyBtn = document.getElementById('savePrivacyBtn');
+        if (savePrivacyBtn) {
+            savePrivacyBtn.addEventListener('click', function() {
+                showToast('Privacy settings saved', 'success');
+            });
+        }
+
+        var darkToggle = document.getElementById('darkModeToggle');
+        if (darkToggle) {
+            darkToggle.addEventListener('change', function() {
+                showToast(this.checked ? 'Dark mode enabled (preview)' : 'Dark mode disabled', 'success');
+            });
+        }
+
+        var deactivateBtn = document.getElementById('deactivateBtn');
+        if (deactivateBtn) {
+            deactivateBtn.addEventListener('click', function() {
+                confirmAction('Are you absolutely sure you want to deactivate your account? This action can be reversed by contacting support.', function() {
+                    showToast('Account deactivation is not available in demo mode', 'warning');
+                });
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

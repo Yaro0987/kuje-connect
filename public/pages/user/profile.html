@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Kuje Connect</title>
+    <meta name="description" content="Manage your Kuje Connect profile. Update your personal information, bio, and account details.">
+    <meta name="keywords" content="Kuje Connect, profile, account settings">
+    <meta name="author" content="Kuje Connect">
+    <meta property="og:title" content="My Profile - Kuje Connect">
+    <meta property="og:description" content="Update your personal information and account details.">
+    <meta property="og:image" content="images/kuje.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar">A</div>
+                <h4>Amina Ibrahim</h4>
+                <span class="user-badge"><i class="fas fa-briefcase"></i> Business Owner</span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item active"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item"><i class="fas fa-bell"></i> Notifications</a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>My Profile</h2>
+                    <p>Manage your personal information and preferences.</p>
+                </div>
+            </div>
+
+            <div class="user-card" style="display:flex;align-items:center;gap:24px;margin-bottom:24px;">
+                <div class="user-avatar" style="width:80px;height:80px;font-size:1.8rem;flex-shrink:0;">A</div>
+                <div>
+                    <h2 style="font-size:1.25rem;font-weight:700;color:var(--dark);margin-bottom:4px;">Amina Ibrahim</h2>
+                    <p style="color:var(--gray);font-size:0.9rem;">amina.ibrahim@email.com</p>
+                    <span class="user-badge" style="margin-top:8px;"><i class="fas fa-briefcase"></i> Business Owner</span>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <h3><i class="fas fa-user" style="margin-right:8px;"></i> Personal Information</h3>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" value="Amina Ibrahim" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" value="amina.ibrahim@email.com" placeholder="Enter your email">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" value="+234 801 234 5678" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" value="Kuje, FCT" placeholder="Your location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" placeholder="Tell us about yourself...">Passionate food entrepreneur based in Kuje. I run Amina's Kitchen and Amina's Catering Services, bringing authentic Nigerian cuisine to the community.</textarea>
+                    </div>
+                    <button type="button" class="btn-sm btn-primary" style="padding:10px 24px;"><i class="fas fa-save"></i> Save Changes</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

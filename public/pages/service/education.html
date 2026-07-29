@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schools & Education in Kuje | Schools, Driving, Training</title>
+    <meta name="description" content="Find schools and education services in Kuje FCT Nigeria. Primary schools, secondary schools, driving schools, vocational training and tutorials.">
+    <meta name="keywords" content="schools Kuje, driving school Kuje, vocational training Kuje, tutorial Kuje, lesson center Kuje, nursery Kuje, university Kuje, Quranic school Kuje, Kuje education, FCT schools, Nigeria schools">
+    <meta name="author" content="Kuje Connect">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kujeconnect.com/service/education">
+    <meta property="og:title" content="Schools & Education in Kuje | Schools, Driving, Training">
+    <meta property="og:description" content="Find schools and education services in Kuje FCT Nigeria. Primary, secondary, driving schools, vocational training and tutorials.">
+    <meta property="og:image" content="https://kujeconnect.com/images/kuje.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kujeconnect.com/service/education">
+    <meta property="og:site_name" content="Kuje Connect">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Schools & Education in Kuje | Schools, Driving, Training">
+    <meta name="twitter:description" content="Find schools and education services in Kuje FCT Nigeria. Primary, secondary, driving schools, vocational training and tutorials.">
+    <meta name="twitter:image" content="https://kujeconnect.com/images/kuje.png">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .service-hero {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 50%, #2dd4bf 100%);
+            padding: 140px 0 60px;
+            color: #fff;
+        }
+        .service-hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; }
+        .service-hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 600px; }
+        .breadcrumb { font-size: 0.85rem; margin-bottom: 20px; color: rgba(255,255,255,0.7); }
+        .breadcrumb a { color: rgba(255,255,255,0.9); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .sub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 40px 0;
+        }
+        .sub-card {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .sub-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-color: #14b8a6;
+        }
+        .sub-card i { font-size: 1.8rem; color: #14b8a6; margin-bottom: 10px; }
+        .sub-card h4 { font-size: 0.95rem; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+        .sub-card span { font-size: 0.8rem; color: #64748b; }
+        .filter-bar {
+            display: flex; gap: 10px; flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .filter-chip {
+            padding: 8px 18px; border-radius: 50px;
+            border: 1.5px solid #e2e8f0; font-size: 0.85rem;
+            font-weight: 500; cursor: pointer; transition: all 0.2s;
+            background: #fff; color: #64748b;
+            text-decoration: none;
+        }
+        .filter-chip:hover, .filter-chip.active {
+            border-color: #14b8a6; background: #ccfbf1; color: #0f766e;
+        }
+        .biz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .biz-card {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .biz-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+        .biz-card-img { height: 180px; position: relative; overflow: hidden; }
+        .biz-card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .biz-badge { position: absolute; top: 12px; left: 12px; padding: 4px 12px; border-radius: 20px; font-size: 0.73rem; font-weight: 600; background: #0f766e; color: #fff; }
+        .biz-body { padding: 16px; }
+        .biz-body h4 { font-size: 1rem; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+        .biz-body .biz-meta { display: flex; align-items: center; gap: 12px; font-size: 0.83rem; color: #64748b; margin-top: 8px; }
+        .biz-body .biz-meta i { margin-right: 4px; }
+    </style>
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="../images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <section class="service-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../..">Home</a> / <a href="../services">Services</a> / Education
+            </div>
+            <h1><i class="fas fa-graduation-cap"></i> Education</h1>
+            <p>Explore schools, lesson centres, driving schools, vocational training and more in Kuje, FCT Nigeria.</p>
+        </div>
+    </section>
+
+    <div class="container" style="padding: 40px 20px;">
+        <h2 style="font-size:1.3rem;font-weight:700;color:#1e293b;margin-bottom:4px;">Browse by Subcategory</h2>
+        <p style="color:#64748b;font-size:0.9rem;margin-bottom:16px;">Find exactly what you're looking for</p>
+        <div class="sub-grid">
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-school"></i><h4>Primary Schools</h4><span>Primary education</span></a>
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-graduation-cap"></i><h4>Secondary Schools</h4><span>Junior & senior secondary</span></a>
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-university"></i><h4>Universities & Colleges</h4><span>Higher education</span></a>
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-chalkboard-teacher"></i><h4>Lesson/Tuition Centers</h4><span>After-school tutoring</span></a>
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-car"></i><h4>Driving Schools</h4><span>Licence training</span></a>
+            <a href="education/vocational-training" class="sub-card"><i class="fas fa-tools"></i><h4>Vocational Training</h4><span>Trade & skill acquisition</span></a>
+            <a href="education/vocational-training" class="sub-card"><i class="fas fa-laptop"></i><h4>Computer Training</h4><span>IT & digital skills</span></a>
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-language"></i><h4>Language Classes</h4><span>English, French & more</span></a>
+            <a href="education/vocational-training" class="sub-card"><i class="fas fa-hands-helping"></i><h4>Skill Acquisition</h4><span>Practical life skills</span></a>
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-baby"></i><h4>Daycare & Nursery</h4><span>Early childhood care</span></a>
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-book-quran"></i><h4>Quranic Schools</h4><span>Islamic education</span></a>
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-user-graduate"></i><h4>Adult Education</h4><span>Learning for adults</span></a>
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-briefcase"></i><h4>Career Coaching</h4><span>Career guidance & mentoring</span></a>
+            <a href="education/schools-and-tutoring" class="sub-card"><i class="fas fa-file-alt"></i><h4>Exam Prep (JAMB/WAEC)</h4><span>Test preparation</span></a>
+            <a href="education/online-learning" class="sub-card"><i class="fas fa-globe"></i><h4>Online Learning</h4><span>E-learning platforms</span></a>
+        </div>
+
+        <h2 style="font-size:1.3rem;font-weight:700;color:#1e293b;margin-bottom:4px;">Top Rated in Education</h2>
+        <p style="color:#64748b;font-size:0.9rem;">Educational services with the best reviews</p>
+
+        <div class="filter-bar">
+            <a href="#" class="filter-chip active">All</a>
+            <a href="#" class="filter-chip">Schools</a>
+            <a href="#" class="filter-chip">Lesson Centers</a>
+            <a href="#" class="filter-chip">Driving</a>
+            <a href="#" class="filter-chip">Vocational</a>
+            <a href="#" class="filter-chip">Computer</a>
+            <a href="#" class="filter-chip">Quranic</a>
+        </div>
+
+        <div class="biz-grid">
+            <a href="../business/kuje-international-school" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/kujeacademy/600/400" alt="Kuje Academy">
+                    <span class="biz-badge">Featured</span>
+                </div>
+                <div class="biz-body">
+                    <h4>Kuje Academy Secondary School</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Top-rated secondary school offering both junior and senior secondary education with modern facilities.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuje Town</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.8 (96)</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../business/bright-future-academy" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/sunrisenursery/600/400" alt="Sunrise Nursery & Primary">
+                    <span class="biz-badge" style="background:#dc2626;">Popular</span>
+                </div>
+                <div class="biz-body">
+                    <h4>Sunrise Nursery & Primary School</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Caring and stimulating environment for early childhood development. Ages 2-11.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Byazhin</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.7 (73)</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../business/excel-tutorial-center" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/skillupcenter/600/400" alt="SkillUp Vocational Center">
+                </div>
+                <div class="biz-body">
+                    <h4>SkillUp Vocational Center</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Hands-on training in tailoring, hairdressing, welding, and ICT. Certificates awarded.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuje Market</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.6 (58)</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../business/little-scholars-nursery" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/drivekujeschool/600/400" alt="Drive Kuje Driving School">
+                    <span class="biz-badge" style="background:#eab308;color:#1e293b;">Trusted</span>
+                </div>
+                <div class="biz-body">
+                    <h4>Drive Kuje Driving School</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Professional driving lessons for car and commercial vehicles. Flexible schedule and affordable fees.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Chukuku</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.9 (142)</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../business/skillup-training-center" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/alquranschool/600/400" alt="Al-Quran Islamic School">
+                </div>
+                <div class="biz-body">
+                    <h4>Al-Quran Islamic School</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Quranic education, Islamic studies, and Arabic language for children and adults.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuje Town</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.8 (87)</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../business/kuje-tech-institute" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/brightfuture/600/400" alt="Bright Future Lesson Center">
+                    <span class="biz-badge" style="background:#0f766e;">New</span>
+                </div>
+                <div class="biz-body">
+                    <h4>Bright Future Lesson Center</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">JAMB, WAEC and NECO prep, after-school tutoring and special holiday classes.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Byazhin</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.5 (44)</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Schools & Education in Kuje",
+      "description": "Best schools, driving schools, vocational training and educational services in Kuje FCT Nigeria",
+      "url": "https://kujeconnect.com/service/education",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Kuje Academy Secondary School", "url": "https://kujeconnect.com/service/education#kujeacademy"},
+        {"@type": "ListItem", "position": 2, "name": "Sunrise Nursery & Primary School", "url": "https://kujeconnect.com/service/education#sunrisenursery"},
+        {"@type": "ListItem", "position": 3, "name": "SkillUp Vocational Center", "url": "https://kujeconnect.com/service/education#skillupcenter"},
+        {"@type": "ListItem", "position": 4, "name": "Drive Kuje Driving School", "url": "https://kujeconnect.com/service/education#drivekujeschool"},
+        {"@type": "ListItem", "position": 5, "name": "Al-Quran Islamic School", "url": "https://kujeconnect.com/service/education#alquranschool"},
+        {"@type": "ListItem", "position": 6, "name": "Bright Future Lesson Center", "url": "https://kujeconnect.com/service/education#brightfuture"}
+      ]
+    }
+    </script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

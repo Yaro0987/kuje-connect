@@ -1,0 +1,29 @@
+RewriteEngine On
+
+# Only rewrite if the request doesn't match a real file or directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# / → public/pages/index.html
+RewriteRule ^$ public/pages/index.html [L]
+
+# /service/food-and-restaurants/poultry-farming → public/pages/service/food-and-restaurants/poultry-farming.html
+RewriteRule ^service/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ public/pages/service/$1/$2.html [L]
+
+# /service/food-and-restaurants → public/pages/service/food-and-restaurants.html
+RewriteRule ^service/([a-zA-Z0-9_-]+)$ public/pages/service/$1.html [L]
+
+# /user/dashboard → user/dashboard.html
+RewriteRule ^user/([a-zA-Z0-9_-]+)$ user/$1.html [L]
+
+# /admin/dashboard → admin/dashboard.html
+RewriteRule ^admin/([a-zA-Z0-9_-]+)$ admin/$1.html [L]
+
+# /media/post-slug → public/pages/media-post.html?slug=post-slug
+RewriteRule ^media/([a-zA-Z0-9_-]+)$ public/pages/media-post.html?slug=$1 [L,QSA]
+
+# /business/business-name → public/pages/business/business-name.html
+RewriteRule ^business/([a-zA-Z0-9_-]+)$ public/pages/business/$1.html [L]
+
+# /pricing → public/pages/pricing.html, /about → public/pages/about.html, etc.
+RewriteRule ^([a-zA-Z0-9_-]+)$ public/pages/$1.html [L]

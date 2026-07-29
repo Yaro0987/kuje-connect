@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Kuje Connect Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .admin-body { background: #f1f5f9; }
+        .report-description {
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .modal-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .modal-detail-item {
+            padding: 10px 14px;
+            background: var(--light);
+            border-radius: var(--radius-xs);
+        }
+        .modal-detail-item.full {
+            grid-column: 1 / -1;
+        }
+        .modal-detail-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 2px;
+        }
+        .modal-detail-value {
+            font-size: 0.88rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        .stars {
+            color: #eab308;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body class="admin-body">
+    <div id="admin-header"></div>
+
+    <main class="admin-main">
+        <div class="admin-content">
+            <div class="page-header">
+                <div class="page-header-left">
+                    <h1>Reports</h1>
+                    <p>Manage user reports and flagged content</p>
+                </div>
+                <div class="page-header-actions">
+                    <span class="text-sm text-gray" id="totalReports">0 reports</span>
+                    <button class="btn btn-outline btn-sm" onclick="exportReports()"><i class="fas fa-download"></i> Export</button>
+                </div>
+            </div>
+
+            <div class="filter-tabs" id="filterTabs">
+                <button class="filter-tab active" data-filter="all" onclick="filterReports('all')">All <span class="tab-count" id="countAll">0</span></button>
+                <button class="filter-tab" data-filter="pending" onclick="filterReports('pending')">Pending <span class="tab-count" id="countPending">0</span></button>
+                <button class="filter-tab" data-filter="resolved" onclick="filterReports('resolved')">Resolved <span class="tab-count" id="countResolved">0</span></button>
+                <button class="filter-tab" data-filter="dismissed" onclick="filterReports('dismissed')">Dismissed <span class="tab-count" id="countDismissed">0</span></button>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-bar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search reports..." oninput="filterReports(currentFilter)">
+                </div>
+                <select class="form-select" id="typeFilter" onchange="filterReports(currentFilter)" style="max-width:160px">
+                    <option value="all">All Types</option>
+                    <option value="business">Business</option>
+                    <option value="product">Product</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+
+            <div class="admin-card">
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Reporter</th>
+                                <th>Target Type</th>
+                                <th>Target ID</th>
+                                <th>Reason</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportsTableBody">
+                            <tr class="table-empty"><td colspan="8"><i class="fas fa-flag"></i><p>No reports found</p></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="admin-footer"></div>
+
+    <div class="modal-overlay" id="viewReportModal">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h3><i class="fas fa-flag" style="color:var(--warning-dark);margin-right:8px;"></i>Report Details</h3>
+                <button class="modal-close" onclick="closeModal('viewReportModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-detail-grid" id="reportDetailGrid"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" onclick="closeModal('viewReportModal')">Close</button>
+                <button class="btn btn-primary btn-sm" id="modalResolveBtn" onclick="resolveFromModal()"><i class="fas fa-check"></i> Mark Resolved</button>
+                <button class="btn btn-outline-danger btn-sm" id="modalDismissBtn" onclick="dismissFromModal()"><i class="fas fa-times"></i> Dismiss</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var currentFilter = 'all';
+        var currentReportId = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAdminPartials();
+            renderReports();
+        });
+
+        function loadAdminPartials() {
+            fetch('includes/admin-header.html')
+                .then(function(r) { return r.text(); })
+                .then(function(h) {
+                    document.getElementById('admin-header').innerHTML = h;
+                    if (typeof initAdminSidebar === 'function') initAdminSidebar();
+                });
+            fetch('includes/admin-footer.html')
+                .then(function(r) { return r.text(); })
+                .then(function(h) {
+                    document.getElementById('admin-footer').innerHTML = h;
+                });
+        }
+
+        function getStatusBadge(status) {
+            var map = {
+                pending: 'badge-warning',
+                resolved: 'badge-success',
+                dismissed: 'badge-neutral'
+            };
+            return '<span class="badge ' + (map[status] || 'badge-neutral') + '">' + status.charAt(0).toUpperCase() + status.slice(1) + '</span>';
+        }
+
+        function formatDate(dateStr) {
+            var d = new Date(dateStr);
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+        }
+
+        function getTargetLabel(report) {
+            if (report.targetType === 'business') {
+                var biz = DB.businesses.find(function(b) { return b.id === report.targetId; });
+                return biz ? biz.name : report.targetId;
+            }
+            if (report.targetType === 'product') {
+                var prod = DB.products.find(function(p) { return p.id === report.targetId; });
+                return prod ? prod.name : report.targetId;
+            }
+            if (report.targetType === 'user') {
+                var usr = DB.users.find(function(u) { return u.id === report.targetId; });
+                return usr ? usr.name : report.targetId;
+            }
+            return report.targetId;
+        }
+
+        function renderReports() {
+            updateCounts();
+            filterReports('all');
+        }
+
+        function updateCounts() {
+            var all = DB.reports;
+            document.getElementById('countAll').textContent = all.length;
+            document.getElementById('countPending').textContent = all.filter(function(r) { return r.status === 'pending'; }).length;
+            document.getElementById('countResolved').textContent = all.filter(function(r) { return r.status === 'resolved'; }).length;
+            document.getElementById('countDismissed').textContent = all.filter(function(r) { return r.status === 'dismissed'; }).length;
+            document.getElementById('totalReports').textContent = all.length + ' reports';
+        }
+
+        function filterReports(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('#filterTabs .filter-tab').forEach(function(tab) {
+                tab.classList.toggle('active', tab.getAttribute('data-filter') === filter);
+            });
+
+            var filtered = DB.reports.slice();
+            if (filter !== 'all') {
+                filtered = filtered.filter(function(r) { return r.status === filter; });
+            }
+
+            var search = (document.getElementById('searchInput').value || '').toLowerCase();
+            if (search) {
+                filtered = filtered.filter(function(r) {
+                    var reporter = DB.users.find(function(u) { return u.id === r.reporterId; });
+                    var reporterName = reporter ? reporter.name.toLowerCase() : '';
+                    var targetLabel = getTargetLabel(r).toLowerCase();
+                    return reporterName.indexOf(search) !== -1 || targetLabel.indexOf(search) !== -1 || r.reason.toLowerCase().indexOf(search) !== -1;
+                });
+            }
+
+            var typeFilter = document.getElementById('typeFilter').value;
+            if (typeFilter !== 'all') {
+                filtered = filtered.filter(function(r) { return r.targetType === typeFilter; });
+            }
+
+            filtered.sort(function(a, b) {
+                return new Date(b.dateReported) - new Date(a.dateReported);
+            });
+
+            var tbody = document.getElementById('reportsTableBody');
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr class="table-empty"><td colspan="8"><i class="fas fa-flag"></i><p>No reports found</p></td></tr>';
+                return;
+            }
+
+            var html = '';
+            filtered.forEach(function(report) {
+                var reporter = DB.users.find(function(u) { return u.id === report.reporterId; });
+                var reporterName = reporter ? reporter.name : 'Unknown';
+                var targetLabel = getTargetLabel(report);
+
+                var typeIcon = report.targetType === 'business' ? 'fa-store' : report.targetType === 'product' ? 'fa-box' : 'fa-user';
+
+                html += '<tr>' +
+                    '<td><div class="table-avatar"><div class="table-avatar-initials">' + reporterName.charAt(0) + '</div><div><div class="table-avatar-name">' + reporterName + '</div></div></div></td>' +
+                    '<td><span class="badge badge-info"><i class="fas ' + typeIcon + '"></i> ' + report.targetType.charAt(0).toUpperCase() + report.targetType.slice(1) + '</span></td>' +
+                    '<td><span class="text-sm" style="font-weight:500;">' + targetLabel + '</span></td>' +
+                    '<td><span class="text-sm" style="font-weight:500;">' + report.reason + '</span></td>' +
+                    '<td><div class="report-description" title="' + escapeHtml(report.description) + '">' + escapeHtml(report.description) + '</div></td>' +
+                    '<td>' + getStatusBadge(report.status) + '</td>' +
+                    '<td><span class="text-sm text-gray">' + formatDate(report.dateReported) + '</span></td>' +
+                    '<td><div class="table-actions">' +
+                        (report.status === 'pending' ? '<button class="action-btn action-btn-primary" onclick="resolveReport(\'' + report.id + '\')" title="Resolve"><i class="fas fa-check"></i></button><button class="action-btn action-btn-danger" onclick="dismissReport(\'' + report.id + '\')" title="Dismiss"><i class="fas fa-times"></i></button>' : '') +
+                        '<button class="action-btn" style="background:rgba(59,130,246,0.1);color:#2563eb;" onclick="viewReport(\'' + report.id + '\')" title="View"><i class="fas fa-eye"></i></button>' +
+                    '</div></td>' +
+                '</tr>';
+            });
+            tbody.innerHTML = html;
+        }
+
+        function viewReport(id) {
+            var report = DB.reports.find(function(r) { return r.id === id; });
+            if (!report) return;
+            currentReportId = id;
+
+            var reporter = DB.users.find(function(u) { return u.id === report.reporterId; });
+            var targetLabel = getTargetLabel(report);
+
+            var html =
+                '<div class="modal-detail-item"><div class="modal-detail-label">Reporter</div><div class="modal-detail-value">' + (reporter ? reporter.name : 'Unknown') + '</div></div>' +
+                '<div class="modal-detail-item"><div class="modal-detail-label">Date Reported</div><div class="modal-detail-value">' + formatDate(report.dateReported) + '</div></div>' +
+                '<div class="modal-detail-item"><div class="modal-detail-label">Target Type</div><div class="modal-detail-value" style="text-transform:capitalize;">' + report.targetType + '</div></div>' +
+                '<div class="modal-detail-item"><div class="modal-detail-label">Target</div><div class="modal-detail-value">' + targetLabel + '</div></div>' +
+                '<div class="modal-detail-item"><div class="modal-detail-label">Reason</div><div class="modal-detail-value">' + report.reason + '</div></div>' +
+                '<div class="modal-detail-item"><div class="modal-detail-label">Status</div><div class="modal-detail-value">' + getStatusBadge(report.status) + '</div></div>' +
+                '<div class="modal-detail-item full"><div class="modal-detail-label">Description</div><div class="modal-detail-value" style="white-space:pre-wrap;">' + escapeHtml(report.description) + '</div></div>';
+
+            document.getElementById('reportDetailGrid').innerHTML = html;
+
+            var resolveBtn = document.getElementById('modalResolveBtn');
+            var dismissBtn = document.getElementById('modalDismissBtn');
+            if (report.status === 'pending') {
+                resolveBtn.style.display = 'inline-flex';
+                dismissBtn.style.display = 'inline-flex';
+            } else {
+                resolveBtn.style.display = 'none';
+                dismissBtn.style.display = 'none';
+            }
+
+            openModal('viewReportModal');
+        }
+
+        function resolveFromModal() {
+            if (currentReportId) resolveReport(currentReportId);
+            closeModal('viewReportModal');
+        }
+
+        function dismissFromModal() {
+            if (currentReportId) dismissReport(currentReportId);
+            closeModal('viewReportModal');
+        }
+
+        function resolveReport(id) {
+            var report = DB.reports.find(function(r) { return r.id === id; });
+            if (report) {
+                report.status = 'resolved';
+                renderReports();
+                showToast('Report has been marked as resolved.');
+            }
+        }
+
+        function dismissReport(id) {
+            var report = DB.reports.find(function(r) { return r.id === id; });
+            if (report) {
+                report.status = 'dismissed';
+                renderReports();
+                showToast('Report has been dismissed.');
+            }
+        }
+
+        function exportReports() {
+            var csv = 'Reporter,Target Type,Target,Reason,Description,Status,Date\n';
+            DB.reports.forEach(function(r) {
+                var reporter = DB.users.find(function(u) { return u.id === r.reporterId; });
+                csv += '"' + (reporter ? reporter.name : 'Unknown') + '","' + r.targetType + '","' + getTargetLabel(r) + '","' + r.reason + '","' + r.description + '","' + r.status + '","' + r.dateReported + '"\n';
+            });
+            var blob = new Blob([csv], { type: 'text/csv' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'reports-export.csv';
+            a.click();
+            URL.revokeObjectURL(a.href);
+            showToast('Reports exported successfully.');
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function showToast(message) {
+            var existing = document.querySelector('.toast-notification');
+            if (existing) existing.remove();
+            var toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.textContent = message;
+            toast.style.cssText = 'position:fixed;bottom:30px;right:30px;background:#1e3a5f;color:#fff;padding:14px 24px;border-radius:12px;z-index:10000;font-size:0.9rem;box-shadow:0 4px 20px rgba(0,0,0,0.25);animation:toastIn 0.3s ease;';
+            document.body.appendChild(toast);
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s ease';
+                setTimeout(function() { toast.remove(); }, 300);
+            }, 2500);
+        }
+
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

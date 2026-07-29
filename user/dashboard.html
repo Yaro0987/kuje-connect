@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Kuje Connect</title>
+    <meta name="description" content="Your Kuje Connect dashboard. Manage your businesses, messages, favorites, reviews, and account settings in one place.">
+    <meta name="keywords" content="Kuje Connect, dashboard, business management, Kuje businesses, Nigeria, FCT">
+    <meta name="author" content="Kuje Connect">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Dashboard - Kuje Connect">
+    <meta property="og:description" content="Manage your businesses, messages, and account from your personalized Kuje Connect dashboard.">
+    <meta property="og:image" content="../images/kuje.png">
+    <meta property="og:url" content="https://kujeconnect.com/user/dashboard">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kuje Connect">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Dashboard - Kuje Connect">
+    <meta name="twitter:description" content="Manage your businesses, messages, and account from your Kuje Connect dashboard.">
+    <meta name="twitter:image" content="../images/kuje.png">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar"></div>
+                <h4></h4>
+                <span class="user-badge"></span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item active"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item"><i class="fas fa-bell"></i> Notifications <span class="notif-badge" style="display:none;"></span></a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>Welcome back!</h2>
+                    <p>Here's what's happening with your businesses today.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background:#dcfce7;color:var(--primary);"><i class="fas fa-store"></i></div>
+                    <h3>0</h3>
+                    <p>My Businesses</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background:#dbeafe;color:#2563eb;"><i class="fas fa-envelope"></i></div>
+                    <h3>0</h3>
+                    <p>Messages</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background:#fce7f3;color:#db2777;"><i class="fas fa-heart"></i></div>
+                    <h3>0</h3>
+                    <p>Favorites</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background:#fef3c7;color:#d97706;"><i class="fas fa-star"></i></div>
+                    <h3>0</h3>
+                    <p>Reviews</p>
+                </div>
+            </div>
+
+            <h3 style="font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:14px;">Recent Activity</h3>
+            <div class="activity-list" style="margin-bottom:28px;"></div>
+
+            <h3 style="font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:14px;">Quick Actions</h3>
+            <div class="quick-actions">
+                <a href="my-businesses" class="btn-sm btn-primary"><i class="fas fa-plus"></i> Add Business</a>
+                <a href="messages" class="btn-sm"><i class="fas fa-envelope"></i> View Messages</a>
+                <a href="favorites" class="btn-sm"><i class="fas fa-heart"></i> My Favorites</a>
+                <a href="profile" class="btn-sm"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                <a href="notifications" class="btn-sm"><i class="fas fa-bell"></i> Notifications</a>
+            </div>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../data/data.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

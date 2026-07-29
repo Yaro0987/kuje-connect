@@ -1,0 +1,156 @@
+    <!-- Auth Modal -->
+    <div class="auth-modal-overlay" id="authModal">
+        <div class="auth-modal">
+            <button class="auth-modal-close" id="authModalClose"><i class="fas fa-times"></i></button>
+            <div class="auth-header">
+                <a href="index" class="logo">
+                    <img src="images/kuje.png" alt="Kuje Connect" style="height: 36px; width: auto;">
+                    <span>Kuje Connect</span>
+                </a>
+                <h2 id="authModalTitle">Welcome Back</h2>
+                <p id="authModalSubtitle">Login to your account to continue</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-auth-tab="login">Login</button>
+                <button class="auth-tab" data-auth-tab="register">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="modalLoginForm" class="auth-form" data-auth-form="login">
+                <div class="form-group">
+                    <label for="modalEmail">Email Address</label>
+                    <input type="email" id="modalEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="modalPassword">Password</label>
+                    <input type="password" id="modalPassword" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary auth-btn">Login</button>
+                <div class="auth-divider"><span>or continue with</span></div>
+                <div class="social-login">
+                    <button type="button" class="social-btn facebook" onclick="facebookLogin()"><i class="fab fa-facebook-f"></i> Facebook</button>
+                    <button type="button" class="social-btn google" onclick="googleLogin()"><i class="fab fa-google"></i> Google</button>
+                </div>
+            </form>
+
+            <!-- Register Form -->
+            <form id="modalRegisterForm" class="auth-form" data-auth-form="register" style="display:none;">
+                <div class="form-group">
+                    <label>I want to join as</label>
+                    <div style="display:flex;gap:12px;margin-top:8px;">
+                        <label class="auth-type-option active" data-type="customer">
+                            <input type="radio" name="accountType" value="customer" checked style="display:none;">
+                            <i class="fas fa-user"></i> Customer
+                        </label>
+                        <label class="auth-type-option" data-type="business">
+                            <input type="radio" name="accountType" value="business" style="display:none;">
+                            <i class="fas fa-store"></i> Business Owner
+                        </label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modalFirstName">First Name</label>
+                        <input type="text" id="modalFirstName" placeholder="First name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modalLastName">Last Name</label>
+                        <input type="text" id="modalLastName" placeholder="Last name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="modalRegEmail">Email Address</label>
+                    <input type="email" id="modalRegEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="modalPhone">Phone Number</label>
+                    <input type="tel" id="modalPhone" placeholder="e.g. 08012345678" required>
+                </div>
+                <div class="form-group">
+                    <label for="modalRegPassword">Password</label>
+                    <input type="password" id="modalRegPassword" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="modalConfirmPassword">Confirm Password</label>
+                    <input type="password" id="modalConfirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <div id="modalBusinessFields" style="display:none;">
+                    <div class="form-group">
+                        <label for="modalBusinessName">Business Name</label>
+                        <input type="text" id="modalBusinessName" placeholder="Your business name">
+                    </div>
+                    <div class="form-group">
+                        <label for="modalCategory">Business Category</label>
+                        <select id="modalCategory">
+                            <option value="">Select a category</option>
+                            <option value="food">Food & Restaurants</option>
+                            <option value="fashion">Fashion & Clothing</option>
+                            <option value="electronics">Electronics & Tech</option>
+                            <option value="home">Home Services</option>
+                            <option value="health">Health & Beauty</option>
+                            <option value="auto">Automobile</option>
+                            <option value="education">Education</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-options">
+                    <label><input type="checkbox" required> I agree to the <a href="terms">Terms</a> & <a href="privacy">Privacy Policy</a></label>
+                </div>
+                <button type="submit" class="btn btn-primary auth-btn">Create Account</button>
+                <div class="auth-divider"><span>or continue with</span></div>
+                <div class="social-login">
+                    <button type="button" class="social-btn facebook" onclick="facebookLogin()"><i class="fab fa-facebook-f"></i> Facebook</button>
+                    <button type="button" class="social-btn google" onclick="googleLogin()"><i class="fab fa-google"></i> Google</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Facebook SDK -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script>
+        // Initialize Facebook SDK - replace YOUR_APP_ID with your actual Facebook App ID
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: 'YOUR_FACEBOOK_APP_ID',
+                cookie: true,
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
+
+        function facebookLogin() {
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    FB.api('/me', {fields: 'name,email'}, function(response) {
+                        console.log('Facebook user:', response);
+                        showToast('Facebook login successful! Welcome ' + response.name);
+                        document.getElementById('authModal').classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                }
+            }, {scope: 'public_profile,email'});
+        }
+
+        function googleLogin() {
+            // Google Sign-In - replace with your Google Client ID
+            showToast('Google login coming soon!');
+        }
+
+        function showToast(message) {
+            var existing = document.querySelector('.toast-notification');
+            if (existing) existing.remove();
+            var toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.textContent = message;
+            toast.style.cssText = 'position:fixed;bottom:30px;right:30px;background:#16a34a;color:#fff;padding:14px 24px;border-radius:12px;z-index:10000;font-size:0.9rem;box-shadow:0 4px 20px rgba(0,0,0,0.25);';
+            document.body.appendChild(toast);
+            setTimeout(function() { toast.remove(); }, 3000);
+        }
+    </script>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Medical in Kuje | Clinics, Pharmacy, Dental, Gym</title>
+    <meta name="description" content="Find health and medical services in Kuje FCT Nigeria. Clinics, pharmacies, dental care, laboratories, gyms and fitness centres near you.">
+    <meta name="keywords" content="clinics Kuje, pharmacies Kuje, dental Kuje, laboratory Kuje, gym Kuje, hospitals Kuje, physiotherapy Kuje, maternity home Kuje, Kuje health, FCT clinics, Nigeria pharmacy">
+    <meta name="author" content="Kuje Connect">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kujeconnect.com/service/health-and-medical">
+    <meta property="og:title" content="Health & Medical in Kuje | Clinics, Pharmacy, Dental, Gym">
+    <meta property="og:description" content="Find health and medical services in Kuje FCT Nigeria. Clinics, pharmacies, dental care, laboratories and gyms.">
+    <meta property="og:image" content="https://kujeconnect.com/images/kuje.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kujeconnect.com/service/health-and-medical">
+    <meta property="og:site_name" content="Kuje Connect">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Health & Medical in Kuje | Clinics, Pharmacy, Dental, Gym">
+    <meta name="twitter:description" content="Find health and medical services in Kuje FCT Nigeria. Clinics, pharmacies, dental care, laboratories and gyms.">
+    <meta name="twitter:image" content="https://kujeconnect.com/images/kuje.png">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .service-hero {
+            background: linear-gradient(135deg, #b91c1c 0%, #dc2626 50%, #ef4444 100%);
+            padding: 140px 0 60px;
+            color: #fff;
+        }
+        .service-hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; }
+        .service-hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 600px; }
+        .breadcrumb { font-size: 0.85rem; margin-bottom: 20px; color: rgba(255,255,255,0.7); }
+        .breadcrumb a { color: rgba(255,255,255,0.9); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .sub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 40px 0;
+        }
+        .sub-card {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .sub-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-color: #dc2626;
+        }
+        .sub-card i { font-size: 1.8rem; color: #dc2626; margin-bottom: 10px; }
+        .sub-card h4 { font-size: 0.95rem; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+        .sub-card span { font-size: 0.8rem; color: #64748b; }
+        .filter-bar {
+            display: flex; gap: 10px; flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .filter-chip {
+            padding: 8px 18px; border-radius: 50px;
+            border: 1.5px solid #e2e8f0; font-size: 0.85rem;
+            font-weight: 500; cursor: pointer; transition: all 0.2s;
+            background: #fff; color: #64748b;
+            text-decoration: none;
+        }
+        .filter-chip:hover, .filter-chip.active {
+            border-color: #dc2626; background: #fef2f2; color: #dc2626;
+        }
+        .biz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .biz-card {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .biz-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+        .biz-card-img { height: 180px; position: relative; overflow: hidden; }
+        .biz-card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .biz-badge { position: absolute; top: 12px; left: 12px; padding: 4px 12px; border-radius: 20px; font-size: 0.73rem; font-weight: 600; background: #dc2626; color: #fff; }
+        .biz-body { padding: 16px; }
+        .biz-body h4 { font-size: 1rem; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+        .biz-body .biz-meta { display: flex; align-items: center; gap: 12px; font-size: 0.83rem; color: #64748b; margin-top: 8px; }
+        .biz-body .biz-meta i { margin-right: 4px; }
+    </style>
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="../images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <section class="service-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../..">Home</a> / <a href="../services">Services</a> / Health & Medical
+            </div>
+            <h1><i class="fas fa-heartbeat"></i> Health & Medical</h1>
+            <p>Find the best clinics, pharmacies, dental services, laboratories, gyms and wellness providers in Kuje, FCT Nigeria.</p>
+        </div>
+    </section>
+
+    <div class="container" style="padding: 40px 20px;">
+        <h2 style="font-size:1.3rem;font-weight:700;color:#1e293b;margin-bottom:4px;">Browse by Subcategory</h2>
+        <p style="color:#64748b;font-size:0.9rem;margin-bottom:16px;">Find exactly what you're looking for</p>
+        <div class="sub-grid">
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-hospital"></i><h4>Hospitals & Clinics</h4><span>General & specialist care</span></a>
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-pills"></i><h4>Pharmacies</h4><span>Medicine & prescriptions</span></a>
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-tooth"></i><h4>Dental Clinics</h4><span>Dentistry & oral care</span></a>
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-microscope"></i><h4>Laboratories</h4><span>Testing & diagnostics</span></a>
+            <a href="health-and-medical/fitness-and-wellness" class="sub-card"><i class="fas fa-dumbbell"></i><h4>Gyms & Fitness</h4><span>Exercise & training</span></a>
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-eye"></i><h4>Opticians</h4><span>Eyesight & eyewear</span></a>
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-hands"></i><h4>Physiotherapy</h4><span>Rehabilitation & recovery</span></a>
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-baby"></i><h4>Maternity Homes</h4><span>Maternity & midwifery</span></a>
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-spa"></i><h4>Skin Care Clinics</h4><span>Dermatology & beauty</span></a>
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-brain"></i><h4>Mental Health</h4><span>Therapy & counselling</span></a>
+            <a href="health-and-medical/fitness-and-wellness" class="sub-card"><i class="fas fa-apple-alt"></i><h4>Nutritionists</h4><span>Diet & nutrition plans</span></a>
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-paw"></i><h4>Veterinary</h4><span>Animal healthcare</span></a>
+            <a href="health-and-medical/pharmacy-and-drugs" class="sub-card"><i class="fas fa-first-aid"></i><h4>First Aid</h4><span>Emergency supplies</span></a>
+            <a href="health-and-medical/hospitals-and-clinics" class="sub-card"><i class="fas fa-shield-alt"></i><h4>Health Insurance</h4><span>Coverage & plans</span></a>
+            <a href="health-and-medical/medical-equipment" class="sub-card"><i class="fas fa-wheelchair"></i><h4>Medical Equipments</h4><span>Supplies & devices</span></a>
+        </div>
+
+        <h2 style="font-size:1.3rem;font-weight:700;color:#1e293b;margin-bottom:4px;">Top Rated in Health & Medical</h2>
+        <p style="color:#64748b;font-size:0.9rem;">Businesses with the best reviews</p>
+
+        <div class="filter-bar">
+            <a href="#" class="filter-chip active">All</a>
+            <a href="#" class="filter-chip">Clinics</a>
+            <a href="#" class="filter-chip">Pharmacies</a>
+            <a href="#" class="filter-chip">Dental</a>
+            <a href="#" class="filter-chip">Laboratory</a>
+            <a href="#" class="filter-chip">Gym</a>
+            <a href="#" class="filter-chip">Physiotherapy</a>
+        </div>
+
+        <div class="biz-grid">
+            <a href="../business/kuje-general-hospital" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/kujeclinic/600/400" alt="Kuje General Clinic">
+                    <span class="biz-badge">Featured</span>
+                </div>
+                <div class="biz-body">
+                    <h4>Kuje General Clinic</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Full-service clinic with general consultation, vaccination, lab tests and pharmacy. Open daily.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuje Town</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.8 (132)</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../business/al-muhib-specialist-clinic" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/pharmacyplus/600/400" alt="Pharmacy Plus">
+                    <span class="biz-badge" style="background:#dc2626;">Open 24/7</span>
+                </div>
+                <div class="biz-body">
+                    <h4>Pharmacy Plus</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Affordable medications, prescriptions and health supplements. Home delivery available.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Byazhin</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.6 (98)</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../business/springs-medical-center" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/kujedental/600/400" alt="Kuje Dental Care">
+                    <span class="biz-badge" style="background:#eab308;color:#1e293b;">Popular</span>
+                </div>
+                <div class="biz-body">
+                    <h4>Kuje Dental Care</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Expert dental services including cleaning, filling, braces and tooth extraction.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuje Market</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.9 (187)</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../business/kuje-pharmacy" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/powergym/600/400" alt="Power Gym & Fitness">
+                </div>
+                <div class="biz-body">
+                    <h4>Power Gym & Fitness</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Modern gym with personal trainers, group classes and all equipment. Monthly plans available.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Chukuku</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.7 (74)</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../business/healthplus-drug-store" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/preciselab/600/400" alt="Precise Medical Lab">
+                </div>
+                <div class="biz-body">
+                    <h4>Precise Medical Lab</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Advanced diagnostics, blood tests, malaria screening, pregnancy tests and more.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuje Town</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.8 (103)</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../business/medicare-chemist" class="biz-card">
+                <div class="biz-card-img">
+                    <img src="https://picsum.photos/seed/physiocare/600/400" alt="PhysioCare Center">
+                    <span class="biz-badge" style="background:#16a34a;">New</span>
+                </div>
+                <div class="biz-body">
+                    <h4>PhysioCare Center</h4>
+                    <p style="font-size:0.85rem;color:#64748b;">Professional physiotherapy for sports injuries, back pain and post-surgery rehabilitation.</p>
+                    <div class="biz-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Byazhin</span>
+                        <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.5 (51)</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Health & Medical Services in Kuje",
+      "description": "Best clinics, pharmacies, dental care, laboratories and gyms in Kuje FCT Nigeria",
+      "url": "https://kujeconnect.com/service/health-and-medical",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Kuje General Clinic", "url": "https://kujeconnect.com/service/health-and-medical#kujeclinic"},
+        {"@type": "ListItem", "position": 2, "name": "Pharmacy Plus", "url": "https://kujeconnect.com/service/health-and-medical#pharmacyplus"},
+        {"@type": "ListItem", "position": 3, "name": "Kuje Dental Care", "url": "https://kujeconnect.com/service/health-and-medical#kujedental"},
+        {"@type": "ListItem", "position": 4, "name": "Power Gym & Fitness", "url": "https://kujeconnect.com/service/health-and-medical#powergym"},
+        {"@type": "ListItem", "position": 5, "name": "Precise Medical Lab", "url": "https://kujeconnect.com/service/health-and-medical#preciselab"},
+        {"@type": "ListItem", "position": 6, "name": "PhysioCare Center", "url": "https://kujeconnect.com/service/health-and-medical#physiocare"}
+      ]
+    }
+    </script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

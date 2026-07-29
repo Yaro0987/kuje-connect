@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Kuje Connect</title>
+    <meta name="description" content="Your Kuje Connect messages. Chat with business owners and customers directly.">
+    <meta name="keywords" content="Kuje Connect, messages, chat, conversations">
+    <meta name="author" content="Kuje Connect">
+    <meta property="og:title" content="Messages - Kuje Connect">
+    <meta property="og:description" content="Chat with business owners and customers directly.">
+    <meta property="og:image" content="images/kuje.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .messages-layout {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-lighter);
+            height: calc(100vh - 180px);
+            overflow: hidden;
+        }
+        .conversations-list {
+            border-right: 1px solid var(--gray-lighter);
+            overflow-y: auto;
+        }
+        .conversations-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--gray-lighter);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .conversation-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--light);
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .conversation-item:hover { background: var(--light); }
+        .conversation-item.active { background: #f0fdf4; border-left: 3px solid var(--primary); }
+        .conv-avatar {
+            width: 42px; height: 42px; border-radius: 50%;
+            color: var(--white); font-size: 0.85rem; font-weight: 600;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .conv-info { flex: 1; min-width: 0; }
+        .conv-name { font-size: 0.9rem; font-weight: 600; color: var(--dark); }
+        .conv-preview { font-size: 0.8rem; color: var(--gray); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .conv-time { font-size: 0.75rem; color: var(--gray-light); white-space: nowrap; }
+        .message-area { display: flex; flex-direction: column; }
+        .message-header {
+            padding: 14px 20px; border-bottom: 1px solid var(--gray-lighter);
+            display: flex; align-items: center; gap: 12px;
+        }
+        .message-header h4 { font-size: 0.95rem; font-weight: 600; color: var(--dark); }
+        .message-header span { font-size: 0.8rem; color: var(--primary); }
+        .message-body {
+            flex: 1; padding: 20px; overflow-y: auto;
+            display: flex; flex-direction: column; gap: 16px;
+        }
+        .msg-bubble {
+            max-width: 65%; padding: 10px 16px; border-radius: 12px;
+            font-size: 0.9rem; line-height: 1.5;
+        }
+        .msg-received {
+            background: var(--light); color: var(--dark-light);
+            align-self: flex-start; border-bottom-left-radius: 4px;
+        }
+        .msg-sent {
+            background: var(--primary); color: var(--white);
+            align-self: flex-end; border-bottom-right-radius: 4px;
+        }
+        .msg-time { font-size: 0.7rem; margin-top: 4px; opacity: 0.7; }
+        .message-input {
+            padding: 14px 20px; border-top: 1px solid var(--gray-lighter);
+            display: flex; gap: 10px; align-items: center;
+        }
+        .message-input input {
+            flex: 1; padding: 10px 14px; border: 1px solid var(--gray-lighter);
+            border-radius: var(--radius-sm); font-size: 0.9rem; outline: none;
+        }
+        .message-input input:focus { border-color: var(--primary); }
+        .btn-send {
+            width: 40px; height: 40px; border-radius: var(--radius-sm); border: none;
+            background: var(--primary); color: var(--white); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .btn-send:hover { background: var(--primary-dark); }
+        @media (max-width: 768px) {
+            .messages-layout { grid-template-columns: 1fr; height: auto; }
+            .conversations-list { max-height: 300px; }
+        }
+    </style>
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar">A</div>
+                <h4>Amina Ibrahim</h4>
+                <span class="user-badge"><i class="fas fa-briefcase"></i> Business Owner</span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item active"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item"><i class="fas fa-bell"></i> Notifications</a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>Messages</h2>
+                    <p>Your conversations with businesses and customers.</p>
+                </div>
+            </div>
+
+            <div class="messages-layout">
+                <div class="conversations-list">
+                    <div class="conversations-header"><i class="fas fa-comments" style="margin-right:8px;color:var(--primary);"></i> Conversations</div>
+                    <div class="conversation-item active">
+                        <div class="conv-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706);">FB</div>
+                        <div class="conv-info">
+                            <div class="conv-name">Fatima Bello</div>
+                            <div class="conv-preview">Hi, I'd like to order...</div>
+                        </div>
+                        <span class="conv-time">2h ago</span>
+                    </div>
+                    <div class="conversation-item">
+                        <div class="conv-avatar" style="background:linear-gradient(135deg,#3b82f6,#2563eb);">OA</div>
+                        <div class="conv-info">
+                            <div class="conv-name">Oluwaseun Adams</div>
+                            <div class="conv-preview">Do you have the new...</div>
+                        </div>
+                        <span class="conv-time">5h ago</span>
+                    </div>
+                    <div class="conversation-item">
+                        <div class="conv-avatar" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">TZ</div>
+                        <div class="conv-info">
+                            <div class="conv-name">TechZone Support</div>
+                            <div class="conv-preview">Your order has been...</div>
+                        </div>
+                        <span class="conv-time">1d ago</span>
+                    </div>
+                </div>
+
+                <div class="message-area">
+                    <div class="message-header">
+                        <div class="conv-avatar" style="width:36px;height:36px;font-size:0.8rem;background:linear-gradient(135deg,#f59e0b,#d97706);">FB</div>
+                        <div>
+                            <h4>Fatima Bello</h4>
+                            <span>Online</span>
+                        </div>
+                    </div>
+                    <div class="message-body">
+                        <div class="msg-bubble msg-received">
+                            Hi, I'd like to order jollof rice for 20 people this Saturday. Do you cater for events?
+                            <div class="msg-time">2:30 PM</div>
+                        </div>
+                        <div class="msg-bubble msg-sent">
+                            Hello Fatima! Yes, we do cater for events. For 20 people, I'd recommend our party jollof package.
+                            <div class="msg-time">2:35 PM</div>
+                        </div>
+                        <div class="msg-bubble msg-received">
+                            That sounds great! What's the price per person?
+                            <div class="msg-time">2:38 PM</div>
+                        </div>
+                        <div class="msg-bubble msg-sent">
+                            It's ₦3,500 per person, which includes jollof rice, fried rice, chicken, salad, and a drink. Would you like me to send you the full menu?
+                            <div class="msg-time">2:42 PM</div>
+                        </div>
+                    </div>
+                    <div class="message-input">
+                        <input type="text" placeholder="Type a message...">
+                        <button class="btn-send"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Kuje Connect Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .admin-body { background: #f1f5f9; }
+        .review-text-cell {
+            max-width: 220px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .stars {
+            color: #eab308;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .stars .empty {
+            color: var(--gray-lighter);
+        }
+        .modal-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .modal-detail-item {
+            padding: 10px 14px;
+            background: var(--light);
+            border-radius: var(--radius-xs);
+        }
+        .modal-detail-item.full {
+            grid-column: 1 / -1;
+        }
+        .modal-detail-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 2px;
+        }
+        .modal-detail-value {
+            font-size: 0.88rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="admin-body">
+    <div id="admin-header"></div>
+
+    <main class="admin-main">
+        <div class="admin-content">
+            <div class="page-header">
+                <div class="page-header-left">
+                    <h1>Reviews</h1>
+                    <p>Manage customer reviews and feedback</p>
+                </div>
+                <div class="page-header-actions">
+                    <span class="text-sm text-gray" id="totalReviews">0 reviews</span>
+                </div>
+            </div>
+
+            <div class="filter-tabs" id="filterTabs">
+                <button class="filter-tab active" data-filter="all" onclick="filterReviews('all')">All <span class="tab-count" id="countAll">0</span></button>
+                <button class="filter-tab" data-filter="5" onclick="filterReviews('5')">5-star <span class="tab-count" id="count5">0</span></button>
+                <button class="filter-tab" data-filter="4" onclick="filterReviews('4')">4-star <span class="tab-count" id="count4">0</span></button>
+                <button class="filter-tab" data-filter="3" onclick="filterReviews('3')">3-star <span class="tab-count" id="count3">0</span></button>
+                <button class="filter-tab" data-filter="2" onclick="filterReviews('2')">2-star <span class="tab-count" id="count2">0</span></button>
+                <button class="filter-tab" data-filter="1" onclick="filterReviews('1')">1-star <span class="tab-count" id="count1">0</span></button>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-bar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search reviews..." oninput="filterReviews(currentFilter)">
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Reviewer</th>
+                                <th>Business</th>
+                                <th>Rating</th>
+                                <th>Review Text</th>
+                                <th>Date</th>
+                                <th>Has Reply</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reviewsTableBody">
+                            <tr class="table-empty"><td colspan="7"><i class="fas fa-star"></i><p>No reviews found</p></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="admin-footer"></div>
+
+    <div class="modal-overlay" id="viewReviewModal">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h3><i class="fas fa-star" style="color:#eab308;margin-right:8px;"></i>Review Details</h3>
+                <button class="modal-close" onclick="closeModal('viewReviewModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-detail-grid" id="reviewDetailGrid"></div>
+                <div class="form-group" style="margin-top:16px;">
+                    <label class="form-label">Reply to Review</label>
+                    <textarea class="form-textarea" id="replyTextarea" rows="3" placeholder="Write a reply as the business owner..."></textarea>
+                </div>
+                <div id="existingReply" style="display:none;margin-top:12px;padding:12px 16px;background:#f0fdf4;border-radius:var(--radius-xs);border-left:3px solid var(--primary);">
+                    <div style="font-size:0.72rem;font-weight:600;color:var(--primary);text-transform:uppercase;margin-bottom:4px;">Existing Reply</div>
+                    <div id="existingReplyText" style="font-size:0.85rem;color:var(--dark);"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" onclick="closeModal('viewReviewModal')">Close</button>
+                <button class="btn btn-primary btn-sm" id="saveReplyBtn" onclick="saveReply()"><i class="fas fa-reply"></i> Save Reply</button>
+                <button class="btn btn-outline-danger btn-sm" onclick="deleteReview()"><i class="fas fa-trash"></i> Delete Review</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var currentFilter = 'all';
+        var currentReviewId = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAdminPartials();
+            renderReviews();
+        });
+
+        function loadAdminPartials() {
+            fetch('includes/admin-header.html')
+                .then(function(r) { return r.text(); })
+                .then(function(h) {
+                    document.getElementById('admin-header').innerHTML = h;
+                    if (typeof initAdminSidebar === 'function') initAdminSidebar();
+                });
+            fetch('includes/admin-footer.html')
+                .then(function(r) { return r.text(); })
+                .then(function(h) {
+                    document.getElementById('admin-footer').innerHTML = h;
+                });
+        }
+
+        function getBusinessName(businessId) {
+            var biz = DB.businesses.find(function(b) { return b.id === businessId; });
+            return biz ? biz.name : 'Unknown';
+        }
+
+        function formatDate(dateStr) {
+            var d = new Date(dateStr);
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+        }
+
+        function renderStars(rating) {
+            var s = '';
+            for (var i = 1; i <= 5; i++) {
+                s += '<i class="fas fa-star' + (i <= rating ? '' : ' empty') + '"></i>';
+            }
+            return s;
+        }
+
+        function renderReviews() {
+            updateCounts();
+            filterReviews('all');
+        }
+
+        function updateCounts() {
+            var all = DB.reviews;
+            document.getElementById('countAll').textContent = all.length;
+            for (var i = 1; i <= 5; i++) {
+                document.getElementById('count' + i).textContent = all.filter(function(r) { return r.rating === i; }).length;
+            }
+            document.getElementById('totalReviews').textContent = all.length + ' reviews';
+        }
+
+        function filterReviews(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('#filterTabs .filter-tab').forEach(function(tab) {
+                tab.classList.toggle('active', tab.getAttribute('data-filter') === filter);
+            });
+
+            var filtered = DB.reviews.slice();
+            if (filter !== 'all') {
+                var rating = parseInt(filter);
+                filtered = filtered.filter(function(r) { return r.rating === rating; });
+            }
+
+            var search = (document.getElementById('searchInput').value || '').toLowerCase();
+            if (search) {
+                filtered = filtered.filter(function(r) {
+                    var user = DB.users.find(function(u) { return u.id === r.userId; });
+                    var userName = user ? user.name.toLowerCase() : '';
+                    var bizName = getBusinessName(r.businessId).toLowerCase();
+                    return userName.indexOf(search) !== -1 || bizName.indexOf(search) !== -1 || r.text.toLowerCase().indexOf(search) !== -1;
+                });
+            }
+
+            filtered.sort(function(a, b) {
+                return new Date(b.timestamp) - new Date(a.timestamp);
+            });
+
+            var tbody = document.getElementById('reviewsTableBody');
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr class="table-empty"><td colspan="7"><i class="fas fa-star"></i><p>No reviews found</p></td></tr>';
+                return;
+            }
+
+            var html = '';
+            filtered.forEach(function(review) {
+                var user = DB.users.find(function(u) { return u.id === review.userId; });
+                var userName = user ? user.name : 'Unknown';
+                var bizName = getBusinessName(review.businessId);
+                var hasReply = review.reply ? 'Yes' : 'No';
+
+                html += '<tr>' +
+                    '<td><div class="table-avatar"><div class="table-avatar-initials">' + userName.charAt(0) + '</div><div><div class="table-avatar-name">' + userName + '</div></div></div></td>' +
+                    '<td><span style="font-weight:500;">' + bizName + '</span></td>' +
+                    '<td><span class="stars">' + renderStars(review.rating) + '</span></td>' +
+                    '<td><div class="review-text-cell" title="' + escapeHtml(review.text) + '">' + escapeHtml(review.text) + '</div></td>' +
+                    '<td><span class="text-sm text-gray">' + formatDate(review.timestamp) + '</span></td>' +
+                    '<td>' + (hasReply === 'Yes' ? '<span class="badge badge-success"><i class="fas fa-check"></i> Yes</span>' : '<span class="badge badge-neutral">No</span>') + '</td>' +
+                    '<td><div class="table-actions">' +
+                        '<button class="action-btn" style="background:rgba(59,130,246,0.1);color:#2563eb;" onclick="viewReview(\'' + review.id + '\')" title="View"><i class="fas fa-eye"></i></button>' +
+                        '<button class="action-btn action-btn-danger" onclick="confirmDeleteReview(\'' + review.id + '\')" title="Delete"><i class="fas fa-trash"></i></button>' +
+                    '</div></td>' +
+                '</tr>';
+            });
+            tbody.innerHTML = html;
+        }
+
+        function viewReview(id) {
+            var review = DB.reviews.find(function(r) { return r.id === id; });
+            if (!review) return;
+            currentReviewId = id;
+
+            var user = DB.users.find(function(u) { return u.id === review.userId; });
+            var userName = user ? user.name : 'Unknown';
+            var bizName = getBusinessName(review.businessId);
+
+            var html =
+                '<div class="modal-detail-item"><div class="modal-detail-label">Reviewer</div><div class="modal-detail-value">' + userName + '</div></div>' +
+                '<div class="modal-detail-item"><div class="modal-detail-label">Business</div><div class="modal-detail-value">' + bizName + '</div></div>' +
+                '<div class="modal-detail-item"><div class="modal-detail-label">Rating</div><div class="modal-detail-value"><span class="stars">' + renderStars(review.rating) + '</span></div></div>' +
+                '<div class="modal-detail-item"><div class="modal-detail-label">Date</div><div class="modal-detail-value">' + formatDate(review.timestamp) + '</div></div>' +
+                '<div class="modal-detail-item full"><div class="modal-detail-label">Review Text</div><div class="modal-detail-value" style="white-space:pre-wrap;">' + escapeHtml(review.text) + '</div></div>';
+
+            document.getElementById('reviewDetailGrid').innerHTML = html;
+
+            var replyContainer = document.getElementById('existingReply');
+            var replyText = document.getElementById('existingReplyText');
+            var textarea = document.getElementById('replyTextarea');
+
+            if (review.reply) {
+                replyContainer.style.display = 'block';
+                replyText.textContent = review.reply;
+                textarea.value = review.reply;
+            } else {
+                replyContainer.style.display = 'none';
+                textarea.value = '';
+            }
+
+            openModal('viewReviewModal');
+        }
+
+        function saveReply() {
+            var review = DB.reviews.find(function(r) { return r.id === currentReviewId; });
+            if (!review) return;
+            var text = document.getElementById('replyTextarea').value.trim();
+            if (text) {
+                review.reply = text;
+                renderReviews();
+                showToast('Reply saved successfully.');
+            } else {
+                showToast('Please enter a reply.');
+            }
+        }
+
+        function confirmDeleteReview(id) {
+            if (confirm('Are you sure you want to delete this review? This action cannot be undone.')) {
+                deleteReviewById(id);
+            }
+        }
+
+        function deleteReview() {
+            closeModal('viewReviewModal');
+            if (currentReviewId) confirmDeleteReview(currentReviewId);
+        }
+
+        function deleteReviewById(id) {
+            var idx = -1;
+            DB.reviews.forEach(function(r, i) {
+                if (r.id === id) idx = i;
+            });
+            if (idx !== -1) {
+                DB.reviews.splice(idx, 1);
+                renderReviews();
+                showToast('Review has been deleted.');
+            }
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function showToast(message) {
+            var existing = document.querySelector('.toast-notification');
+            if (existing) existing.remove();
+            var toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.textContent = message;
+            toast.style.cssText = 'position:fixed;bottom:30px;right:30px;background:#1e3a5f;color:#fff;padding:14px 24px;border-radius:12px;z-index:10000;font-size:0.9rem;box-shadow:0 4px 20px rgba(0,0,0,0.25);animation:toastIn 0.3s ease;';
+            document.body.appendChild(toast);
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s ease';
+                setTimeout(function() { toast.remove(); }, 300);
+            }, 2500);
+        }
+
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

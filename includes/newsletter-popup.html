@@ -1,0 +1,33 @@
+<div class="newsletter-popup-overlay" id="newsletterPopupOverlay"></div>
+<div class="newsletter-popup" id="newsletterPopup">
+    <button class="newsletter-popup-close" id="newsletterPopupClose" aria-label="Close"><i class="fas fa-times"></i></button>
+    <div class="newsletter-popup-icon"><i class="fas fa-envelope-open-text"></i></div>
+    <h3>Stay Connected with Kuje Connect!</h3>
+    <p>Get the latest business listings, community news, job alerts and exclusive offers delivered to your inbox.</p>
+    <form class="newsletter-popup-form" onsubmit="event.preventDefault(); newsletterPopupSubscribe();">
+        <input type="text" placeholder="Your full name" id="newsletterPopupName" required>
+        <input type="email" placeholder="Your email address" id="newsletterPopupEmail" required>
+        <button type="submit" class="btn btn-primary" style="width:100%;"><i class="fas fa-paper-plane"></i> Subscribe Now</button>
+    </form>
+    <label class="newsletter-popup-dismiss" style="display:flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--gray);cursor:pointer;margin-top:8px;">
+        <input type="checkbox" id="newsletterPopupDontShow"> Don't show this again
+    </label>
+</div>
+
+<style>
+.newsletter-popup-overlay { position:fixed;inset:0;z-index:99995;background:rgba(0,0,0,0.6);opacity:0;visibility:hidden;transition:all 0.3s; }
+.newsletter-popup-overlay.active { opacity:1;visibility:visible; }
+.newsletter-popup { position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);z-index:99996;background:#fff;border-radius:16px;padding:36px 32px 28px;width:420px;max-width:90vw;text-align:center;opacity:0;visibility:hidden;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:0 24px 64px rgba(0,0,0,0.2); }
+.newsletter-popup.active { opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1); }
+.newsletter-popup-close { position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:none;background:var(--light);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:0.85rem;transition:var(--transition); }
+.newsletter-popup-close:hover { background:var(--primary);color:#fff; }
+.newsletter-popup-icon { width:64px;height:64px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.6rem;color:var(--primary); }
+.newsletter-popup h3 { font-size:1.15rem;font-weight:700;margin-bottom:8px;color:var(--dark); }
+.newsletter-popup p { font-size:0.88rem;color:var(--gray);margin-bottom:20px;line-height:1.5; }
+.newsletter-popup-form { display:flex;flex-direction:column;gap:10px; }
+.newsletter-popup-form input { width:100%;padding:11px 14px;border:1px solid #d1d5db;border-radius:8px;font-family:inherit;font-size:0.88rem;transition:var(--transition);box-sizing:border-box; }
+.newsletter-popup-form input:focus { outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(22,163,74,0.15); }
+.newsletter-popup-form .btn { padding:11px;font-size:0.9rem; }
+@media (max-width:480px) { .newsletter-popup { padding:28px 20px 24px; } }
+</style>
+

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var p=window.location.pathname,i=p.indexOf('/media/');if(i!==-1){var b=document.createElement('base');b.href=p.substring(0,i+1);document.head.appendChild(b);}})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="postTitle">Blog Post - Kuje Connect</title>
+    <link rel="icon" type="image/png" href="images/kuje.png">
+    <link rel="apple-touch-icon" href="images/kuje.png">
+    <meta name="description" id="postDesc" content="Kuje Connect blog post.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" id="postCanonical" href="https://kujeconnect.org/media">
+    <meta property="og:title" id="ogTitle" content="Blog Post - Kuje Connect">
+    <meta property="og:description" id="ogDesc" content="Kuje Connect blog post.">
+    <meta property="og:image" id="ogImage" content="images/kuje.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .post-layout { display: grid; grid-template-columns: 1fr 300px; gap: 40px; padding: 50px 0; }
+        @media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } }
+        .post-article { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; }
+        .post-article .post-featured-img { width: 100%; height: 350px; object-fit: cover; display: block; }
+        @media (max-width: 768px) { .post-article .post-featured-img { height: 220px; } }
+        .post-article .post-body { padding: 36px; }
+        @media (max-width: 768px) { .post-article .post-body { padding: 20px; } }
+        .post-article .post-cat { display: inline-block; background: var(--light); color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; }
+        .post-article h1 { font-size: 1.8rem; font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
+        @media (max-width: 768px) { .post-article h1 { font-size: 1.4rem; } }
+        .post-article .post-meta-bar { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.85rem; color: var(--gray-light); padding-bottom: 20px; margin-bottom: 24px; border-bottom: 1px solid #e2e8f0; }
+        .post-article .post-meta-bar span { display: flex; align-items: center; gap: 5px; }
+        .post-article .post-content { font-size: 0.95rem; line-height: 1.8; color: var(--dark-light); }
+        .post-article .post-content p { margin-bottom: 16px; }
+        .post-article .post-content h2 { font-size: 1.3rem; font-weight: 700; margin: 28px 0 12px; }
+        .post-article .post-content h3 { font-size: 1.1rem; font-weight: 600; margin: 24px 0 10px; }
+        .post-article .post-content ul, .post-article .post-content ol { margin: 0 0 16px 20px; }
+        .post-article .post-content li { margin-bottom: 8px; }
+        .post-article .post-content blockquote { border-left: 4px solid var(--primary); padding: 16px 20px; margin: 20px 0; background: var(--light); border-radius: 0 8px 8px 0; font-style: italic; }
+        .post-article .post-content img { max-width: 100%; border-radius: 8px; margin: 20px 0; }
+        .post-article .post-share { display: flex; gap: 10px; padding: 20px 0; border-top: 1px solid #e2e8f0; margin-top: 24px; }
+        .post-article .post-share span { font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; }
+        .post-article .post-share a { width: 38px; height: 38px; border-radius: 50%; background: var(--light); color: var(--gray); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: var(--transition); }
+        .post-article .post-share a:hover { background: var(--primary); color: #fff; }
+
+        .post-author { display: flex; gap: 16px; padding: 24px; background: var(--light); border-radius: 12px; margin: 24px 0; }
+        .post-author .pa-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700; flex-shrink: 0; }
+        .post-author .pa-name { font-weight: 600; margin-bottom: 4px; }
+        .post-author .pa-bio { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
+
+        .image-gallery { margin: 28px 0; }
+        .image-gallery h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; }
+        .image-gallery .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        @media (max-width: 768px) { .image-gallery .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .image-gallery .gallery-grid { grid-template-columns: 1fr; } }
+        .image-gallery .gallery-grid .gallery-img { border-radius: 10px; overflow: hidden; cursor: pointer; position: relative; aspect-ratio: 16/10; }
+        .image-gallery .gallery-grid .gallery-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .image-gallery .gallery-grid .gallery-img:hover img { transform: scale(1.05); }
+        .image-gallery .gallery-grid .gallery-img .gal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; color: #fff; font-size: 1.2rem; }
+        .image-gallery .gallery-grid .gallery-img:hover .gal-overlay { opacity: 1; }
+
+        .lightbox { position: fixed; inset: 0; z-index: 99995; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; }
+        .lightbox.active { display: flex; }
+        .lightbox .lb-content { position: relative; max-width: 80vw; max-height: 85vh; display: flex; align-items: center; justify-content: center; }
+        .lightbox .lb-content img { max-width: 100%; max-height: 85vh; border-radius: 8px; object-fit: contain; }
+        .lightbox .lb-close { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.15); color: #fff; border: none; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 2; }
+        .lightbox .lb-close:hover { background: rgba(255,255,255,0.3); }
+        .lightbox .lb-prev, .lightbox .lb-next { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.15); color: #fff; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 2; }
+        .lightbox .lb-prev:hover, .lightbox .lb-next:hover { background: rgba(255,255,255,0.3); }
+        .lightbox .lb-prev { left: 20px; }
+        .lightbox .lb-next { right: 20px; }
+        .lightbox .lb-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-size: 0.85rem; background: rgba(0,0,0,0.5); padding: 6px 16px; border-radius: 20px; }
+        @media (max-width: 768px) {
+            .lightbox .lb-content { max-width: 95vw; }
+            .lightbox .lb-prev { left: 8px; width: 36px; height: 36px; }
+            .lightbox .lb-next { right: 8px; width: 36px; height: 36px; }
+        }
+
+        .comments-section { padding: 24px 0; border-top: 1px solid #e2e8f0; margin-top: 24px; }
+        .comments-section h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; }
+        .comment { display: flex; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; }
+        .comment:last-child { border-bottom: none; }
+        .comment .c-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem; flex-shrink: 0; }
+        .comment .c-name { font-weight: 600; font-size: 0.88rem; }
+        .comment .c-date { font-size: 0.78rem; color: var(--gray-light); }
+        .comment .c-text { font-size: 0.88rem; color: var(--gray); line-height: 1.5; margin-top: 6px; }
+        .comment .c-reply { font-size: 0.8rem; color: var(--primary); cursor: pointer; background: none; border: none; font-family: inherit; font-weight: 500; margin-top: 6px; }
+        .comment-form { margin-top: 24px; }
+        .comment-form h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; }
+        .comment-form .form-group { margin-bottom: 14px; }
+        .comment-form label { display: block; font-weight: 500; font-size: 0.85rem; margin-bottom: 4px; }
+        .comment-form input, .comment-form textarea { width: 100%; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 0.9rem; box-sizing: border-box; }
+        .comment-form input:focus, .comment-form textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(22,163,74,0.15); }
+        .comment-form textarea { resize: vertical; min-height: 100px; }
+
+        .related-posts { padding: 50px 0; }
+        .related-posts h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 24px; }
+        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+        .related-card { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; transition: all 0.25s; }
+        .related-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+        .related-card .rc-img { height: 150px; background: var(--light); overflow: hidden; }
+        .related-card .rc-img img { width: 100%; height: 100%; object-fit: cover; }
+        .related-card .rc-body { padding: 16px; }
+        .related-card .rc-body h3 { font-size: 0.9rem; font-weight: 600; line-height: 1.4; margin-bottom: 6px; }
+        .related-card .rc-body h3 a { color: inherit; text-decoration: none; }
+        .related-card .rc-body h3 a:hover { color: var(--primary); }
+        .related-card .rc-body .rc-meta { font-size: 0.75rem; color: var(--gray-light); }
+
+        .sidebar-section { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 24px; margin-bottom: 24px; }
+        .sidebar-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--primary); }
+        .sidebar-section ul { list-style: none; padding: 0; margin: 0; }
+        .sidebar-section ul li { margin-bottom: 10px; }
+        .sidebar-section ul li a { color: var(--gray); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: var(--transition); }
+        .sidebar-section ul li a:hover { color: var(--primary); padding-left: 4px; }
+        .sidebar-section ul li a i { width: 18px; color: var(--primary); font-size: 0.7rem; }
+        #sidebarRecent a img { width: 42px; height: 42px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
+        .sidebar-section .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+        .sidebar-section .tag-cloud a { background: var(--light); color: var(--gray); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; text-decoration: none; transition: var(--transition); }
+        .sidebar-section .tag-cloud a:hover { background: var(--primary); color: #fff; }
+
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style>
+</head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+
+<div id="site-header"></div>
+
+<section class="content-section" style="padding-top:140px;"></section>
+
+<section class="content-section" style="padding:0;">
+    <div class="container">
+        <div class="post-layout">
+            <div class="post-main">
+                <article class="post-article" id="postArticle">
+                    <img class="post-featured-img" id="postFeaturedImg" src="" alt="">
+                    <div class="post-body">
+                        <span class="post-cat" id="postCategory"></span>
+                        <h1 id="postTitleMain"></h1>
+                        <div class="post-meta-bar" id="postMetaBar"></div>
+
+                        <div class="post-content" id="postContent"></div>
+
+                        <div class="image-gallery" id="imageGallery" style="display:none;">
+                            <h2><i class="fas fa-images" style="color:var(--primary);"></i> Gallery</h2>
+                            <div class="gallery-grid" id="galleryGrid"></div>
+                        </div>
+
+                        <div class="post-author" id="postAuthor"></div>
+
+                        <div class="post-share" id="postShare">
+                            <span>Share:</span>
+                            <a href="#" id="shareFacebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" id="shareTwitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="#" id="shareWhatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" id="shareLinkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+
+                        <div class="comments-section">
+                            <h2>Comments (<span id="commentCount">0</span>)</h2>
+                            <div id="commentsList"></div>
+                            <div class="comment-form">
+                                <h3>Leave a Comment</h3>
+                                <form id="commentForm" onsubmit="event.preventDefault(); submitComment();">
+                                    <div class="form-group">
+                                        <label for="commentName">Name</label>
+                                        <input type="text" id="commentName" required placeholder="Your name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="commentEmail">Email</label>
+                                        <input type="email" id="commentEmail" placeholder="Your email (not published)">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="commentText">Comment</label>
+                                        <textarea id="commentText" required rows="4" placeholder="Share your thoughts..."></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <aside class="blog-sidebar">
+                <div class="sidebar-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="/media"><i class="fas fa-chevron-right"></i> Business Advertising</a></li>
+                        <li><a href="/media"><i class="fas fa-chevron-right"></i> Event Promotion</a></li>
+                        <li><a href="/media"><i class="fas fa-chevron-right"></i> Social Media</a></li>
+                        <li><a href="/media"><i class="fas fa-chevron-right"></i> Job Vacancy</a></li>
+                        <li><a href="/media"><i class="fas fa-chevron-right"></i> Press Release</a></li>
+                        <li><a href="/media"><i class="fas fa-chevron-right"></i> Website Design</a></li>
+                        <li><a href="/media"><i class="fas fa-chevron-right"></i> Community</a></li>
+                        <li><a href="/media"><i class="fas fa-chevron-right"></i> Business Tips</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Recent Posts</h3>
+                    <ul id="sidebarRecent"></ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Tags</h3>
+                    <div class="tag-cloud">
+                        <a href="/media">Advertising</a>
+                        <a href="/media">Abuja</a>
+                        <a href="/media">FCT</a>
+                        <a href="/media">Business Tips</a>
+                        <a href="/media">Social Media</a>
+                        <a href="/media">Events</a>
+                        <a href="/media">Jobs</a>
+                        <a href="/media">Marketing</a>
+                        <a href="/media">Nigeria</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose"><i class="fas fa-times"></i></button>
+    <button class="lb-prev" id="lbPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lb-next" id="lbNext"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-content"><img id="lbImage" src="" alt=""></div>
+    <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<section class="content-section" style="background:var(--light);">
+    <div class="container">
+        <div class="related-posts">
+            <h2>Related Posts</h2>
+            <div class="related-grid" id="relatedPosts"></div>
+        </div>
+    </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="js/includes.js"></script>
+<script>
+var POSTS = {
+    "how-to-advertise-your-business-in-abuja": {
+        title: "How to Advertise Your Business in Abuja and Reach Real Customers",
+        description: "Learn how to effectively promote your business in Abuja using community media, targeted campaigns, and local storytelling.",
+        category: "Business Advertising",
+        date: "Jul 28, 2026",
+        comments: 12,
+        image: "https://picsum.photos/seed/businessgrowth/800/500",
+        images: [
+            "https://picsum.photos/seed/bizad1/800/500",
+            "https://picsum.photos/seed/bizad2/800/500",
+            "https://picsum.photos/seed/bizad3/800/500",
+            "https://picsum.photos/seed/bizad4/800/500"
+        ],
+        author: "Kuje Connect Team",
+        authorBio: "Kuje Connect is a community-driven organization helping businesses, events, and organizations reach real audiences in Abuja and beyond.",
+        content: "<p>If you run a business in Abuja, you already know the market is competitive. From Wuse to Gwarinpa, from Kuje to the city centre, everyone is competing for the same customers. But here's the truth: most businesses are advertising the wrong way.</p><p>They blast generic messages on social media, run expensive radio spots, or hand out flyers that end up in the trash. What actually works in Abuja is <strong>targeted community advertising</strong> — reaching the right people with the right message at the right time.</p><h2>Why Community Media Works in Abuja</h2><p>With over 71,000 members in Abuja alone, community media platforms like Kuje Connect offer something that mass media cannot: <strong>trust and relevance</strong>. Your message appears alongside content your audience already engages with, making it feel less like an ad and more like a recommendation.</p><h2>5 Steps to an Effective Ad Campaign</h2><ol><li><strong>Know Your Audience</strong> — Define who you want to reach. Location, age group, income level, interests.</li><li><strong>Craft Your Message</strong> — Keep it clear and direct. What problem do you solve? Why should they choose you?</li><li><strong>Choose the Right Platform</strong> — Community media, social media, or both? Each has its strengths.</li><li><strong>Set a Budget and Timeline</strong> — Start small, measure results, then scale what works.</li><li><strong>Track and Optimize</strong> — Use response rates, inquiries, and sales data to improve future campaigns.</li></ol><blockquote>\"Kuje Connect helped us reach more customers than we expected. Our business gained visibility within days of advertising.\" — Onye Phones</blockquote><h2>Get Started Today</h2><p>Ready to reach 128,500+ community members? Our team is ready to help you create a campaign that delivers real results. Call us at <a href='tel:+2348087627524'>+234 808 762 7524</a> or <a href='https://wa.me/2348087627524' target='_blank'>chat on WhatsApp</a> to get started.</p>",
+        comments_data: [
+            { name: "Chioma O.", text: "This is so helpful! I've been struggling to get my business noticed in Abuja. Will try these tips.", date: "Jul 29, 2026" },
+            { name: "Emeka N.", text: "I can vouch for Kuje Connect. We advertised our event and got amazing turnout.", date: "Jul 29, 2026" },
+            { name: "Sarah K.", text: "Thanks for sharing. The part about choosing the right platform is key.", date: "Jul 28, 2026" }
+        ]
+    },
+    "event-promotion-guide-abuja": {
+        title: "The Complete Guide to Promoting Your Event in Abuja FCT",
+        description: "Discover how to fill seats and drive attendance for your next event in Abuja with community media and digital campaigns.",
+        category: "Event Promotion",
+        date: "Jul 25, 2026",
+        comments: 8,
+        image: "https://picsum.photos/seed/eventpromo/800/500",
+        images: [
+            "https://picsum.photos/seed/event1/800/500",
+            "https://picsum.photos/seed/event2/800/500",
+            "https://picsum.photos/seed/event3/800/500",
+            "https://picsum.photos/seed/event4/800/500"
+        ],
+        author: "Kuje Connect Team",
+        authorBio: "Kuje Connect helps event organizers reach engaged audiences across Abuja and the FCT.",
+        content: "<p>Planning an event in Abuja is exciting. Getting people to show up? That's the hard part. Whether you're organizing a conference, a party, a workshop, or a community gathering, the success of your event depends on one thing: <strong>attendance</strong>.</p><h2>Start Promoting Early</h2><p>The biggest mistake event organizers make is waiting too long to start promotion. Begin at least 2-3 weeks before your event. This gives your audience time to see your message multiple times and plan accordingly.</p><h2>Use Multiple Channels</h2><p>Don't rely on a single platform. Combine community media posts, social media announcements, WhatsApp broadcasts, and targeted ads to maximize reach. Each channel reaches a different segment of your audience.</p><blockquote>\"Kuje Connect gave our event the publicity it needed. Attendance exceeded our expectations.\" — Abas Event Organizer</blockquote><h2>Create Urgency</h2><p>Use countdowns, limited early-bird tickets, or exclusive offers to encourage early commitment. People are more likely to attend when they feel they might miss out.</p><h2>Follow Up After</h2><p>Send a thank-you message to attendees after the event. This builds relationships and makes them more likely to attend your next event.</p>",
+        comments_data: [
+            { name: "Tunde A.", text: "Great guide! I used these tips for my last event and saw a big difference.", date: "Jul 26, 2026" },
+            { name: "Grace M.", text: "The early promotion tip is so true. Learned that the hard way!", date: "Jul 26, 2026" }
+        ]
+    },
+    "social-media-marketing-nigerian-businesses": {
+        title: "Social Media Marketing for Nigerian Businesses: What Actually Works",
+        description: "Cut through the noise with content strategies designed for Nigerian audiences.",
+        category: "Social Media Marketing",
+        date: "Jul 22, 2026",
+        comments: 15,
+        image: "https://picsum.photos/seed/socialmedia/800/500",
+        images: [
+            "https://picsum.photos/seed/sm1/800/500",
+            "https://picsum.photos/seed/sm2/800/500",
+            "https://picsum.photos/seed/sm3/800/500",
+            "https://picsum.photos/seed/sm4/800/500"
+        ],
+        author: "Kuje Connect Team",
+        authorBio: "Kuje Connect helps businesses amplify their message across platforms with content strategy designed for Nigerian audiences.",
+        content: "<p>Social media in Nigeria is massive. With over 30 million active users across Facebook, Instagram, Twitter, and WhatsApp, the opportunity is enormous. But so is the competition.</p><p>Here's what actually works for Nigerian businesses on social media.</p><h2>Know Where Your Audience Lives</h2><p>Facebook remains dominant in Nigeria, especially for the 25-45 age group. Instagram is great for visual products and younger audiences. WhatsApp is essential for direct customer communication. Focus your efforts where your customers already spend their time.</p><h2>Post Valuable Content, Not Just Ads</h2><p>The 80/20 rule: 80% of your posts should provide value (tips, insights, entertainment), and 20% can be direct promotional content. This builds trust and keeps your audience engaged.</p><h2>Engage Authentically</h2><p>Reply to comments, answer DMs, and participate in conversations. Social media is called social for a reason. Authentic engagement builds community around your brand.</p><blockquote>\"Their promotional service is effective and affordable. We received inquiries almost immediately after our advert was published.\" — Mama Rice</blockquote><h2>Use Visuals That Connect</h2><p>Nigerian audiences respond to authentic, relatable visuals. Use local settings, expressions, and scenarios that your audience identifies with.</p>",
+        comments_data: [
+            { name: "Ifeanyi O.", text: "The 80/20 rule changed how I approach social media. Thanks!", date: "Jul 23, 2026" },
+            { name: "Blessing A.", text: "WhatsApp marketing is underrated. Glad you mentioned it.", date: "Jul 23, 2026" },
+            { name: "Michael T.", text: "More businesses need to read this. Quality over quantity.", date: "Jul 22, 2026" },
+            { name: "Ruth K.", text: "Authentic engagement really works. Great post!", date: "Jul 22, 2026" }
+        ]
+    },
+    "how-to-write-effective-job-vacancy-ad": {
+        title: "How to Write an Effective Job Vacancy Ad That Attracts Top Talent",
+        description: "Attract qualified candidates across FCT and Northern Nigeria with well-crafted job posts.",
+        category: "Job Vacancy",
+        date: "Jul 19, 2026",
+        comments: 6,
+        image: "https://picsum.photos/seed/jobvacancy/800/500",
+        images: [
+            "https://picsum.photos/seed/job1/800/500",
+            "https://picsum.photos/seed/job2/800/500",
+            "https://picsum.photos/seed/job3/800/500",
+            "https://picsum.photos/seed/job4/800/500"
+        ],
+        author: "Kuje Connect Team",
+        authorBio: "Kuje Connect helps employers reach qualified candidates across the FCT and Northern Nigeria.",
+        content: "<p>A job vacancy ad is your first impression on potential candidates. A poorly written ad attracts the wrong applicants. A great one brings you the best talent in the market.</p><h2>What to Include in Your Job Ad</h2><ul><li><strong>Clear Job Title</strong> — Use standard titles that candidates actually search for.</li><li><strong>Location</strong> — Be specific about where the job is based (Kuje, Abuja, FCT, etc.)</li><li><strong>Requirements</strong> — List must-have qualifications vs nice-to-have.</li><li><strong>Salary Range</strong> — Transparency builds trust and saves everyone time.</li><li><strong>Application Instructions</strong> — Make it crystal clear how to apply.</li></ul><h2>Where to Post</h2><p>Community platforms like Kuje Connect are often more effective than national job boards for local positions. Your ad gets seen by qualified candidates who actually want to work in the area.</p><p>Ready to post a job? <a href='/contact'>Contact us</a> to reach qualified candidates across the FCT.</p>",
+        comments_data: [
+            { name: "Daniel P.", text: "I wish more employers would include salary ranges.", date: "Jul 20, 2026" }
+        ]
+    },
+    "press-release-publishing-guide-nigeria": {
+        title: "Press Release Publishing in Nigeria: A Step-by-Step Guide",
+        description: "Learn how to write and distribute press releases that get picked up by community media.",
+        category: "Press Release",
+        date: "Jul 16, 2026",
+        comments: 4,
+        image: "https://picsum.photos/seed/pressrelease/800/500",
+        images: [
+            "https://picsum.photos/seed/pr1/800/500",
+            "https://picsum.photos/seed/pr2/800/500",
+            "https://picsum.photos/seed/pr3/800/500",
+            "https://picsum.photos/seed/pr4/800/500"
+        ],
+        author: "Kuje Connect Team",
+        authorBio: "Kuje Connect helps organizations distribute announcements through trusted community media channels.",
+        content: "<p>A press release is one of the most effective ways to share your news with the public. Whether you're launching a product, announcing a partnership, or sharing organizational updates, a well-written press release can get your story in front of thousands of people.</p><h2>The Anatomy of a Great Press Release</h2><ol><li><strong>Headline</strong> — Grab attention immediately. Use active voice.</li><li><strong>Dateline</strong> — City and date of release.</li><li><strong>Lead Paragraph</strong> — Answer who, what, when, where, why, and how.</li><li><strong>Body</strong> — Expand with details, quotes, and context.</li><li><strong>Boilerplate</strong> — A short 'about' section for your organization.</li><li><strong>Contact Information</strong> — Make it easy for journalists to reach you.</li></ol><h2>Distribution Matters</h2><p>Even the best press release is useless if nobody sees it. Kuje Connect publishes press releases to our community of 128,500+ members, ensuring your announcement reaches the right audience.</p>",
+        comments_data: [
+            { name: "Hauwa S.", text: "Very practical guide. The template helped me write my first press release.", date: "Jul 17, 2026" }
+        ]
+    },
+    "why-your-business-needs-professional-website": {
+        title: "Why Your Business Needs a Professional Website in 2026",
+        description: "Build credibility and convert visitors into customers with a professional website.",
+        category: "Website Design",
+        date: "Jul 13, 2026",
+        comments: 10,
+        image: "https://picsum.photos/seed/websitedesign/800/500",
+        images: [
+            "https://picsum.photos/seed/web1/800/500",
+            "https://picsum.photos/seed/web2/800/500",
+            "https://picsum.photos/seed/web3/800/500",
+            "https://picsum.photos/seed/web4/800/500"
+        ],
+        author: "Kuje Connect Team",
+        authorBio: "Kuje Connect builds professional websites and digital tools for businesses.",
+        content: "<p>In 2026, not having a website is like not having a phone number. It's not just about looking professional — it's about being findable. When someone searches for your business, what do they find?</p><h2>The Cost of Not Having a Website</h2><p>You're losing customers to competitors who have an online presence. Customers expect to be able to find your business hours, location, contact info, and reviews online. If they can't, they move on.</p><h2>What a Good Website Does</h2><ul><li>Builds credibility and trust</li><li>Makes your business findable 24/7</li><li>Showcases your products or services</li><li>Captures leads and inquiries</li><li>Tells your brand story</li></ul><p>Ready for a professional website? <a href='/contact'>Contact us</a> to get started.</p>",
+        comments_data: [
+            { name: "James O.", text: "Spot on! Got my website through Kuje Connect and it transformed my business.", date: "Jul 14, 2026" },
+            { name: "Ngozi E.", text: "The part about being findable 24/7 is so true.", date: "Jul 14, 2026" }
+        ]
+    },
+    "community-development-kuje-fct": {
+        title: "How Community Development Initiatives Are Transforming Kuje, FCT",
+        description: "Explore the community projects and partnerships driving positive change in Kuje.",
+        category: "Community Development",
+        date: "Jul 10, 2026",
+        comments: 7,
+        image: "https://picsum.photos/seed/community/800/500",
+        images: [
+            "https://picsum.photos/seed/cd1/800/500",
+            "https://picsum.photos/seed/cd2/800/500",
+            "https://picsum.photos/seed/cd3/800/500",
+            "https://picsum.photos/seed/cd4/800/500"
+        ],
+        author: "Kuje Connect Team",
+        authorBio: "Kuje Connect is a community-driven organization committed to building stronger communities.",
+        content: "<p>Kuje is more than just a town in the FCT — it's a community with enormous potential. Through various development initiatives, local organizations and community leaders are working together to create positive change.</p><h2>What's Happening in Kuje</h2><p>From skills acquisition programmes to environmental clean-ups, from youth empowerment workshops to business development trainings, community members are coming together to build a better Kuje.</p><h2>How You Can Get Involved</h2><p>Whether you want to volunteer, sponsor a project, or partner with existing initiatives, there are many ways to contribute. <a href='/get-involved'>Get involved today</a> and be part of the transformation.</p>",
+        comments_data: [
+            { name: "Adebayo T.", text: "Proud to be part of this community!", date: "Jul 11, 2026" },
+            { name: "Esther W.", text: "More people need to know about the great work happening in Kuje.", date: "Jul 11, 2026" }
+        ]
+    },
+    "small-business-advertising-tips-nigeria": {
+        title: "10 Small Business Advertising Tips That Work in Nigeria",
+        description: "Affordable and effective advertising strategies for small businesses in Nigeria.",
+        category: "Business Tips",
+        date: "Jul 7, 2026",
+        comments: 22,
+        image: "https://picsum.photos/seed/businesstips/800/500",
+        images: [
+            "https://picsum.photos/seed/bt1/800/500",
+            "https://picsum.photos/seed/bt2/800/500",
+            "https://picsum.photos/seed/bt3/800/500",
+            "https://picsum.photos/seed/bt4/800/500"
+        ],
+        author: "Kuje Connect Team",
+        authorBio: "Kuje Connect helps small businesses grow with affordable advertising solutions.",
+        content: "<p>Running a small business in Nigeria is challenging. Every naira counts, and you need to make sure your advertising budget delivers results. Here are 10 tips that actually work.</p><ol><li><strong>Know Your Customer</strong> — Target specifically, not broadly.</li><li><strong>Use Community Platforms</strong> — They offer better engagement than mass media.</li><li><strong>Tell Stories</strong> — Nigerian audiences connect with stories, not sales pitches.</li><li><strong>Show Results</strong> — Before/after photos, testimonials, case studies.</li><li><strong>Be Consistent</strong> — One post won't do it. Repetition builds trust.</li><li><strong>Leverage WhatsApp</strong> — Direct and personal. Use status updates and groups.</li><li><strong>Offer Value First</strong> — Free tips or advice before asking for the sale.</li><li><strong>Use Local Language</strong> — Pidgin English or local dialects connect better.</li><li><strong>Track Everything</strong> — Know which ads work and which don't.</li><li><strong>Partner with Kuje Connect</strong> — Reach 128,500+ members with one campaign.</li></ol><p>Ready to grow your business? <a href='/contact'>Contact us</a> today.</p>",
+        comments_data: [
+            { name: "Chidi K.", text: "Tip #8 is so important! Using Pidgin in ads changed everything for us.", date: "Jul 8, 2026" },
+            { name: "Aisha B.", text: "Consistency is hard but so worth it. Great list!", date: "Jul 8, 2026" },
+            { name: "Femi A.", text: "Thanks for sharing. Very practical advice.", date: "Jul 7, 2026" },
+            { name: "Joyce N.", text: "Number 10 is the best tip. Kuje Connect delivers!", date: "Jul 7, 2026" },
+            { name: "Ibrahim S.", text: "Tracking is something most small businesses ignore. Important point.", date: "Jul 7, 2026" }
+        ]
+    },
+    "doing-business-in-abuja-fct-guide": {
+        title: "Doing Business in Abuja FCT: A Complete Guide for Entrepreneurs",
+        description: "Everything you need to know about starting and growing a business in Abuja.",
+        category: "Business Tips",
+        date: "Jul 4, 2026",
+        comments: 18,
+        image: "https://picsum.photos/seed/fctbusiness/800/500",
+        images: [
+            "https://picsum.photos/seed/fct1/800/500",
+            "https://picsum.photos/seed/fct2/800/500",
+            "https://picsum.photos/seed/fct3/800/500",
+            "https://picsum.photos/seed/fct4/800/500"
+        ],
+        author: "Kuje Connect Team",
+        authorBio: "Kuje Connect helps entrepreneurs start and grow their businesses in Abuja FCT.",
+        content: "<p>Abuja, the Federal Capital Territory, is one of the best places in Nigeria to start and grow a business. With a growing population, increasing commercial activity, and strategic location, the opportunities are immense.</p><h2>Step 1: Register Your Business</h2><p>Start with CAC registration. It's affordable and gives your business legal standing. Kuje Connect is a CAC Registered Business — we recommend every business formalize.</p><h2>Step 2: Know Your Market</h2><p>Abuja has distinct markets. From the high-end Wuse and Maitama areas to the bustling Kuje and Kubwa communities, each market has unique characteristics. Understand who you're selling to.</p><h2>Step 3: Market Your Business</h2><p>Use community platforms like Kuje Connect to reach targeted local audiences. With 71,000+ members in Abuja, we can help you get noticed fast.</p><blockquote>\"One of the best platforms for promoting businesses and announcements in Abuja and the surrounding communities.\" — Maryam</blockquote><p>Ready to start? <a href='/contact'>Contact Kuje Connect</a> today.</p>",
+        comments_data: [
+            { name: "Patrick O.", text: "Great overview for anyone starting out in Abuja.", date: "Jul 5, 2026" },
+            { name: "Zainab A.", text: "The market segmentation tip is gold. Different areas need different approaches.", date: "Jul 5, 2026" },
+            { name: "Victor E.", text: "CAC registration is the first step every entrepreneur should take.", date: "Jul 4, 2026" }
+        ]
+    }
+};
+
+function getSlug() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('slug')) return params.get('slug');
+    var path = window.location.pathname;
+    var parts = path.split('/').filter(Boolean);
+    var last = parts.pop() || '';
+    return last;
+}
+
+var ALL_POSTS = [
+    { slug: "how-to-advertise-your-business-in-abuja", title: "How to Advertise Your Business in Abuja and Reach Real Customers", date: "Jul 28, 2026" },
+    { slug: "event-promotion-guide-abuja", title: "The Complete Guide to Promoting Your Event in Abuja FCT", date: "Jul 25, 2026" },
+    { slug: "social-media-marketing-nigerian-businesses", title: "Social Media Marketing for Nigerian Businesses: What Actually Works", date: "Jul 22, 2026" },
+    { slug: "how-to-write-effective-job-vacancy-ad", title: "How to Write an Effective Job Vacancy Ad That Attracts Top Talent", date: "Jul 19, 2026" },
+    { slug: "press-release-publishing-guide-nigeria", title: "Press Release Publishing in Nigeria: A Step-by-Step Guide", date: "Jul 16, 2026" },
+    { slug: "why-your-business-needs-professional-website", title: "Why Your Business Needs a Professional Website in 2026", date: "Jul 13, 2026" },
+    { slug: "community-development-kuje-fct", title: "How Community Development Initiatives Are Transforming Kuje, FCT", date: "Jul 10, 2026" },
+    { slug: "small-business-advertising-tips-nigeria", title: "10 Small Business Advertising Tips That Work in Nigeria", date: "Jul 7, 2026" },
+    { slug: "doing-business-in-abuja-fct-guide", title: "Doing Business in Abuja FCT: A Complete Guide for Entrepreneurs", date: "Jul 4, 2026" }
+];
+
+var lbImages = [];
+var lbCurrent = 0;
+
+function openLightbox(images, index) {
+    lbImages = images;
+    lbCurrent = index;
+    var lb = document.getElementById('lightbox');
+    document.getElementById('lbImage').src = images[index];
+    document.getElementById('lbCounter').textContent = (index + 1) + ' / ' + images.length;
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function prevImage() {
+    if (lbImages.length === 0) return;
+    lbCurrent = (lbCurrent - 1 + lbImages.length) % lbImages.length;
+    document.getElementById('lbImage').src = lbImages[lbCurrent];
+    document.getElementById('lbCounter').textContent = (lbCurrent + 1) + ' / ' + lbImages.length;
+}
+
+function nextImage() {
+    if (lbImages.length === 0) return;
+    lbCurrent = (lbCurrent + 1) % lbImages.length;
+    document.getElementById('lbImage').src = lbImages[lbCurrent];
+    document.getElementById('lbCounter').textContent = (lbCurrent + 1) + ' / ' + lbImages.length;
+}
+
+function renderPost() {
+    var slug = getSlug();
+    var post = POSTS[slug];
+
+    if (!post) {
+        document.getElementById('postArticle').innerHTML = '<div class="post-body" style="text-align:center;padding:60px 20px;"><h1>Post Not Found</h1><p style="color:var(--gray);">The post you\'re looking for doesn\'t exist.</p><a href="/media" class="btn btn-primary" style="margin-top:16px;">Back to Blog</a></div>';
+        return;
+    }
+
+    document.title = post.title + ' - Kuje Connect';
+    document.getElementById('postDesc').content = post.description;
+    document.getElementById('postCanonical').href = 'https://kujeconnect.org/media/' + slug;
+    document.getElementById('ogTitle').content = post.title + ' - Kuje Connect';
+    document.getElementById('ogDesc').content = post.description;
+    document.getElementById('ogImage').content = post.image;
+
+    document.getElementById('postFeaturedImg').src = post.image;
+    document.getElementById('postFeaturedImg').alt = post.title;
+    document.getElementById('postCategory').textContent = post.category;
+    document.getElementById('postTitleMain').textContent = post.title;
+    document.getElementById('postMetaBar').innerHTML = '<span><i class="far fa-calendar"></i> ' + post.date + '</span><span><i class="far fa-user"></i> ' + post.author + '</span><span><i class="far fa-comment"></i> ' + post.comments + ' Comments</span>';
+    document.getElementById('postContent').innerHTML = post.content;
+    document.getElementById('postAuthor').innerHTML = '<div class="pa-avatar">KC</div><div><div class="pa-name">' + post.author + '</div><div class="pa-bio">' + post.authorBio + '</div></div>';
+
+    var url = encodeURIComponent(window.location.href);
+    var text = encodeURIComponent(post.title);
+    document.getElementById('shareFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+    document.getElementById('shareTwitter').href = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + url;
+    document.getElementById('shareWhatsapp').href = 'https://wa.me/?text=' + text + '%20' + url;
+    document.getElementById('shareLinkedin').href = 'https://www.linkedin.com/shareArticle?mini=true&url=' + url + '&title=' + text;
+
+    document.getElementById('commentCount').textContent = post.comments_data ? post.comments_data.length : 0;
+    var commentsHtml = '';
+    if (post.comments_data) {
+        post.comments_data.forEach(function(c) {
+            var initial = c.name.charAt(0).toUpperCase();
+            commentsHtml += '<div class="comment"><div class="c-avatar">' + initial + '</div><div><div class="c-name">' + c.name + ' <span class="c-date">' + c.date + '</span></div><div class="c-text">' + c.text + '</div><button class="c-reply" onclick="document.getElementById(\'commentText\').focus()"><i class="fas fa-reply"></i> Reply</button></div></div>';
+        });
+    }
+    document.getElementById('commentsList').innerHTML = commentsHtml;
+
+    var recentHtml = '';
+    ALL_POSTS.slice(0, 5).forEach(function(p) {
+        if (p.slug !== slug) {
+            var imgSeed = p.slug.replace(/-/g, '');
+            recentHtml += '<li><a href="media/' + p.slug + '"><img src="https://picsum.photos/seed/' + imgSeed + '/50/50" alt="" loading="lazy"> ' + p.title + '</a></li>';
+        }
+    });
+    document.getElementById('sidebarRecent').innerHTML = recentHtml;
+
+    var related = ALL_POSTS.filter(function(p) {
+        return p.slug !== slug;
+    }).slice(0, 3);
+    var relatedHtml = '';
+    related.forEach(function(p) {
+        var imgSeed = p.slug.replace(/-/g, '');
+        relatedHtml += '<div class="related-card"><a href="media/' + p.slug + '" style="text-decoration:none;color:inherit;"><div class="rc-img"><img src="https://picsum.photos/seed/' + imgSeed + '/400/300" alt="" loading="lazy"></div><div class="rc-body"><h3>' + p.title + '</h3><div class="rc-meta">' + p.date + '</div></div></a></div>';
+    });
+    document.getElementById('relatedPosts').innerHTML = relatedHtml;
+
+    if (post.images && post.images.length > 0) {
+        window._galImages = post.images;
+        document.getElementById('imageGallery').style.display = 'block';
+        var galHtml = '';
+        post.images.forEach(function(img, idx) {
+            galHtml += '<div class="gallery-img" onclick="openLightbox(window._galImages, ' + idx + ')"><img src="' + img + '" alt="" loading="lazy"><div class="gal-overlay"><i class="fas fa-search-plus"></i></div></div>';
+        });
+        document.getElementById('galleryGrid').innerHTML = galHtml;
+    }
+}
+
+function submitComment() {
+    var name = document.getElementById('commentName').value.trim();
+    var text = document.getElementById('commentText').value.trim();
+    if (!name || !text) return;
+    var initial = name.charAt(0).toUpperCase();
+    var today = new Date();
+    var dateStr = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    var html = '<div class="comment"><div class="c-avatar">' + initial + '</div><div><div class="c-name">' + name + ' <span class="c-date">Just now</span></div><div class="c-text">' + text + '</div></div></div>';
+    document.getElementById('commentsList').innerHTML += html;
+    document.getElementById('commentName').value = '';
+    document.getElementById('commentEmail').value = '';
+    document.getElementById('commentText').value = '';
+    var countEl = document.getElementById('commentCount');
+    countEl.textContent = parseInt(countEl.textContent) + 1;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderPost();
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', prevImage);
+    document.getElementById('lbNext').addEventListener('click', nextImage);
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (document.getElementById('lightbox').classList.contains('active')) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+        }
+    });
+});
+</script>
+</body>
+</html>

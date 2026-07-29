@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuje Connect - Connecting People. Building Communities. | Community Platform in Kuje, FCT Nigeria</title>
+    <meta name="description" content="Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria. Discover local businesses, jobs, events, volunteer programmes, community projects and more.">
+    <meta name="keywords" content="Kuje Connect, Kuje community, Kuje FCT Nigeria, connecting people building communities, Kuje businesses, Kuje directory, Kuje jobs, Kuje events, Kuje volunteer, community development Kuje, local businesses Nigeria, FCT community">
+    <meta name="author" content="Kuje Connect">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kujeconnect.com">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Kuje Connect - Connecting People. Building Communities.">
+    <meta property="og:description" content="Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria.">
+    <meta property="og:image" content="https://kujeconnect.com/images/kuje.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kujeconnect.com">
+    <meta property="og:site_name" content="Kuje Connect">
+    <meta property="og:locale" content="en_NG">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kuje Connect - Connecting People. Building Communities.">
+    <meta name="twitter:description" content="Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria.">
+    <meta name="twitter:image" content="https://kujeconnect.com/images/kuje.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/kuje.png">
+    <link rel="apple-touch-icon" href="images/kuje.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "Kuje Connect",
+          "url": "https://kujeconnect.com",
+          "description": "Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://kujeconnect.com/services?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://kujeconnect.com#organization",
+          "name": "Kuje Connect",
+          "url": "https://kujeconnect.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://kujeconnect.com/images/kuje.png",
+            "width": 512,
+            "height": 512
+          },
+          "description": "Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria.",
+          "sameAs": [
+            "https://facebook.com/kujeconnect",
+            "https://twitter.com/kujeconnect",
+            "https://instagram.com/kujeconnect"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "areaServed": "NG",
+            "availableLanguage": ["English", "Hausa"]
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kuje",
+            "addressRegion": "FCT",
+            "addressCountry": "NG"
+          }
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://kujeconnect.com#localbusiness",
+          "name": "Kuje Connect",
+          "url": "https://kujeconnect.com",
+          "image": "https://kujeconnect.com/images/kuje.png",
+          "description": "Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kuje",
+            "addressRegion": "FCT",
+            "addressCountry": "NG"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "8.8833",
+            "longitude": "7.2000"
+          },
+          "priceRange": "Free",
+          "telephone": "+234-XXX-XXX-XXXX",
+          "areaServed": {
+            "@type": "Place",
+            "name": "Kuje, FCT Nigeria"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <!-- ===== 1. HERO SLIDER ===== -->
+    <section class="hero-slider" id="home">
+        <div class="hero-slide active" style="--slide-bg: linear-gradient(135deg, #15803d 0%, #16a34a 100%);">
+            <div class="slide-overlay"></div>
+            <div class="container slide-content">
+                <div class="slide-text">
+                    <span class="slide-badge">Connecting People. Building Communities.</span>
+                    <h1>Welcome to <span class="highlight-white">Kuje Connect</span> — Your Community Ecosystem</h1>
+                    <p>We are a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria. Discover local businesses, find jobs, volunteer, attend events, and be part of community development.</p>
+                    <div class="slide-visual">
+                        <div class="visual-card vc-1"><i class="fas fa-store-alt"></i><span>Local Business</span></div>
+                        <div class="visual-card vc-2"><i class="fas fa-briefcase"></i><span>Jobs & Career</span></div>
+                        <div class="visual-card vc-3"><i class="fas fa-hands-helping"></i><span>Volunteer</span></div>
+                    </div>
+                </div>
+                <div class="slide-hero-area">
+                    <div class="hero-display">
+                        <div class="display-main"><i class="fas fa-hands-helping"></i></div>
+                        <div class="display-tag tag-1"><i class="fas fa-star"></i> Community Driven</div>
+                        <div class="display-tag tag-2"><i class="fas fa-map-marker-alt"></i> Kuje, FCT</div>
+                        <div class="display-tag tag-3"><i class="fas fa-users"></i> 10K+ Community</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide" style="--slide-bg: linear-gradient(135deg, #991b1b 0%, #dc2626 100%);">
+            <div class="slide-overlay"></div>
+            <div class="container slide-content">
+                <div class="slide-text">
+                    <span class="slide-badge">Support Local Business</span>
+                    <h1>Food, Drinks & <span class="highlight-white">Catering</span> Services</h1>
+                    <p>Order from the best restaurants, fast food outlets, bakeries, suya spots, shawarma stands and catering services in Kuje, FCT Nigeria. Supporting local businesses builds stronger communities.</p>
+                    <div class="slide-visual">
+                        <div class="visual-card vc-1"><i class="fas fa-hamburger"></i><span>Fast Food</span></div>
+                        <div class="visual-card vc-2"><i class="fas fa-bread-slice"></i><span>Bakery</span></div>
+                        <div class="visual-card vc-3"><i class="fas fa-cocktail"></i><span>Lounge</span></div>
+                    </div>
+                </div>
+                <div class="slide-hero-area">
+                    <div class="hero-display">
+                        <div class="display-main"><i class="fas fa-utensils"></i></div>
+                        <div class="display-tag tag-1"><i class="fas fa-truck"></i> Delivery</div>
+                        <div class="display-tag tag-2"><i class="fas fa-clock"></i> Open Now</div>
+                        <div class="display-tag tag-3"><i class="fas fa-heart"></i> 200+ Restaurants</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide" style="--slide-bg: linear-gradient(135deg, #a16207 0%, #eab308 100%);">
+            <div class="slide-overlay"></div>
+            <div class="container slide-content">
+                <div class="slide-text">
+                    <span class="slide-badge">Shop Local, Support Local</span>
+                    <h1>Fashion, Clothing & <span class="highlight-white">Beauty</span></h1>
+                    <p>Explore clothing boutiques, shoe stores, perfume shops, beauty salons, barbing spas and everything to keep you looking fabulous in Kuje. Every purchase supports a local entrepreneur.</p>
+                    <div class="slide-visual">
+                        <div class="visual-card vc-1"><i class="fas fa-female"></i><span>Women's Fashion</span></div>
+                        <div class="visual-card vc-2"><i class="fas fa-male"></i><span>Men's Fashion</span></div>
+                        <div class="visual-card vc-3"><i class="fas fa-spa"></i><span>Beauty Spa</span></div>
+                    </div>
+                </div>
+                <div class="slide-hero-area">
+                    <div class="hero-display">
+                        <div class="display-main"><i class="fas fa-tshirt"></i></div>
+                        <div class="display-tag tag-1"><i class="fas fa-gem"></i> Premium</div>
+                        <div class="display-tag tag-2"><i class="fas fa-percentage"></i> Deals</div>
+                        <div class="display-tag tag-3"><i class="fas fa-shopping-bag"></i> 150+ Shops</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide" style="--slide-bg: linear-gradient(135deg, #166534 0%, #22c55e 100%);">
+            <div class="slide-overlay"></div>
+            <div class="container slide-content">
+                <div class="slide-text">
+                    <span class="slide-badge">Tech & Gadgets</span>
+                    <h1>Phones, Electronics & <span class="highlight-white">Accessories</span></h1>
+                    <p>Get the latest phones, laptops, electronics, computer accessories and expert phone repair services from trusted vendors in Kuje. Empowering local tech entrepreneurs.</p>
+                    <div class="slide-visual">
+                        <div class="visual-card vc-1"><i class="fas fa-mobile-alt"></i><span>Phones</span></div>
+                        <div class="visual-card vc-2"><i class="fas fa-headphones"></i><span>Accessories</span></div>
+                        <div class="visual-card vc-3"><i class="fas fa-tools"></i><span>Repairs</span></div>
+                    </div>
+                </div>
+                <div class="slide-hero-area">
+                    <div class="hero-display">
+                        <div class="display-main"><i class="fas fa-laptop"></i></div>
+                        <div class="display-tag tag-1"><i class="fas fa-bolt"></i> Latest Models</div>
+                        <div class="display-tag tag-2"><i class="fas fa-shield-alt"></i> Warranty</div>
+                        <div class="display-tag tag-3"><i class="fas fa-tools"></i> 80+ Stores</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="slider-arrow slider-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow slider-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="slider-dots">
+            <button class="slider-dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="slider-dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="slider-dot" data-index="2" aria-label="Slide 3"></button>
+            <button class="slider-dot" data-index="3" aria-label="Slide 4"></button>
+        </div>
+
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ===== 2. TOP CATEGORIES ===== -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular <span class="highlight">Categories</span></h2>
+                <p>Most searched businesses and services in Kuje — find what you need fast</p>
+            </div>
+            <div class="categories-grid">
+                <a href="service/food-and-restaurants" class="category-card popular"><i class="fas fa-utensils"></i><h4>Food & Restaurants</h4><span>Fast food, bakeries, catering, lounges</span></a>
+                <a href="service/fashion-and-clothing" class="category-card popular"><i class="fas fa-tshirt"></i><h4>Fashion & Clothing</h4><span>Boutiques, shoes, bags, jewelry</span></a>
+                <a href="service/phones-and-electronics" class="category-card popular"><i class="fas fa-mobile-alt"></i><h4>Phones & Electronics</h4><span>Phones, laptops, accessories, repairs</span></a>
+                <a href="service/beauty-and-personal-care" class="category-card popular"><i class="fas fa-spa"></i><h4>Beauty & Personal Care</h4><span>Salons, spa, barbing, nail studio</span></a>
+                <a href="service/automobile" class="category-card popular"><i class="fas fa-car"></i><h4>Automobile</h4><span>Car sales, repair, wash, parts, rental</span></a>
+                <a href="service/home-and-furniture" class="category-card popular"><i class="fas fa-home"></i><h4>Home & Furniture</h4><span>Furniture, decor, curtains, appliances</span></a>
+                <a href="service/health-and-medical" class="category-card"><i class="fas fa-heartbeat"></i><h4>Health & Medical</h4><span>Clinics, pharmacy, dental, lab, gym</span></a>
+                <a href="service/education" class="category-card"><i class="fas fa-graduation-cap"></i><h4>Education</h4><span>Schools, lesson center, training, driving</span></a>
+                <a href="service/event-and-rentals" class="category-card popular"><i class="fas fa-calendar-alt"></i><h4>Event & Rentals</h4><span>Tent, chair, sound, photography, planning</span></a>
+                <a href="service/technology" class="category-card"><i class="fas fa-laptop-code"></i><h4>Technology</h4><span>Web design, CCTV, software, cyber cafe</span></a>
+                <a href="service/real-estate" class="category-card"><i class="fas fa-building"></i><h4>Real Estate</h4><span>Property, land sales, short-let, agency</span></a>
+                <a href="service/construction" class="category-card"><i class="fas fa-hard-hat"></i><h4>Construction</h4><span>Building materials, plumbing, welding</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 3. FEATURED BUSINESSES ===== -->
+    <section class="features" style="background: var(--light);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured <span class="highlight">Businesses</span></h2>
+                <p>Top-rated Kuje businesses you should check out — restaurants, fashion, tech & more</p>
+            </div>
+            <div class="business-grid">
+                <a href="business/amina-kitchen" class="business-card">
+                    <div class="business-card-img">
+                        <img src="https://picsum.photos/seed/aminaskitchen/600/400" alt="Amina's Kitchen">
+                        <span class="business-badge featured">Featured</span>
+                        <button class="business-fav"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="business-card-body">
+                        <div class="business-card-cat">Food & Restaurants</div>
+                        <h3>Amina's Kitchen</h3>
+                        <p>Best jollof rice, fried rice and local dishes in Kuje. Open for delivery and dine-in.</p>
+                        <div class="business-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Kuje Town</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8 (124)</span>
+                        </div>
+                    </div>
+                    <div class="business-card-footer">
+                        <span class="business-price">₦1,500 - ₦3,500</span>
+                        <span class="btn btn-primary business-btn">View Details</span>
+                    </div>
+                </a>
+                <a href="business/style-hub-fashion" class="business-card">
+                    <div class="business-card-img">
+                        <img src="https://picsum.photos/seed/stylehub/600/400" alt="Style Hub Fashion">
+                        <span class="business-badge">Popular</span>
+                        <button class="business-fav"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="business-card-body">
+                        <div class="business-card-cat">Fashion & Clothing</div>
+                        <h3>Style Hub Fashion</h3>
+                        <p>Latest fashion for men and women. Shoes, bags, accessories and custom outfits.</p>
+                        <div class="business-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Byazhin</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.6 (89)</span>
+                        </div>
+                    </div>
+                    <div class="business-card-footer">
+                        <span class="business-price">₦2,000 - ₦25,000</span>
+                        <span class="btn btn-primary business-btn">View Details</span>
+                    </div>
+                </a>
+                <a href="business/techzone-electronics" class="business-card">
+                    <div class="business-card-img">
+                        <img src="https://picsum.photos/seed/techzone/600/400" alt="TechZone Electronics">
+                        <span class="business-badge">Verified</span>
+                        <button class="business-fav"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="business-card-body">
+                        <div class="business-card-cat">Phones & Electronics</div>
+                        <h3>TechZone Electronics</h3>
+                        <p>Phones, laptops, generators, home appliances. Best prices with warranty.</p>
+                        <div class="business-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Chukuku</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7 (156)</span>
+                        </div>
+                    </div>
+                    <div class="business-card-footer">
+                        <span class="business-price">₦5,000 - ₦500,000</span>
+                        <span class="btn btn-primary business-btn">View Details</span>
+                    </div>
+                </a>
+                <a href="business/kujeweb-solutions" class="business-card">
+                    <div class="business-card-img">
+                        <img src="https://picsum.photos/seed/websolutions/600/400" alt="KujeWeb Solutions">
+                        <span class="business-badge featured">Featured</span>
+                        <button class="business-fav"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="business-card-body">
+                        <div class="business-card-cat">Technology</div>
+                        <h3>KujeWeb Solutions</h3>
+                        <p>Professional web development, mobile apps, and digital solutions for businesses in Kuje.</p>
+                        <div class="business-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Kuje Town</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.9 (67)</span>
+                        </div>
+                    </div>
+                    <div class="business-card-footer">
+                        <span class="business-price">₦50,000 - ₦500,000</span>
+                        <span class="btn btn-primary business-btn">View Details</span>
+                    </div>
+                </a>
+                <a href="business/greenfield-properties" class="business-card">
+                    <div class="business-card-img">
+                        <img src="https://picsum.photos/seed/greenfield/600/400" alt="GreenField Properties">
+                        <span class="business-badge">Verified</span>
+                        <button class="business-fav"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="business-card-body">
+                        <div class="business-card-cat">Real Estate</div>
+                        <h3>GreenField Properties</h3>
+                        <p>Real estate agency specializing in land sales, house rentals, and short-let apartments in Kuje and FCT.</p>
+                        <div class="business-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Kuje</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7 (43)</span>
+                        </div>
+                    </div>
+                    <div class="business-card-footer">
+                        <span class="business-price">₦100,000 - ₦5,000,000</span>
+                        <span class="btn btn-primary business-btn">View Details</span>
+                    </div>
+                </a>
+                <a href="business/kuje-international-school" class="business-card">
+                    <div class="business-card-img">
+                        <img src="https://picsum.photos/seed/school1/600/400" alt="Kuje International School">
+                        <span class="business-badge">Top Rated</span>
+                        <button class="business-fav"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="business-card-body">
+                        <div class="business-card-cat">Education</div>
+                        <h3>Kuje International School</h3>
+                        <p>Quality education from nursery to secondary school. Modern facilities and experienced teachers.</p>
+                        <div class="business-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Byazhin</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8 (215)</span>
+                        </div>
+                    </div>
+                    <div class="business-card-footer">
+                        <span class="business-price">₦50,000 - ₦150,000/term</span>
+                        <span class="btn btn-primary business-btn">View Details</span>
+                    </div>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="businesses" class="btn btn-primary">View All Businesses <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 4. HOW IT WORKS ===== -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It <span class="highlight">Works</span></h2>
+                <p>Join Kuje Connect and be part of a thriving community ecosystem</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Join the Community</h3>
+                        <p>Sign up as a community member, business owner, volunteer, or job seeker — everyone is welcome.</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Explore & Engage</h3>
+                        <p>Discover local businesses, find jobs, volunteer for projects, attend events, and connect with people.</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Grow Together</h3>
+                        <p>Support local entrepreneurs, build partnerships, and participate in community development initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 5. COMMUNITY IMPACT ===== -->
+    <section class="features" style="background: var(--light);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Community <span class="highlight">Impact</span></h2>
+                <p>More than a directory — we are a community ecosystem driving positive change in Kuje, FCT Nigeria</p>
+            </div>
+            <div class="features-grid">
+                <a href="opportunities" class="feature-card" style="text-decoration:none;color:inherit;">
+                    <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Jobs & Career</h3>
+                    <p>Find employment opportunities, career tips, and connect with employers in Kuje and across the FCT.</p>
+                </a>
+                <a href="opportunities" class="feature-card" style="text-decoration:none;color:inherit;">
+                    <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Events & Training</h3>
+                    <p>Stay updated on community events, skills acquisition workshops, networking events, and training programmes.</p>
+                </a>
+                <a href="get-involved" class="feature-card" style="text-decoration:none;color:inherit;">
+                    <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h3>Volunteer Programmes</h3>
+                    <p>Give back to the community through clean-up campaigns, school outreach, youth empowerment, and more.</p>
+                </a>
+                <a href="community" class="feature-card" style="text-decoration:none;color:inherit;">
+                    <div class="feature-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h3>Community Projects</h3>
+                    <p>Participate in development projects that improve lives, strengthen relationships, and build a better Kuje.</p>
+                </a>
+                <a href="contact" class="feature-card" style="text-decoration:none;color:inherit;">
+                    <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Partnerships</h3>
+                    <p>Collaborate with us as a partner or sponsor to drive community development and create lasting impact.</p>
+                </a>
+                <a href="media" class="feature-card" style="text-decoration:none;color:inherit;">
+                    <div class="feature-icon"><i class="fas fa-newspaper"></i></div>
+                    <h3>Community News</h3>
+                    <p>Stay informed with trusted community news, updates, and stories that matter to Kuje residents.</p>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="community" class="btn btn-primary">Explore All Features <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 6. TRENDING PRODUCTS ===== -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trending <span class="highlight">Products</span></h2>
+                <p>Popular products and services from local Kuje businesses</p>
+            </div>
+            <div class="product-grid">
+                <a href="business/amina-kitchen" class="product-card" style="text-decoration:none;color:inherit;">
+                    <div class="product-card-img">
+                        <img src="https://picsum.photos/seed/jollof/400/400" alt="Jollof Rice Special">
+                        <span class="product-tag hot">Hot</span>
+                        <button class="product-wishlist"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Jollof Rice Special</h4>
+                        <div class="product-shop">Amina's Kitchen</div>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(89)</span></div>
+                        <div class="product-pricing"><span class="product-price">₦2,500</span></div>
+                    </div>
+                </a>
+                <a href="business/fresh-bite-fast-food" class="product-card" style="text-decoration:none;color:inherit;">
+                    <div class="product-card-img">
+                        <img src="https://picsum.photos/seed/shawarma2/400/400" alt="Shawarma Wrap">
+                        <span class="product-tag new">New</span>
+                        <button class="product-wishlist"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Shawarma Wrap</h4>
+                        <div class="product-shop">Fresh Bite Fast Food</div>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(142)</span></div>
+                        <div class="product-pricing"><span class="product-price">₦1,500</span></div>
+                    </div>
+                </a>
+                <a href="business/kuje-suya-spot" class="product-card" style="text-decoration:none;color:inherit;">
+                    <div class="product-card-img">
+                        <img src="https://picsum.photos/seed/suya1/400/400" alt="Suya Platter">
+                        <span class="product-tag sale">-20%</span>
+                        <button class="product-wishlist"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Suya Platter</h4>
+                        <div class="product-shop">Kuje Suya Spot</div>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(201)</span></div>
+                        <div class="product-pricing"><span class="product-price">₦1,800</span><span class="product-old-price">₦2,200</span></div>
+                    </div>
+                </a>
+                <a href="business/style-hub-fashion" class="product-card" style="text-decoration:none;color:inherit;">
+                    <div class="product-card-img">
+                        <img src="https://picsum.photos/seed/fashionman/400/400" alt="Men's Casual Wear">
+                        <span class="product-tag new">New</span>
+                        <button class="product-wishlist"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Men's Casual Outfit</h4>
+                        <div class="product-shop">Style Hub Fashion</div>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>(56)</span></div>
+                        <div class="product-pricing"><span class="product-price">₦8,500</span><span class="product-old-price">₦12,000</span></div>
+                    </div>
+                </a>
+                <a href="business/techzone-electronics" class="product-card" style="text-decoration:none;color:inherit;">
+                    <div class="product-card-img">
+                        <img src="https://picsum.photos/seed/phoneacc/400/400" alt="Wireless Earbuds">
+                        <span class="product-tag hot">Hot</span>
+                        <button class="product-wishlist"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Wireless Earbuds Pro</h4>
+                        <div class="product-shop">TechZone Electronics</div>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(78)</span></div>
+                        <div class="product-pricing"><span class="product-price">₦4,500</span></div>
+                    </div>
+                </a>
+                <a href="business/cleanhome-services" class="product-card" style="text-decoration:none;color:inherit;">
+                    <div class="product-card-img">
+                        <img src="https://picsum.photos/seed/cleanservice/400/400" alt="Cleaning Service">
+                        <span class="product-tag sale">-15%</span>
+                        <button class="product-wishlist"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Deep Cleaning Service</h4>
+                        <div class="product-shop">CleanHome Services</div>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(95)</span></div>
+                        <div class="product-pricing"><span class="product-price">₦5,000</span><span class="product-old-price">₦6,000</span></div>
+                    </div>
+                </a>
+                <a href="business/kujeweb-solutions" class="product-card" style="text-decoration:none;color:inherit;">
+                    <div class="product-card-img">
+                        <img src="https://picsum.photos/seed/websitedesign/400/400" alt="Website Design">
+                        <span class="product-tag new">New</span>
+                        <button class="product-wishlist"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Website Design Package</h4>
+                        <div class="product-shop">KujeWeb Solutions</div>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(34)</span></div>
+                        <div class="product-pricing"><span class="product-price">₦150,000</span></div>
+                    </div>
+                </a>
+                <a href="business/quickfix-auto" class="product-card" style="text-decoration:none;color:inherit;">
+                    <div class="product-card-img">
+                        <img src="https://picsum.photos/seed/carchange/400/400" alt="Car Service">
+                        <span class="product-tag hot">Hot</span>
+                        <button class="product-wishlist"><i class="fas fa-heart"></i></button>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Full Car Service</h4>
+                        <div class="product-shop">QuickFix Auto</div>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(112)</span></div>
+                        <div class="product-pricing"><span class="product-price">₦8,000</span></div>
+                    </div>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="businesses" class="btn btn-primary">View All Products <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 7. WHY CHOOSE US ===== -->
+    <section class="features" id="features" style="background: var(--light);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose <span class="highlight">Kuje Connect</span>?</h2>
+                <p>A community-driven platform connecting people, businesses, and opportunities in Kuje, FCT Nigeria</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-store-alt"></i></div>
+                    <h3>Business Directory</h3>
+                    <p>Discover and list local businesses with contact details, location, photos, and verified information.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h3>Community Development</h3>
+                    <p>Participate in projects, volunteer programmes, and initiatives that drive positive change in Kuje.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Jobs & Opportunities</h3>
+                    <p>Access career opportunities, employment listings, and connect with local employers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Events & Workshops</h3>
+                    <p>Stay informed about community events, skills training, networking sessions, and development workshops.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-ad"></i></div>
+                    <h3>Business Promotion</h3>
+                    <p>Promote your business with digital advertising, sponsored listings, and social media exposure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Partnerships & Collaboration</h3>
+                    <p>Build meaningful partnerships with organizations, businesses, and community leaders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 8. TESTIMONIALS ===== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What People <span class="highlight">Say</span></h2>
+                <p>Join thousands of satisfied users in Kuje, FCT Nigeria</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Kuje Connect helped me reach more customers than ever before. My sales have increased by 40% since joining!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info"><strong>Amina Ibrahim</strong><span>Business Owner</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"I found the best tailor in Kuje through this platform. The review system really helps make good choices."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">O</div>
+                        <div class="author-info"><strong>Oluwaseun Adams</strong><span>Customer</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"The messaging feature makes it so easy to communicate with customers directly. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">F</div>
+                        <div class="author-info"><strong>Fatima Bello</strong><span>Restaurant Owner</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 9. CTA - CONNECT WITH US ===== -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Join the Kuje Connect Community Today</h2>
+                <p>Connecting People. Building Communities. — Be part of a growing ecosystem that connects people, supports businesses, and empowers communities in Kuje, FCT Nigeria.</p>
+                <div class="cta-buttons">
+                    <button data-auth-open="register" class="btn btn-white">Register Your Business</button>
+                    <button data-auth-open="register" class="btn btn-outline-white">Join as Community Member</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="js/includes.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

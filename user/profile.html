@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Kuje Connect</title>
+    <meta name="description" content="View and manage your Kuje Connect profile. Update your personal information, avatar, bio, and account details.">
+    <meta name="keywords" content="Kuje Connect, profile, account, personal information, Kuje, FCT Nigeria">
+    <meta name="author" content="Kuje Connect">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="My Profile - Kuje Connect">
+    <meta property="og:description" content="View and update your personal information and account details on Kuje Connect.">
+    <meta property="og:image" content="../images/kuje.png">
+    <meta property="og:url" content="https://kujeconnect.com/user/profile">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kuje Connect">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="My Profile - Kuje Connect">
+    <meta name="twitter:description" content="View and update your personal information on Kuje Connect.">
+    <meta name="twitter:image" content="../images/kuje.png">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .profile-header {
+            display: flex; align-items: center; gap: 24px; margin-bottom: 28px;
+            padding: 28px; background: var(--white); border-radius: var(--radius);
+            border: 1px solid var(--gray-lighter);
+        }
+        .profile-avatar-wrap { position: relative; flex-shrink: 0; }
+        .profile-avatar-wrap .user-avatar {
+            width: 88px; height: 88px; font-size: 2rem;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-weight: 700; color: var(--white);
+            background: linear-gradient(135deg, var(--primary), #16a34a);
+        }
+        .profile-avatar-wrap img {
+            width: 88px; height: 88px; border-radius: 50%; object-fit: cover;
+        }
+        .profile-info h2 {
+            font-size: 1.3rem; font-weight: 700; color: var(--dark); margin-bottom: 4px;
+        }
+        .profile-meta {
+            display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 6px;
+        }
+        .profile-meta span {
+            font-size: 0.83rem; color: var(--gray); display: flex; align-items: center; gap: 5px;
+        }
+        .avatar-section {
+            display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+        }
+        .avatar-section input {
+            flex: 1; min-width: 200px; padding: 10px 14px; border: 1.5px solid var(--gray-lighter);
+            border-radius: var(--radius-sm); font-size: 0.9rem; color: var(--dark);
+            font-family: 'Poppins', sans-serif;
+        }
+        .avatar-section input:focus { outline: none; border-color: var(--primary); }
+        .status-row {
+            display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .status-row .status-badge { font-size: 0.8rem; }
+        .status-row span {
+            font-size: 0.83rem; color: var(--gray);
+            display: flex; align-items: center; gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar"></div>
+                <h4></h4>
+                <span class="user-badge"></span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item active"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item"><i class="fas fa-bell"></i> Notifications <span class="notif-badge" style="display:none;"></span></a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>My Profile</h2>
+                    <p>Manage your personal information and preferences.</p>
+                </div>
+            </div>
+
+            <div class="profile-header" id="profileHeader">
+                <div class="profile-avatar-wrap">
+                    <div class="user-avatar" id="profileAvatar"></div>
+                </div>
+                <div class="profile-info">
+                    <h2 id="profileName"></h2>
+                    <div class="profile-meta">
+                        <span class="user-badge" id="profileBadge"></span>
+                        <span><i class="fas fa-calendar"></i> Member since <strong id="profileJoinDate"></strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <h3><i class="fas fa-user" style="margin-right:8px;"></i> Personal Information</h3>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" placeholder="Your location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                    <button type="button" class="btn-sm btn-primary" style="padding:10px 24px;"><i class="fas fa-save"></i> Save Changes</button>
+                </form>
+            </div>
+
+            <div class="user-card">
+                <h3><i class="fas fa-camera" style="margin-right:8px;"></i> Change Avatar</h3>
+                <p style="font-size:0.88rem;color:var(--gray);margin-bottom:14px;">Enter an image URL to update your profile picture. Leave empty to show your initials.</p>
+                <div class="avatar-section">
+                    <input type="url" id="avatarUrl" placeholder="https://example.com/photo.jpg">
+                    <button type="button" class="btn-sm btn-primary" id="avatarSaveBtn"><i class="fas fa-check"></i> Update</button>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <h3><i class="fas fa-shield-alt" style="margin-right:8px;"></i> Account Status</h3>
+                <div class="status-row">
+                    <span class="status-badge status-active" id="accountStatus">Active</span>
+                    <span><i class="fas fa-envelope"></i> <strong id="accountEmail"></strong></span>
+                    <span id="verifiedStatus"></span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../data/data.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+    (function() {
+        var user = getCurrentUser();
+        if (!user) return;
+
+        var initials = getInitials(user.name);
+        var roleLabel = user.role === 'business_owner' ? 'Business Owner' : 'Customer';
+        var roleIcon = user.role === 'business_owner' ? 'fa-briefcase' : 'fa-user';
+
+        var avatar = document.getElementById('profileAvatar');
+        if (avatar) {
+            if (user.avatar) {
+                avatar.innerHTML = '<img src="' + escapeHtml(user.avatar) + '" alt="' + escapeHtml(user.name) + '" onerror="this.parentElement.textContent=\'' + initials + '\'">';
+            } else {
+                avatar.textContent = initials;
+            }
+        }
+
+        var nameEl = document.getElementById('profileName');
+        if (nameEl) nameEl.textContent = user.name;
+
+        var badge = document.getElementById('profileBadge');
+        if (badge) badge.innerHTML = '<i class="fas ' + roleIcon + '"></i> ' + roleLabel;
+
+        var joinEl = document.getElementById('profileJoinDate');
+        if (joinEl) joinEl.textContent = formatDate(user.joinDate);
+
+        var emailEl = document.getElementById('accountEmail');
+        if (emailEl) emailEl.textContent = user.email;
+
+        var verifiedEl = document.getElementById('verifiedStatus');
+        if (verifiedEl) {
+            verifiedEl.innerHTML = user.isVerified
+                ? '<i class="fas fa-check-circle" style="color:var(--primary);"></i> Verified account'
+                : '<i class="fas fa-clock" style="color:var(--gray-light);"></i> Unverified';
+        }
+
+        var avatarUrlInput = document.getElementById('avatarUrl');
+        if (avatarUrlInput && user.avatar) avatarUrlInput.value = user.avatar;
+
+        var avatarSaveBtn = document.getElementById('avatarSaveBtn');
+        if (avatarSaveBtn) {
+            avatarSaveBtn.addEventListener('click', function() {
+                var url = avatarUrlInput.value.trim();
+                updateProfile(user.id, { avatar: url || null });
+                if (url) {
+                    avatar.innerHTML = '<img src="' + escapeHtml(url) + '" alt="Avatar" onerror="this.parentElement.textContent=\'' + initials + '\'">';
+                } else {
+                    avatar.textContent = initials;
+                }
+                initUserSidebar();
+                showToast('Avatar updated', 'success');
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

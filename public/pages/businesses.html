@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Businesses - Kuje Connect</title>
+    <link rel="icon" type="image/png" href="images/kuje.png">
+    <link rel="apple-touch-icon" href="images/kuje.png">
+    <meta name="description" content="Browse and filter businesses in Kuje, FCT Nigeria. Find restaurants, shops, services and more.">
+    <meta property="og:title" content="Browse Businesses - Kuje Connect">
+    <meta property="og:description" content="Browse and filter businesses in Kuje, FCT Nigeria. Find restaurants, shops, services and more.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Browse Businesses</h1>
+            <p>Discover top-rated businesses across Kuje, FCT Nigeria</p>
+            <div class="breadcrumb">
+                <a href="index">Home</a>
+                <span>/</span>
+                <span class="current">Businesses</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Listings -->
+    <section class="content-section">
+        <div class="container">
+            <div class="page-layout">
+                <!-- Filter Sidebar -->
+                <aside class="filter-sidebar">
+                    <h3><i class="fas fa-filter"></i> Filters</h3>
+
+                    <div class="filter-group">
+                        <label>Search</label>
+                        <input type="text" placeholder="Search businesses...">
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Category</label>
+                        <select>
+                            <option value="">All Categories</option>
+                            <option>Food</option>
+                            <option>Fashion</option>
+                            <option>Electronics</option>
+                            <option>Home Services</option>
+                            <option>Beauty</option>
+                            <option>Auto</option>
+                            <option>Events</option>
+                            <option>Construction</option>
+                            <option>Health</option>
+                            <option>Education</option>
+                            <option>Tech</option>
+                            <option>Agriculture</option>
+                            <option>Logistics</option>
+                            <option>Real Estate</option>
+                            <option>Manufacturing</option>
+                            <option>Creative</option>
+                            <option>Professional</option>
+                            <option>Retail</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Location</label>
+                        <select>
+                            <option value="">All Locations</option>
+                            <option>Kuje Town</option>
+                            <option>Byazhin</option>
+                            <option>Chukuku</option>
+                            <option>Gwagwalada Road</option>
+                            <option>Kilankwa</option>
+                            <option>Rubochi</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Sort By</label>
+                        <select>
+                            <option>Popular</option>
+                            <option>Newest</option>
+                            <option>Rating</option>
+                            <option>Price Low to High</option>
+                            <option>Price High to Low</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Price Range</label>
+                        <select>
+                            <option value="">Any Price</option>
+                            <option>Budget</option>
+                            <option>Moderate</option>
+                            <option>Premium</option>
+                            <option>Luxury</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Rating</label>
+                        <label class="filter-check">
+                            <input type="checkbox"> <i class="fas fa-star" style="color:#f59e0b"></i> 5 Stars
+                        </label>
+                        <label class="filter-check">
+                            <input type="checkbox"> <i class="fas fa-star" style="color:#f59e0b"></i> 4 & Up
+                        </label>
+                        <label class="filter-check">
+                            <input type="checkbox"> <i class="fas fa-star" style="color:#f59e0b"></i> 3 & Up
+                        </label>
+                        <label class="filter-check">
+                            <input type="checkbox"> <i class="fas fa-star" style="color:#f59e0b"></i> 2 & Up
+                        </label>
+                    </div>
+
+                    <button class="btn btn-primary filter-btn">Apply Filters</button>
+                </aside>
+
+                <!-- Business Cards Grid -->
+                <div class="business-grid">
+                    <!-- Card 1: Amina's Kitchen -->
+                    <div class="business-card">
+                        <div class="business-card-img">
+                            <img src="https://picsum.photos/seed/aminaskitchen/600/400" alt="Amina's Kitchen">
+                            <span class="business-badge">Food</span>
+                            <button class="business-fav"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="business-card-body">
+                            <h3>Amina's Kitchen</h3>
+                            <p>Delicious home-cooked meals, jollof rice, suya, and small chops. Catering services for events and parties.</p>
+                            <div class="business-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Kuje Town</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.8 <span>(124)</span></span>
+                            </div>
+                        </div>
+                        <div class="business-card-footer">
+                            <span class="business-price">₦₦</span>
+                            <a href="#" class="btn btn-outline business-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Style Hub Fashion -->
+                    <div class="business-card">
+                        <div class="business-card-img">
+                            <img src="https://picsum.photos/seed/stylehubfashion/600/400" alt="Style Hub Fashion">
+                            <span class="business-badge">Fashion</span>
+                            <button class="business-fav"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="business-card-body">
+                            <h3>Style Hub Fashion</h3>
+                            <p>Premium clothing boutique for men and women. Latest trends in Ankara, lace, and ready-to-wear outfits.</p>
+                            <div class="business-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Byazhin</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.6 <span>(98)</span></span>
+                            </div>
+                        </div>
+                        <div class="business-card-footer">
+                            <span class="business-price">₦₦₦</span>
+                            <a href="#" class="btn btn-outline business-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: TechZone Electronics -->
+                    <div class="business-card">
+                        <div class="business-card-img">
+                            <img src="https://picsum.photos/seed/techzoneelectronics/600/400" alt="TechZone Electronics">
+                            <span class="business-badge">Electronics</span>
+                            <button class="business-fav"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="business-card-body">
+                            <h3>TechZone Electronics</h3>
+                            <p>Phones, laptops, TVs, generators, and home appliances. Warranty on all products and free installation.</p>
+                            <div class="business-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Chukuku</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.7 <span>(210)</span></span>
+                            </div>
+                        </div>
+                        <div class="business-card-footer">
+                            <span class="business-price">₦₦₦₦</span>
+                            <a href="#" class="btn btn-outline business-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: CleanHome Services -->
+                    <div class="business-card">
+                        <div class="business-card-img">
+                            <img src="https://picsum.photos/seed/cleanhomeservices/600/400" alt="CleanHome Services">
+                            <span class="business-badge">Home Services</span>
+                            <button class="business-fav"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="business-card-body">
+                            <h3>CleanHome Services</h3>
+                            <p>Professional cleaning, plumbing, electrical repairs, and home maintenance. Available 7 days a week.</p>
+                            <div class="business-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Gwagwalada Road</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.5 <span>(76)</span></span>
+                            </div>
+                        </div>
+                        <div class="business-card-footer">
+                            <span class="business-price">₦₦</span>
+                            <a href="#" class="btn btn-outline business-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Glow Beauty Spa -->
+                    <div class="business-card">
+                        <div class="business-card-img">
+                            <img src="https://picsum.photos/seed/glowbeautyspa/600/400" alt="Glow Beauty Spa">
+                            <span class="business-badge">Beauty</span>
+                            <button class="business-fav"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="business-card-body">
+                            <h3>Glow Beauty Spa</h3>
+                            <p>Hair styling, braids, pedicure, manicure, facials, and body massage. Affordable luxury for everyone.</p>
+                            <div class="business-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Kilankwa</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.9 <span>(153)</span></span>
+                            </div>
+                        </div>
+                        <div class="business-card-footer">
+                            <span class="business-price">₦₦</span>
+                            <a href="#" class="btn btn-outline business-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: QuickFix Auto -->
+                    <div class="business-card">
+                        <div class="business-card-img">
+                            <img src="https://picsum.photos/seed/quickfixauto/600/400" alt="QuickFix Auto">
+                            <span class="business-badge">Auto</span>
+                            <button class="business-fav"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="business-card-body">
+                            <h3>QuickFix Auto</h3>
+                            <p>Car servicing, oil change, brake repair, tyre sales, and diagnostics. Quick turnaround and honest pricing.</p>
+                            <div class="business-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Rubochi</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.4 <span>(89)</span></span>
+                            </div>
+                        </div>
+                        <div class="business-card-footer">
+                            <span class="business-price">₦₦₦</span>
+                            <a href="#" class="btn btn-outline business-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 7: Kuje Digital Hub -->
+                    <div class="business-card">
+                        <div class="business-card-img">
+                            <img src="https://picsum.photos/seed/kujedigitalhub/600/400" alt="Kuje Digital Hub">
+                            <span class="business-badge">Tech</span>
+                            <button class="business-fav"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="business-card-body">
+                            <h3>Kuje Digital Hub</h3>
+                            <p>Cyber cafe, printing, photocopying, web design, graphic design, and CCTV installation services.</p>
+                            <div class="business-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Kuje Town</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.3 <span>(67)</span></span>
+                            </div>
+                        </div>
+                        <div class="business-card-footer">
+                            <span class="business-price">₦</span>
+                            <a href="#" class="btn btn-outline business-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 8: Green Valley Farms -->
+                    <div class="business-card">
+                        <div class="business-card-img">
+                            <img src="https://picsum.photos/seed/greenvalleyfarms/600/400" alt="Green Valley Farms">
+                            <span class="business-badge">Agriculture</span>
+                            <button class="business-fav"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="business-card-body">
+                            <h3>Green Valley Farms</h3>
+                            <p>Fresh poultry, eggs, catfish, and organic vegetables. Farm-direct produce at wholesale prices.</p>
+                            <div class="business-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Byazhin</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.6 <span>(52)</span></span>
+                            </div>
+                        </div>
+                        <div class="business-card-footer">
+                            <span class="business-price">₦₦</span>
+                            <a href="#" class="btn btn-outline business-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 9: Crystal Events -->
+                    <div class="business-card">
+                        <div class="business-card-img">
+                            <img src="https://picsum.photos/seed/crystalevents/600/400" alt="Crystal Events">
+                            <span class="business-badge featured">Events</span>
+                            <button class="business-fav"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="business-card-body">
+                            <h3>Crystal Events</h3>
+                            <p>Wedding planning, event decoration, tent and chair rental, sound system hire, and photography.</p>
+                            <div class="business-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Chukuku</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.8 <span>(141)</span></span>
+                            </div>
+                        </div>
+                        <div class="business-card-footer">
+                            <span class="business-price">₦₦₦₦</span>
+                            <a href="#" class="btn btn-outline business-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Get the latest business listings and deals delivered to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="js/includes.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

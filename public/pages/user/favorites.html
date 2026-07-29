@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorites - Kuje Connect</title>
+    <meta name="description" content="Your saved favorite businesses on Kuje Connect. Quick access to the businesses you love.">
+    <meta name="keywords" content="Kuje Connect, favorites, saved businesses">
+    <meta name="author" content="Kuje Connect">
+    <meta property="og:title" content="My Favorites - Kuje Connect">
+    <meta property="og:description" content="Quick access to the businesses you love.">
+    <meta property="og:image" content="images/kuje.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .fav-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-lighter);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .fav-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+        .fav-card-img {
+            height: 140px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.2rem; position: relative;
+        }
+        .fav-card-img .fav-remove {
+            position: absolute; top: 10px; right: 10px;
+            width: 30px; height: 30px; border-radius: 50%;
+            background: rgba(255,255,255,0.9); border: none;
+            color: var(--secondary); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; transition: background 0.2s;
+        }
+        .fav-card-img .fav-remove:hover { background: #fff; }
+        .fav-card-body { padding: 14px; }
+        .fav-card-body h4 { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 3px; }
+        .fav-card-category { font-size: 0.8rem; color: var(--gray); margin-bottom: 6px; }
+        .fav-card-rating {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 0.83rem; color: var(--gray); margin-bottom: 12px;
+        }
+        .fav-card-rating .stars { color: #f59e0b; }
+        .fav-card-footer {
+            display: flex; gap: 8px;
+            padding-top: 10px; border-top: 1px solid var(--light);
+        }
+        .fav-card-footer a {
+            flex: 1; text-align: center; padding: 7px;
+            border-radius: var(--radius-sm); font-size: 0.83rem;
+            font-weight: 500; text-decoration: none; transition: all 0.2s;
+        }
+        .fav-card-footer .btn-view { background: var(--primary); color: var(--white); }
+        .fav-card-footer .btn-view:hover { background: var(--primary-dark); }
+        .fav-card-footer .btn-remove { background: #fef2f2; color: var(--secondary); border: 1px solid #fecaca; }
+        .fav-card-footer .btn-remove:hover { background: #fee2e2; }
+    </style>
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar">A</div>
+                <h4>Amina Ibrahim</h4>
+                <span class="user-badge"><i class="fas fa-briefcase"></i> Business Owner</span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item active"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item"><i class="fas fa-bell"></i> Notifications</a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>My Favorites</h2>
+                    <p>Businesses you've saved for quick access.</p>
+                </div>
+            </div>
+
+            <div class="favorites-grid">
+                <div class="fav-card">
+                    <div class="fav-card-img" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);color:var(--primary);">
+                        <i class="fas fa-utensils"></i>
+                        <button class="fav-remove" title="Remove"><i class="fas fa-heart-broken"></i></button>
+                    </div>
+                    <div class="fav-card-body">
+                        <h4>Amina's Kitchen</h4>
+                        <div class="fav-card-category">Restaurant / Food</div>
+                        <div class="fav-card-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
+                            <span>4.8 (124 reviews)</span>
+                        </div>
+                        <div class="fav-card-footer">
+                            <a href="#" class="btn-view">View Business</a>
+                            <a href="#" class="btn-remove"><i class="fas fa-heart-broken"></i> Remove</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fav-card">
+                    <div class="fav-card-img" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8);color:#db2777;">
+                        <i class="fas fa-tshirt"></i>
+                        <button class="fav-remove" title="Remove"><i class="fas fa-heart-broken"></i></button>
+                    </div>
+                    <div class="fav-card-body">
+                        <h4>Style Hub Fashion</h4>
+                        <div class="fav-card-category">Fashion / Clothing</div>
+                        <div class="fav-card-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                            <span>4.2 (87 reviews)</span>
+                        </div>
+                        <div class="fav-card-footer">
+                            <a href="#" class="btn-view">View Business</a>
+                            <a href="#" class="btn-remove"><i class="fas fa-heart-broken"></i> Remove</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fav-card">
+                    <div class="fav-card-img" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#2563eb;">
+                        <i class="fas fa-laptop"></i>
+                        <button class="fav-remove" title="Remove"><i class="fas fa-heart-broken"></i></button>
+                    </div>
+                    <div class="fav-card-body">
+                        <h4>TechZone Electronics</h4>
+                        <div class="fav-card-category">Electronics / Gadgets</div>
+                        <div class="fav-card-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            <span>4.9 (203 reviews)</span>
+                        </div>
+                        <div class="fav-card-footer">
+                            <a href="#" class="btn-view">View Business</a>
+                            <a href="#" class="btn-remove"><i class="fas fa-heart-broken"></i> Remove</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

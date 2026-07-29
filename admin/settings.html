@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Kuje Connect Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .admin-body { background: #f1f5f9; }
+        .settings-section {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .settings-section-header {
+            padding: 18px 22px;
+            border-bottom: 1px solid var(--gray-lighter);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--light);
+        }
+        .settings-section-header i {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-xs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            background: rgba(22,163,74,0.1);
+            color: var(--primary);
+        }
+        .settings-section-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            flex: 1;
+        }
+        .settings-section-body {
+            padding: 22px;
+        }
+        .settings-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            padding: 20px 22px;
+            border-top: 1px solid var(--gray-lighter);
+            background: var(--light);
+            margin-top: 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .form-hint i {
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body class="admin-body">
+    <div id="admin-header"></div>
+
+    <main class="admin-main">
+        <div class="admin-content">
+            <div class="page-header">
+                <div class="page-header-left">
+                    <h1>Settings</h1>
+                    <p>Manage your Kuje Connect platform configuration</p>
+                </div>
+                <div class="page-header-actions">
+                    <button class="btn btn-outline btn-sm" onclick="resetSettings()"><i class="fas fa-undo"></i> Reset</button>
+                    <button class="btn btn-primary btn-sm" onclick="saveSettings()"><i class="fas fa-save"></i> Save Settings</button>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <i class="fas fa-globe"></i>
+                    <h3>Site Settings</h3>
+                </div>
+                <div class="settings-section-body">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Site Name</label>
+                            <input type="text" class="form-input" id="siteName" placeholder="Kuje Connect">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Contact Email</label>
+                            <input type="email" class="form-input" id="contactEmail" placeholder="info@example.com">
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="form-label">Site Description</label>
+                            <textarea class="form-textarea" id="siteDescription" rows="3" placeholder="Describe your platform..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Contact Phone</label>
+                            <input type="text" class="form-input" id="contactPhone" placeholder="+234 XXX XXX XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-input" id="address" placeholder="Kuje, FCT Nigeria">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <i class="fas fa-share-alt"></i>
+                    <h3>Social Media</h3>
+                </div>
+                <div class="settings-section-body">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label"><i class="fab fa-facebook" style="color:#1877f2;margin-right:4px;"></i> Facebook URL</label>
+                            <input type="url" class="form-input" id="socialFacebook" placeholder="https://facebook.com/...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"><i class="fab fa-twitter" style="color:#1da1f2;margin-right:4px;"></i> Twitter URL</label>
+                            <input type="url" class="form-input" id="socialTwitter" placeholder="https://twitter.com/...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"><i class="fab fa-instagram" style="color:#e4405f;margin-right:4px;"></i> Instagram URL</label>
+                            <input type="url" class="form-input" id="socialInstagram" placeholder="https://instagram.com/...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:4px;"></i> WhatsApp Number</label>
+                            <input type="text" class="form-input" id="socialWhatsapp" placeholder="+234XXXXXXXXXX">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <i class="fas fa-store"></i>
+                    <h3>Business Settings</h3>
+                </div>
+                <div class="settings-section-body">
+                    <div class="form-grid cols-3">
+                        <div class="form-group" style="grid-column:1;">
+                            <label class="form-label">Allow Business Claims</label>
+                            <div style="margin-top: 8px;">
+                                <label class="switch">
+                                    <input type="checkbox" id="businessClaimEnabled">
+                                    <span class="switch-slider"></span>
+                                    <span class="switch-label" id="businessClaimLabel">Enabled</span>
+                                </label>
+                            </div>
+                            <div class="form-hint"><i class="fas fa-info-circle"></i> Allow users to claim business ownership</div>
+                        </div>
+                        <div class="form-group" style="grid-column:2;">
+                            <label class="form-label">Auto-approve Businesses</label>
+                            <div style="margin-top: 8px;">
+                                <label class="switch">
+                                    <input type="checkbox" id="autoApprove">
+                                    <span class="switch-slider"></span>
+                                    <span class="switch-label" id="autoApproveLabel">Disabled</span>
+                                </label>
+                            </div>
+                            <div class="form-hint"><i class="fas fa-info-circle"></i> Auto-approve new business registrations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <i class="fas fa-upload"></i>
+                    <h3>Upload Settings</h3>
+                </div>
+                <div class="settings-section-body">
+                    <div class="form-grid" style="max-width:400px;">
+                        <div class="form-group">
+                            <label class="form-label">Max File Size (MB)</label>
+                            <input type="number" class="form-input" id="maxUploadSize" min="1" max="100" placeholder="10">
+                            <div class="form-hint"><i class="fas fa-info-circle"></i> Maximum upload file size in megabytes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <div class="settings-section-header" style="background:rgba(220,38,38,0.04);">
+                    <i class="fas fa-shield-alt" style="background:rgba(220,38,38,0.1);color:#dc2626;"></i>
+                    <h3>Maintenance Mode</h3>
+                </div>
+                <div class="settings-section-body">
+                    <div class="form-grid" style="max-width:400px;">
+                        <div class="form-group">
+                            <label class="form-label">Enable Maintenance Mode</label>
+                            <div style="margin-top: 8px;">
+                                <label class="switch">
+                                    <input type="checkbox" id="maintenanceMode">
+                                    <span class="switch-slider"></span>
+                                    <span class="switch-label" id="maintenanceLabel">Disabled</span>
+                                </label>
+                            </div>
+                            <div class="form-hint" style="color:var(--secondary);"><i class="fas fa-exclamation-triangle"></i> When enabled, the site will be inaccessible to regular users</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-actions">
+                <button class="btn btn-outline" onclick="resetSettings()"><i class="fas fa-undo"></i> Reset to Default</button>
+                <button class="btn btn-primary" onclick="saveSettings()"><i class="fas fa-save"></i> Save Settings</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="admin-footer"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAdminPartials();
+            loadSettings();
+            initToggles();
+        });
+
+        function loadAdminPartials() {
+            fetch('includes/admin-header.html')
+                .then(function(r) { return r.text(); })
+                .then(function(h) {
+                    document.getElementById('admin-header').innerHTML = h;
+                    if (typeof initAdminSidebar === 'function') initAdminSidebar();
+                });
+            fetch('includes/admin-footer.html')
+                .then(function(r) { return r.text(); })
+                .then(function(h) {
+                    document.getElementById('admin-footer').innerHTML = h;
+                });
+        }
+
+        function initToggles() {
+            document.querySelectorAll('.switch input[type="checkbox"]').forEach(function(cb) {
+                cb.addEventListener('change', function() {
+                    var label = this.parentElement.querySelector('.switch-label');
+                    if (label) {
+                        if (this.id === 'businessClaimEnabled' || this.id === 'autoApprove') {
+                            label.textContent = this.checked ? 'Enabled' : 'Disabled';
+                        } else if (this.id === 'maintenanceMode') {
+                            label.textContent = this.checked ? 'Enabled' : 'Disabled';
+                        }
+                    }
+                });
+            });
+        }
+
+        function loadSettings() {
+            var s = DB.settings;
+            document.getElementById('siteName').value = s.siteName || '';
+            document.getElementById('siteDescription').value = s.siteDescription || '';
+            document.getElementById('contactEmail').value = s.contactEmail || '';
+            document.getElementById('contactPhone').value = s.contactPhone || '';
+            document.getElementById('address').value = s.address || '';
+            document.getElementById('socialFacebook').value = (s.socialMedia && s.socialMedia.facebook) || '';
+            document.getElementById('socialTwitter').value = (s.socialMedia && s.socialMedia.twitter) || '';
+            document.getElementById('socialInstagram').value = (s.socialMedia && s.socialMedia.instagram) || '';
+            document.getElementById('socialWhatsapp').value = (s.socialMedia && s.socialMedia.whatsapp) || '';
+            document.getElementById('businessClaimEnabled').checked = s.businessClaimEnabled !== false;
+            document.getElementById('maxUploadSize').value = s.maxUploadSize || 10;
+            document.getElementById('maintenanceMode').checked = s.maintenanceMode === true;
+
+            document.getElementById('businessClaimLabel').textContent = s.businessClaimEnabled !== false ? 'Enabled' : 'Disabled';
+            document.getElementById('maintenanceLabel').textContent = s.maintenanceMode === true ? 'Enabled' : 'Disabled';
+        }
+
+        function saveSettings() {
+            var s = DB.settings;
+            s.siteName = document.getElementById('siteName').value.trim() || s.siteName;
+            s.siteDescription = document.getElementById('siteDescription').value.trim();
+            s.contactEmail = document.getElementById('contactEmail').value.trim();
+            s.contactPhone = document.getElementById('contactPhone').value.trim();
+            s.address = document.getElementById('address').value.trim();
+            if (!s.socialMedia) s.socialMedia = {};
+            s.socialMedia.facebook = document.getElementById('socialFacebook').value.trim();
+            s.socialMedia.twitter = document.getElementById('socialTwitter').value.trim();
+            s.socialMedia.instagram = document.getElementById('socialInstagram').value.trim();
+            s.socialMedia.whatsapp = document.getElementById('socialWhatsapp').value.trim();
+            s.businessClaimEnabled = document.getElementById('businessClaimEnabled').checked;
+            s.maxUploadSize = parseInt(document.getElementById('maxUploadSize').value) || 10;
+            s.maintenanceMode = document.getElementById('maintenanceMode').checked;
+
+            showToast('Settings saved successfully.');
+        }
+
+        function resetSettings() {
+            if (!confirm('Reset all settings to defaults?')) return;
+            var defaults = getDefaultSettings();
+            DB.settings.siteName = defaults.siteName;
+            DB.settings.siteDescription = defaults.siteDescription;
+            DB.settings.contactEmail = defaults.contactEmail;
+            DB.settings.contactPhone = defaults.contactPhone;
+            DB.settings.address = defaults.address;
+            DB.settings.socialMedia = {
+                facebook: defaults.socialMedia.facebook,
+                twitter: defaults.socialMedia.twitter,
+                instagram: defaults.socialMedia.instagram,
+                whatsapp: defaults.socialMedia.whatsapp
+            };
+            DB.settings.businessClaimEnabled = defaults.businessClaimEnabled;
+            DB.settings.maxUploadSize = defaults.maxUploadSize;
+            DB.settings.maintenanceMode = defaults.maintenanceMode;
+            loadSettings();
+            showToast('Settings reset to defaults.');
+        }
+
+        function getDefaultSettings() {
+            return {
+                siteName: "Kuje Connect",
+                siteDescription: "Your local business directory connecting the community of Kuje and surrounding areas in FCT, Nigeria.",
+                contactEmail: "info@kujeconnect.com",
+                contactPhone: "+234 801 234 5678",
+                address: "Kuje, FCT Abuja, Nigeria",
+                socialMedia: {
+                    facebook: "https://facebook.com/kujeconnect",
+                    twitter: "https://twitter.com/kujeconnect",
+                    instagram: "https://instagram.com/kujeconnect",
+                    whatsapp: "+2348012345678"
+                },
+                businessClaimEnabled: true,
+                maintenanceMode: false,
+                maxUploadSize: 10
+            };
+        }
+
+        function showToast(message) {
+            var existing = document.querySelector('.toast-notification');
+            if (existing) existing.remove();
+            var toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.textContent = message;
+            toast.style.cssText = 'position:fixed;bottom:30px;right:30px;background:#1e3a5f;color:#fff;padding:14px 24px;border-radius:12px;z-index:10000;font-size:0.9rem;box-shadow:0 4px 20px rgba(0,0,0,0.25);animation:toastIn 0.3s ease;';
+            document.body.appendChild(toast);
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s ease';
+                setTimeout(function() { toast.remove(); }, 300);
+            }, 2500);
+        }
+    </script>
+</body>
+<html>

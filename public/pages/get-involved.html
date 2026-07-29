@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Involved - Kuje Connect | Volunteer & Partnerships</title>
+    <link rel="icon" type="image/png" href="images/kuje.png">
+    <link rel="apple-touch-icon" href="images/kuje.png">
+    <meta name="description" content="Get involved with Kuje Connect. Volunteer, partner, sponsor, or contribute to community development in Kuje, Abuja, FCT Nigeria.">
+    <link rel="canonical" href="https://kujeconnect.org/get-involved">
+    <meta property="og:title" content="Get Involved - Kuje Connect">
+    <meta property="og:description" content="Volunteer, partner, or sponsor community initiatives in Kuje, Abuja, FCT Nigeria.">
+    <meta property="og:image" content="images/kuje.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .page-hero { background: linear-gradient(135deg, #15803d 0%, #16a34a 50%, #059669 100%); padding: 140px 0 60px; color: #fff; text-align: center; }
+        .page-hero h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 10px; }
+        .page-hero p { color: rgba(255,255,255,0.85); max-width: 550px; margin: 0 auto; }
+        .page-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.4; }
+        .page-hero .container { position: relative; z-index: 1; }
+    </style>
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+    <section class="page-hero">
+        <div class="container">
+            <h1>Get Involved</h1>
+            <p>Volunteer, partner, sponsor, or contribute to community development initiatives in Kuje and beyond.</p>
+        </div>
+    </section>
+    <section><div class="container" style="text-align:center;padding:80px 0;"><h2 style="font-size:1.5rem;font-weight:700;margin-bottom:12px;">Coming Soon</h2><p style="color:var(--gray);max-width:500px;margin:0 auto;">We're building opportunities for volunteering, partnerships, and sponsorships. Check back soon or contact us.</p><a href="contact" class="btn btn-primary" style="margin-top:24px;">Contact Us</a></div></section>
+    <div id="site-footer"></div>
+    <script src="js/includes.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

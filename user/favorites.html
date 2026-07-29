@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorites - Kuje Connect</title>
+    <meta name="description" content="Your saved favorite businesses on Kuje Connect. Quick access to the businesses you love in Kuje and surrounding areas.">
+    <meta name="keywords" content="Kuje Connect, favorites, saved businesses, bookmarked listings, Kuje businesses">
+    <meta name="author" content="Kuje Connect">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="My Favorites - Kuje Connect">
+    <meta property="og:description" content="Quick access to the businesses you love.">
+    <meta property="og:image" content="../images/kuje.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kujecom.com/user/favorites">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="My Favorites - Kuje Connect">
+    <meta name="twitter:description" content="Quick access to the businesses you love.">
+    <link rel="canonical" href="https://kujecom.com/user/favorites">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .favorites-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .favorites-search {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+        .favorites-search input {
+            width: 100%;
+            padding: 10px 14px 10px 38px;
+            border: 1px solid var(--gray-lighter);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: var(--white);
+            transition: border-color 0.2s;
+        }
+        .favorites-search input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .favorites-search i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        .favorites-search .clear-search {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: none;
+            padding: 4px;
+        }
+        .favorites-search .clear-search.visible {
+            display: block;
+        }
+        .favorites-count {
+            font-size: 0.85rem;
+            color: var(--gray);
+            white-space: nowrap;
+        }
+        .view-toggle {
+            display: flex;
+            border: 1px solid var(--gray-lighter);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--white);
+        }
+        .view-toggle button {
+            background: none;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            color: var(--gray);
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .view-toggle button.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .view-toggle button:not(.active):hover {
+            background: var(--gray-lighter);
+        }
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .favorites-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .fav-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-lighter);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .fav-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+        .fav-card-img {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        .fav-card-img .fav-remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            color: var(--secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .fav-card-img .fav-remove:hover {
+            background: #fff;
+            transform: scale(1.1);
+        }
+        .fav-card-body { padding: 14px; }
+        .fav-card-body h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+        .fav-card-body h4 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .fav-card-body h4 a:hover {
+            color: var(--primary);
+        }
+        .fav-card-category { font-size: 0.8rem; color: var(--gray); margin-bottom: 4px; }
+        .fav-card-location { font-size: 0.8rem; color: var(--gray); margin-bottom: 6px; }
+        .fav-card-location i { margin-right: 3px; }
+        .fav-card-rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.83rem;
+            color: var(--gray);
+            margin-bottom: 6px;
+        }
+        .fav-card-rating .stars { color: #f59e0b; }
+        .fav-card-price {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+        .fav-card-price i { margin-right: 3px; }
+        .fav-card-footer {
+            display: flex;
+            gap: 8px;
+            padding-top: 10px;
+            border-top: 1px solid var(--light);
+        }
+        .fav-card-footer a {
+            flex: 1;
+            text-align: center;
+            padding: 7px;
+            border-radius: var(--radius-sm);
+            font-size: 0.83rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .fav-card-footer .btn-view { background: var(--primary); color: var(--white); }
+        .fav-card-footer .btn-view:hover { background: var(--primary-dark); }
+        .fav-card-footer .btn-remove {
+            background: #fef2f2;
+            color: var(--secondary);
+            border: 1px solid #fecaca;
+        }
+        .fav-card-footer .btn-remove:hover { background: #fee2e2; }
+
+        .favorites-list .fav-card {
+            display: flex;
+            flex-direction: row;
+        }
+        .favorites-list .fav-card-img {
+            width: 160px;
+            min-width: 160px;
+            height: auto;
+            min-height: 140px;
+        }
+        .favorites-list .fav-card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .favorites-list .fav-card-footer {
+            flex-direction: column;
+            justify-content: center;
+            border-top: none;
+            border-left: 1px solid var(--light);
+            padding: 14px;
+            min-width: 140px;
+        }
+
+        .empty-favorites {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-favorites i {
+            font-size: 3rem;
+            color: var(--gray-light);
+            margin-bottom: 16px;
+            display: block;
+        }
+        .empty-favorites h3 {
+            color: var(--gray);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .empty-favorites p {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .empty-favorites a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .empty-favorites a:hover { background: var(--primary-dark); }
+
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            display: none;
+        }
+        .no-results i {
+            font-size: 2rem;
+            color: var(--gray-light);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .no-results h4 { color: var(--gray); margin-bottom: 6px; font-size: 0.95rem; }
+        .no-results p { color: var(--gray-light); font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .favorites-list .fav-card {
+                flex-direction: column;
+            }
+            .favorites-list .fav-card-img {
+                width: 100%;
+                min-height: 120px;
+            }
+            .favorites-list .fav-card-footer {
+                flex-direction: row;
+                border-left: none;
+                border-top: 1px solid var(--light);
+                min-width: auto;
+            }
+            .favorites-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .favorites-count {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar">A</div>
+                <h4>User</h4>
+                <span class="user-badge"><i class="fas fa-briefcase"></i> Business Owner</span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item active"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item"><i class="fas fa-bell"></i> Notifications</a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>My Favorites</h2>
+                    <p>Businesses you've saved for quick access.</p>
+                </div>
+            </div>
+
+            <div class="favorites-toolbar" id="favToolbar" style="display:none;">
+                <div class="favorites-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="favSearchInput" placeholder="Search favorites by name, category, or location...">
+                    <button class="clear-search" id="clearSearch"><i class="fas fa-times"></i></button>
+                </div>
+                <span class="favorites-count" id="favCount"></span>
+                <div class="view-toggle">
+                    <button id="viewGrid" class="active" title="Grid view"><i class="fas fa-th-large"></i></button>
+                    <button id="viewList" title="List view"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+
+            <div id="favoritesContainer">
+                <div class="favorites-grid" id="favoritesGrid"></div>
+                <div class="no-results" id="noResults">
+                    <i class="fas fa-search"></i>
+                    <h4>No matches found</h4>
+                    <p>Try a different search term.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../data/data.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+    (function() {
+        var currentView = 'grid';
+        var allFavorites = [];
+
+        function getPriceRange(bizId) {
+            var products = DB.products.filter(function(p) { return p.businessId === bizId; });
+            if (products.length === 0) return null;
+            var prices = products.map(function(p) { return p.price; }).filter(function(p) { return p > 0; });
+            if (prices.length === 0) return null;
+            var min = Math.min.apply(null, prices);
+            var max = Math.max.apply(null, prices);
+            if (min === max) return formatCurrency(min);
+            return formatCurrency(min) + ' - ' + formatCurrency(max);
+        }
+
+        function renderFavorites(filter) {
+            var user = getCurrentUser();
+            if (!user) return;
+
+            var grid = document.getElementById('favoritesGrid');
+            var noResults = document.getElementById('noResults');
+            var toolbar = document.getElementById('favToolbar');
+            if (!grid) return;
+
+            allFavorites = getUserFavorites(user.id);
+            var query = (filter || '').toLowerCase().trim();
+            var filtered = allFavorites;
+
+            if (query) {
+                filtered = allFavorites.filter(function(fav) {
+                    var biz = fav.business;
+                    var cat = DB.categories.find(function(c) { return c.slug === biz.category; });
+                    var catName = cat ? cat.name.toLowerCase() : '';
+                    return biz.name.toLowerCase().indexOf(query) !== -1 ||
+                           catName.indexOf(query) !== -1 ||
+                           (biz.location && biz.location.toLowerCase().indexOf(query) !== -1) ||
+                           (biz.subcategory && biz.subcategory.toLowerCase().indexOf(query) !== -1);
+                });
+            }
+
+            if (allFavorites.length === 0) {
+                toolbar.style.display = 'none';
+                grid.innerHTML = '';
+                grid.className = '';
+                noResults.style.display = 'none';
+                var emptyDiv = document.getElementById('favoritesContainer');
+                emptyDiv.innerHTML = '<div class="empty-favorites">' +
+                    '<i class="fas fa-heart"></i>' +
+                    '<h3>You haven\'t saved any businesses yet</h3>' +
+                    '<p>Browse businesses and tap the heart icon to save your favorites here.</p>' +
+                    '<a href="../public/"><i class="fas fa-search"></i> Browse Businesses</a>' +
+                '</div>';
+                return;
+            }
+
+            toolbar.style.display = 'flex';
+            grid.className = currentView === 'grid' ? 'favorites-grid' : 'favorites-list';
+            document.getElementById('favCount').textContent = filtered.length + ' of ' + allFavorites.length + ' favorite' + (allFavorites.length !== 1 ? 's' : '');
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            grid.innerHTML = '';
+
+            filtered.forEach(function(fav) {
+                var biz = fav.business;
+                var cat = DB.categories.find(function(c) { return c.slug === biz.category; });
+                var catName = cat ? cat.name : biz.category;
+                var catIcon = cat ? cat.icon : 'fa-store';
+                var imgBg = getCatColor(biz.category);
+                var iconColor = getCatIconColor(biz.category);
+                var verifiedBadge = biz.verified ? ' <i class="fas fa-check-circle" style="color:var(--primary);font-size:0.75rem;"></i>' : '';
+                var priceRange = getPriceRange(biz.id);
+                var priceHtml = priceRange ? '<div class="fav-card-price"><i class="fas fa-tag"></i> ' + priceRange + '</div>' : '';
+
+                var card = document.createElement('div');
+                card.className = 'fav-card';
+                card.setAttribute('data-biz-id', biz.id);
+
+                card.innerHTML =
+                    '<div class="fav-card-img" style="background:' + imgBg + ';color:' + iconColor + ';">' +
+                        '<i class="fas ' + catIcon + '"></i>' +
+                        '<button class="fav-remove" data-biz-id="' + biz.id + '" title="Remove from favorites"><i class="fas fa-heart"></i></button>' +
+                    '</div>' +
+                    '<div class="fav-card-body">' +
+                        '<h4><a href="../public/business?id=' + biz.id + '">' + escapeHtml(biz.name) + verifiedBadge + '</a></h4>' +
+                        '<div class="fav-card-category"><i class="fas ' + catIcon + '"></i> ' + escapeHtml(catName) + '</div>' +
+                        '<div class="fav-card-location"><i class="fas fa-map-marker-alt"></i> ' + escapeHtml(biz.location) + '</div>' +
+                        '<div class="fav-card-rating">' +
+                            '<span class="stars">' + renderStars(biz.rating) + '</span>' +
+                            '<span>' + biz.rating + ' (' + biz.reviewCount + ' reviews)</span>' +
+                        '</div>' +
+                        priceHtml +
+                        '<div class="fav-card-footer">' +
+                            '<a href="../public/business?id=' + biz.id + '" class="btn-view">View Business</a>' +
+                            '<a href="#" class="btn-remove remove-fav-btn" data-biz-id="' + biz.id + '"><i class="fas fa-heart"></i> Saved</a>' +
+                        '</div>' +
+                    '</div>';
+
+                grid.appendChild(card);
+            });
+
+            bindRemoveButtons();
+        }
+
+        function bindRemoveButtons() {
+            var user = getCurrentUser();
+            if (!user) return;
+
+            document.querySelectorAll('.fav-remove, .remove-fav-btn').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var bizId = this.getAttribute('data-biz-id');
+                    toggleFavorite(user.id, bizId);
+                    showToast('Removed from favorites');
+                    var searchVal = document.getElementById('favSearchInput') ? document.getElementById('favSearchInput').value : '';
+                    renderFavorites(searchVal);
+                });
+            });
+        }
+
+        function initViewToggle() {
+            var gridBtn = document.getElementById('viewGrid');
+            var listBtn = document.getElementById('viewList');
+            if (!gridBtn || !listBtn) return;
+
+            gridBtn.addEventListener('click', function() {
+                currentView = 'grid';
+                gridBtn.classList.add('active');
+                listBtn.classList.remove('active');
+                var searchVal = document.getElementById('favSearchInput') ? document.getElementById('favSearchInput').value : '';
+                renderFavorites(searchVal);
+            });
+
+            listBtn.addEventListener('click', function() {
+                currentView = 'list';
+                listBtn.classList.add('active');
+                gridBtn.classList.remove('active');
+                var searchVal = document.getElementById('favSearchInput') ? document.getElementById('favSearchInput').value : '';
+                renderFavorites(searchVal);
+            });
+        }
+
+        function initSearch() {
+            var input = document.getElementById('favSearchInput');
+            var clearBtn = document.getElementById('clearSearch');
+            if (!input) return;
+
+            var debounceTimer;
+            input.addEventListener('input', function() {
+                var val = this.value;
+                if (clearBtn) {
+                    clearBtn.classList.toggle('visible', val.length > 0);
+                }
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(function() {
+                    renderFavorites(val);
+                }, 200);
+            });
+
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function() {
+                    input.value = '';
+                    this.classList.remove('visible');
+                    renderFavorites('');
+                    input.focus();
+                });
+            }
+        }
+
+        function init() {
+            renderFavorites('');
+            initViewToggle();
+            initSearch();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(init, 50);
+            });
+        } else {
+            setTimeout(init, 50);
+        }
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Tips & Guides - Kuje Connect</title>
+    <link rel="icon" type="image/png" href="images/kuje.png">
+    <link rel="apple-touch-icon" href="images/kuje.png">
+    <meta name="description" content="Business tips and guides for entrepreneurs in Kuje, FCT Nigeria.">
+    <meta property="og:title" content="Business Tips & Guides - Kuje Connect">
+    <meta property="og:description" content="Business tips and guides for entrepreneurs in Kuje, FCT Nigeria.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .featured-article {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .featured-article-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+        }
+
+        .featured-article-img {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-article-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .featured-article-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .featured-article-body {
+            padding: 45px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-article-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: var(--gray-light);
+            margin-bottom: 15px;
+        }
+
+        .featured-article-meta i {
+            margin-right: 4px;
+        }
+
+        .featured-article-body h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 18px;
+        }
+
+        .featured-article-body p {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .articles-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .article-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-lighter);
+        }
+
+        .article-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .article-card-img {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .article-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover .article-card-img img {
+            transform: scale(1.08);
+        }
+
+        .article-category-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .article-card-body {
+            padding: 22px;
+        }
+
+        .article-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: var(--gray-light);
+            margin-bottom: 10px;
+        }
+
+        .article-card-meta i {
+            margin-right: 3px;
+        }
+
+        .article-card-body h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            color: var(--dark);
+        }
+
+        .article-card-body h3 a {
+            transition: var(--transition);
+        }
+
+        .article-card-body h3 a:hover {
+            color: var(--primary);
+        }
+
+        .article-card-body p {
+            font-size: 0.88rem;
+            color: var(--gray);
+            margin-bottom: 16px;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .article-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 14px;
+            border-top: 1px solid var(--gray-lighter);
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .article-author-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        .article-author-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .article-read-more {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .article-read-more:hover {
+            gap: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .featured-article-card {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-article-img {
+                height: 280px;
+            }
+
+            .featured-article-body {
+                padding: 30px 25px;
+            }
+
+            .featured-article-body h2 {
+                font-size: 1.5rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Business Tips & Guides</h1>
+            <p>Practical advice to help your business thrive in Kuje and beyond</p>
+            <div class="breadcrumb">
+                <a href="index">Home</a>
+                <span>/</span>
+                <span class="current">Business Tips</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article">
+        <div class="container">
+            <div class="featured-article-card">
+                <div class="featured-article-img">
+                    <img src="https://picsum.photos/seed/biztips/800/400" alt="10 Ways to Grow Your Business in Kuje">
+                    <span class="featured-article-badge">Featured</span>
+                </div>
+                <div class="featured-article-body">
+                    <div class="featured-article-meta">
+                        <span><i class="fas fa-user"></i> Kuje Connect Team</span>
+                        <span><i class="fas fa-calendar"></i> Mar 5, 2026</span>
+                        <span><i class="fas fa-clock"></i> 8 min read</span>
+                    </div>
+                    <h2>10 Ways to Grow Your Business in Kuje</h2>
+                    <p>Running a business in Kuje presents unique opportunities and challenges. From leveraging local directories like Kuje Connect to building strong relationships with your customers, these ten proven strategies will help you stand out in the competitive local market. Learn how to optimize your online presence, use social media effectively, and create customer loyalty programs that work.</p>
+                    <a href="#" class="btn btn-primary">Read Full Article</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="articles-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest <span class="highlight">Articles</span></h2>
+                <p>Tips and insights to help you succeed</p>
+            </div>
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <div class="article-card">
+                    <div class="article-card-img">
+                        <img src="https://picsum.photos/seed/tip1/600/400" alt="How to Set Up Your Online Store">
+                        <span class="article-category-badge">E-Commerce</span>
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-card-meta">
+                            <span><i class="fas fa-calendar"></i> Jan 15, 2026</span>
+                            <span><i class="fas fa-clock"></i> 5 min</span>
+                        </div>
+                        <h3><a href="#">How to Set Up Your Online Store</a></h3>
+                        <p>Learn the step-by-step process of creating an online presence for your business, from choosing a platform to accepting your first order.</p>
+                        <div class="article-card-footer">
+                            <div class="article-author">
+                                <div class="article-author-avatar">A</div>
+                                <span class="article-author-name">Amina Ibrahim</span>
+                            </div>
+                            <a href="#" class="article-read-more">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="article-card">
+                    <div class="article-card-img">
+                        <img src="https://picsum.photos/seed/tip2/600/400" alt="Social Media Marketing for Local Businesses">
+                        <span class="article-category-badge">Marketing</span>
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-card-meta">
+                            <span><i class="fas fa-calendar"></i> Jan 22, 2026</span>
+                            <span><i class="fas fa-clock"></i> 6 min</span>
+                        </div>
+                        <h3><a href="#">Social Media Marketing for Local Businesses</a></h3>
+                        <p>Discover how to use Facebook, Instagram, and WhatsApp to reach more customers in Kuje without spending a fortune on ads.</p>
+                        <div class="article-card-footer">
+                            <div class="article-author">
+                                <div class="article-author-avatar">O</div>
+                                <span class="article-author-name">Oluwaseun Adams</span>
+                            </div>
+                            <a href="#" class="article-read-more">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="article-card">
+                    <div class="article-card-img">
+                        <img src="https://picsum.photos/seed/tip3/600/400" alt="Customer Service Tips That Build Loyalty">
+                        <span class="article-category-badge">Customer Service</span>
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-card-meta">
+                            <span><i class="fas fa-calendar"></i> Feb 3, 2026</span>
+                            <span><i class="fas fa-clock"></i> 4 min</span>
+                        </div>
+                        <h3><a href="#">Customer Service Tips That Build Loyalty</a></h3>
+                        <p>Great customer service keeps people coming back. Here are proven techniques to turn first-time buyers into loyal, repeat customers.</p>
+                        <div class="article-card-footer">
+                            <div class="article-author">
+                                <div class="article-author-avatar">F</div>
+                                <span class="article-author-name">Fatima Bello</span>
+                            </div>
+                            <a href="#" class="article-read-more">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="article-card">
+                    <div class="article-card-img">
+                        <img src="https://picsum.photos/seed/tip4/600/400" alt="How to Price Your Products Right">
+                        <span class="article-category-badge">Strategy</span>
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-card-meta">
+                            <span><i class="fas fa-calendar"></i> Feb 10, 2026</span>
+                            <span><i class="fas fa-clock"></i> 5 min</span>
+                        </div>
+                        <h3><a href="#">How to Price Your Products Right</a></h3>
+                        <p>Pricing is both an art and a science. Learn strategies for setting prices that attract customers while maintaining healthy profit margins.</p>
+                        <div class="article-card-footer">
+                            <div class="article-author">
+                                <div class="article-author-avatar">I</div>
+                                <span class="article-author-name">Ibrahim Musa</span>
+                            </div>
+                            <a href="#" class="article-read-more">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="article-card">
+                    <div class="article-card-img">
+                        <img src="https://picsum.photos/seed/tip5/600/400" alt="Using WhatsApp for Business Growth">
+                        <span class="article-category-badge">Digital Tools</span>
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-card-meta">
+                            <span><i class="fas fa-calendar"></i> Feb 18, 2026</span>
+                            <span><i class="fas fa-clock"></i> 5 min</span>
+                        </div>
+                        <h3><a href="#">Using WhatsApp for Business Growth</a></h3>
+                        <p>WhatsApp is the most popular messaging app in Nigeria. Find out how to use WhatsApp Business features to engage customers and boost sales.</p>
+                        <div class="article-card-footer">
+                            <div class="article-author">
+                                <div class="article-author-avatar">A</div>
+                                <span class="article-author-name">Amina Ibrahim</span>
+                            </div>
+                            <a href="#" class="article-read-more">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="article-card">
+                    <div class="article-card-img">
+                        <img src="https://picsum.photos/seed/tip6/600/400" alt="Managing Cash Flow as a Small Business">
+                        <span class="article-category-badge">Finance</span>
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-card-meta">
+                            <span><i class="fas fa-calendar"></i> Mar 1, 2026</span>
+                            <span><i class="fas fa-clock"></i> 7 min</span>
+                        </div>
+                        <h3><a href="#">Managing Cash Flow as a Small Business</a></h3>
+                        <p>Cash flow is the lifeblood of any business. Learn practical tips for tracking, managing, and improving your cash flow to stay financially healthy.</p>
+                        <div class="article-card-footer">
+                            <div class="article-author">
+                                <div class="article-author-avatar">O</div>
+                                <span class="article-author-name">Oluwaseun Adams</span>
+                            </div>
+                            <a href="#" class="article-read-more">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Get the latest business tips and guides delivered to your inbox every week.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit" class="btn btn-white">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="js/includes.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

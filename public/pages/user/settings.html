@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Kuje Connect</title>
+    <meta name="description" content="Manage your Kuje Connect account settings. Change password, notification preferences, and more.">
+    <meta name="keywords" content="Kuje Connect, settings, account, password, notifications">
+    <meta name="author" content="Kuje Connect">
+    <meta property="og:title" content="Settings - Kuje Connect">
+    <meta property="og:description" content="Manage your account settings and preferences.">
+    <meta property="og:image" content="images/kuje.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../images/kuje.png">
+    <link rel="apple-touch-icon" href="../images/kuje.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; }
+        .checkbox-item {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.9rem; color: var(--dark-light); cursor: pointer;
+        }
+        .checkbox-item input[type="checkbox"] {
+            width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer;
+        }
+        .danger-zone {
+            border: 1px solid #fecaca;
+            background: #fef2f2;
+        }
+        .danger-zone h3 { color: var(--secondary) !important; border-bottom-color: #fecaca !important; }
+        .danger-zone p { font-size: 0.9rem; color: var(--gray); margin-bottom: 16px; }
+    </style>
+    <style>
+        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
+        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
+        @keyframes loaderSpin { to { transform: rotate(360deg); } }
+        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
+    </style></head>
+<body>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
+        <div class="spin-ring"></div>
+    </div>
+    <div class="loader-text">Loading...</div>
+</div>
+    <div id="site-header"></div>
+
+    <div class="user-layout">
+        <aside class="user-sidebar">
+            <div class="user-sidebar-header">
+                <div class="user-avatar">A</div>
+                <h4>Amina Ibrahim</h4>
+                <span class="user-badge"><i class="fas fa-briefcase"></i> Business Owner</span>
+            </div>
+            <nav class="user-nav">
+                <a href="dashboard" class="user-nav-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="profile" class="user-nav-item"><i class="fas fa-user"></i> My Profile</a>
+                <a href="my-businesses" class="user-nav-item"><i class="fas fa-store"></i> My Businesses</a>
+                <a href="messages" class="user-nav-item"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="favorites" class="user-nav-item"><i class="fas fa-heart"></i> Favorites</a>
+                <a href="notifications" class="user-nav-item"><i class="fas fa-bell"></i> Notifications</a>
+                <div class="user-nav-divider"></div>
+                <a href="settings" class="user-nav-item active"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../.." class="user-nav-item"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="#" class="user-nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="user-main">
+            <div class="page-header">
+                <div>
+                    <h2>Settings</h2>
+                    <p>Manage your account settings and preferences.</p>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <h3><i class="fas fa-lock" style="margin-right:8px;"></i> Change Password</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" placeholder="Enter current password">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                        </div>
+                    </div>
+                    <button type="button" class="btn-sm btn-primary"><i class="fas fa-save"></i> Update Password</button>
+                </form>
+            </div>
+
+            <div class="user-card">
+                <h3><i class="fas fa-bell" style="margin-right:8px;"></i> Notification Preferences</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" checked>
+                        <span>Email notifications for new messages</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" checked>
+                        <span>SMS notifications for business updates</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox">
+                        <span>Marketing and promotional emails</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" checked>
+                        <span>Push notifications on mobile</span>
+                    </label>
+                </div>
+                <div style="margin-top:20px;">
+                    <button type="button" class="btn-sm btn-primary"><i class="fas fa-save"></i> Save Preferences</button>
+                </div>
+            </div>
+
+            <div class="user-card danger-zone">
+                <h3><i class="fas fa-exclamation-triangle" style="margin-right:8px;"></i> Delete Account</h3>
+                <p>Once you delete your account, there is no going back. All your businesses, messages, and data will be permanently removed.</p>
+                <button type="button" class="btn-sm btn-danger"><i class="fas fa-trash"></i> Delete My Account</button>
+            </div>
+        </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/includes.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
