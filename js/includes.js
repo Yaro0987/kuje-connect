@@ -484,6 +484,7 @@
 
     var adPopupTimer = null;
     var adPopupShowing = false;
+    var adPopupCanClose = true;
     var adPopupData = [
         { name: 'Green Valley Poultry Farm', desc: 'Premium broilers, layers and day-old chicks. Farm-fresh eggs supplied daily.', addr: 'Kuje Town', price: '\u20A65,000 - \u20A650,000', phone: '0803 111 2222', about: 'We specialise in high-quality poultry products including broilers, layers, and day-old chicks. Our farm is known for healthy, well-fed birds and fresh eggs delivered daily across Kuje and environs.', seed: 'greenfarmaf', slug: 'green-valley-poultry-farm' },
         { name: 'Kuje Auto Mart', desc: 'Wide selection of quality used cars. Toyota, Honda, Nissan, Mercedes. Financing available.', addr: 'Kuje Town', price: '\u20A6500,000 - \u20A65,000,000', phone: '0805 444 5555', about: 'Kuje Auto Mart offers a broad inventory of inspected, pre-owned vehicles. We provide financing options, vehicle history reports, and after-sales support to ensure you drive away satisfied.', seed: 'kujeauto', slug: 'kuje-auto-mart' },
@@ -543,6 +544,7 @@
         overlay.classList.add('active');
         popup.classList.add('active');
         adPopupShowing = true;
+        adPopupCanClose = false;
         document.body.style.overflow = 'hidden';
 
         // 6-second countdown on close button
@@ -558,6 +560,7 @@
             closeBtn.innerHTML = countdown;
             if (countdown <= 0) {
                 clearInterval(cd);
+                adPopupCanClose = true;
                 closeBtn.disabled = false;
                 closeBtn.innerHTML = '<i class="fas fa-times"></i>';
                 closeBtn.style.cursor = '';
@@ -567,6 +570,7 @@
     }
 
     function closeAdPopup() {
+        if (!adPopupCanClose) return;
         var overlay = document.getElementById('adPopupOverlay');
         var popup = document.getElementById('adPopup');
         if (overlay) overlay.classList.remove('active');
