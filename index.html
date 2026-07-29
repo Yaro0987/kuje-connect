@@ -1,106 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuje Connect - Connecting People. Building Communities. | Community Platform in Kuje, FCT Nigeria</title>
-    <meta name="description" content="Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria. Discover local businesses, jobs, events, volunteer programmes, community projects and more.">
-    <meta name="keywords" content="Kuje Connect, Kuje community, Kuje FCT Nigeria, connecting people building communities, Kuje businesses, Kuje directory, Kuje jobs, Kuje events, Kuje volunteer, community development Kuje, local businesses Nigeria, FCT community">
-    <meta name="author" content="Kuje Connect">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://kujeconnect.com">
-    <meta property="og:title" content="Kuje Connect - Connecting People. Building Communities.">
-    <meta property="og:description" content="Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria.">
-    <meta property="og:image" content="https://kujeconnect.com/images/kuje.png">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kujeconnect.com">
-    <meta property="og:site_name" content="Kuje Connect">
-    <meta property="og:locale" content="en_NG">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Kuje Connect - Connecting People. Building Communities.">
-    <meta name="twitter:description" content="Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria.">
-    <meta name="twitter:image" content="https://kujeconnect.com/images/kuje.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://picsum.photos">
-    <link rel="preload" href="images/kuje.png" as="image" fetchpriority="high">
-    <link rel="icon" type="image/png" href="images/kuje.png">
-    <link rel="apple-touch-icon" href="images/kuje.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        .page-loader { position: fixed; inset: 0; z-index: 99999; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
-        .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-        .page-loader .loader-logo { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
-        .page-loader .loader-logo img { width: 50px; height: 50px; border-radius: 50%; position: relative; z-index: 2; }
-        .page-loader .loader-logo .spin-ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #e2e8f0; border-top-color: #16a34a; animation: loaderSpin 0.8s linear infinite; }
-        @keyframes loaderSpin { to { transform: rotate(360deg); } }
-        .page-loader .loader-text { margin-top: 16px; font-size: 0.9rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuje Connect - Connecting People. Building Communities.</title>
+<style>
+body{margin:0;background:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif}
+.loader{text-align:center}
+.spin{width:60px;height:60px;border:5px solid #e2e8f0;border-top-color:#16a34a;border-radius:50%;animation:s 1s linear infinite;margin:0 auto 16px}
+@keyframes s{to{transform:rotate(360deg)}}
+p{color:#64748b;font-size:.9rem}
+</style>
 </head>
 <body>
-<div class="page-loader" id="pageLoader">
-    <div class="loader-logo">
-        <img src="images/kuje.png" alt="Kuje Connect" fetchpriority="high">
-        <div class="spin-ring"></div>
-    </div>
-    <div class="loader-text">Connecting People. Building Communities...</div>
+<div class="loader">
+<div class="spin"></div>
+<p>Loading Kuje Connect...</p>
 </div>
-
-<div id="site-header"></div>
-
-<section class="page-banner">
-    <div class="container">
-        <h1>Welcome to Kuje Connect</h1>
-        <p>Connecting People. Building Communities. — Your community hub in Kuje, FCT Nigeria.</p>
-    </div>
-</section>
-
-<section class="content-section">
-    <div class="container" style="text-align:center;padding:60px 0;">
-        <div style="font-size:3rem;color:var(--primary);margin-bottom:20px;"><i class="fas fa-spinner fa-pulse"></i></div>
-        <h2 style="font-weight:600;margin-bottom:12px;">Loading Content...</h2>
-        <p style="color:var(--gray);">Please wait while we load the page content.</p>
-    </div>
-</section>
-
-<div id="site-footer"></div>
-
-<script src="js/includes.js"></script>
 <script>
-function loadHomeContent() {
-    fetch('public/pages/index.html')
-        .then(function(r) { return r.text(); })
-        .then(function(html) {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(html, 'text/html');
-            var mainContent = doc.querySelector('.content-section');
-            var bannerContent = doc.querySelector('.page-banner');
-            if (bannerContent) {
-                var existingBanner = document.querySelector('.page-banner');
-                if (existingBanner) existingBanner.outerHTML = bannerContent.outerHTML;
-            }
-            if (mainContent) {
-                var existingMain = document.querySelector('.content-section');
-                if (existingMain) existingMain.outerHTML = mainContent.outerHTML;
-                var styleTags = doc.querySelectorAll('style');
-                styleTags.forEach(function(s) { document.head.appendChild(s.cloneNode(true)); });
-            }
-            var mainScript = document.createElement('script');
-            mainScript.src = 'js/main.js';
-            document.body.appendChild(mainScript);
-        })
-        .catch(function() {
-            var mainScript = document.createElement('script');
-            mainScript.src = 'js/main.js';
-            document.body.appendChild(mainScript);
-        });
-}
-
-setTimeout(loadHomeContent, 100);
+fetch('/public/pages/index.html').then(function(r){return r.text()}).then(function(html){document.open();document.write(html);document.close()});
 </script>
 </body>
 </html>
