@@ -1,0 +1,50 @@
+﻿# Netlify _redirects — rewrites keep clean URLs in browser
+# Processed top-to-bottom, first match wins. Real files are served directly.
+
+# Root → homepage
+/  /public/pages/index.html  200
+
+/business/agriculture/:sub  /public/pages/service/agriculture/:sub.html  200
+/business/automobile/:sub  /public/pages/service/automobile/:sub.html  200
+/business/beauty-and-personal-care/:sub  /public/pages/service/beauty-and-personal-care/:sub.html  200
+/business/construction/:sub  /public/pages/service/construction/:sub.html  200
+/business/creative-and-media/:sub  /public/pages/service/creative-and-media/:sub.html  200
+/business/education/:sub  /public/pages/service/education/:sub.html  200
+/business/event-and-rentals/:sub  /public/pages/service/event-and-rentals/:sub.html  200
+/business/fashion-and-clothing/:sub  /public/pages/service/fashion-and-clothing/:sub.html  200
+/business/food-and-restaurants/:sub  /public/pages/service/food-and-restaurants/:sub.html  200
+/business/health-and-medical/:sub  /public/pages/service/health-and-medical/:sub.html  200
+/business/home-and-furniture/:sub  /public/pages/service/home-and-furniture/:sub.html  200
+/business/logistics-and-transport/:sub  /public/pages/service/logistics-and-transport/:sub.html  200
+/business/phones-and-electronics/:sub  /public/pages/service/phones-and-electronics/:sub.html  200
+/business/professional-services/:sub  /public/pages/service/professional-services/:sub.html  200
+/business/real-estate/:sub  /public/pages/service/real-estate/:sub.html  200
+/business/retail-and-trading/:sub  /public/pages/service/retail-and-trading/:sub.html  200
+/business/technology/:sub  /public/pages/service/technology/:sub.html  200
+
+/business/agriculture  /public/pages/service/agriculture.html  200
+/business/automobile  /public/pages/service/automobile.html  200
+/business/beauty-and-personal-care  /public/pages/service/beauty-and-personal-care.html  200
+/business/construction  /public/pages/service/construction.html  200
+/business/creative-and-media  /public/pages/service/creative-and-media.html  200
+/business/education  /public/pages/service/education.html  200
+/business/event-and-rentals  /public/pages/service/event-and-rentals.html  200
+/business/fashion-and-clothing  /public/pages/service/fashion-and-clothing.html  200
+/business/food-and-restaurants  /public/pages/service/food-and-restaurants.html  200
+/business/health-and-medical  /public/pages/service/health-and-medical.html  200
+/business/home-and-furniture  /public/pages/service/home-and-furniture.html  200
+/business/logistics-and-transport  /public/pages/service/logistics-and-transport.html  200
+/business/phones-and-electronics  /public/pages/service/phones-and-electronics.html  200
+/business/professional-services  /public/pages/service/professional-services.html  200
+/business/real-estate  /public/pages/service/real-estate.html  200
+/business/retail-and-trading  /public/pages/service/retail-and-trading.html  200
+/business/technology  /public/pages/service/technology.html  200
+
+/business/:slug  /public/pages/business/:slug.html  200
+
+/user/:page  /user/:page.html  200
+/admin/:page  /admin/:page.html  200
+
+/media/:slug  /public/pages/media-post.html?slug=:slug  200
+
+/:page  /public/pages/:page.html  200
