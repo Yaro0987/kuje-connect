@@ -1,33 +1,49 @@
 <div class="newsletter-popup-overlay" id="newsletterPopupOverlay"></div>
 <div class="newsletter-popup" id="newsletterPopup">
     <button class="newsletter-popup-close" id="newsletterPopupClose" aria-label="Close"><i class="fas fa-times"></i></button>
-    <div class="newsletter-popup-logo-wrap">
-        <img src="images/kuje.png" alt="Kuje Connect" class="newsletter-popup-logo">
+    <div class="newsletter-popup-inner">
+        <div class="newsletter-popup-img">
+            <img src="images/kuje.png" alt="Kuje Connect">
+            <div class="newsletter-popup-img-overlay"></div>
+            <div class="newsletter-popup-img-text">Kuje<br>Connect</div>
+        </div>
+        <div class="newsletter-popup-body">
+            <span class="newsletter-popup-badge"><i class="fas fa-envelope"></i> Newsletter</span>
+            <h3>Stay Connected!</h3>
+            <p>Get the latest business listings, community news, and exclusive offers.</p>
+            <form class="newsletter-popup-form" onsubmit="event.preventDefault(); newsletterPopupSubscribe();">
+                <input type="text" placeholder="Your full name" id="newsletterPopupName" required>
+                <input type="email" placeholder="Your email address" id="newsletterPopupEmail" required>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Subscribe Now</button>
+            </form>
+            <label class="newsletter-popup-dismiss">
+                <input type="checkbox" id="newsletterPopupDontShow"> Don't show this again
+            </label>
+        </div>
     </div>
-    <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:8px;color:#1e293b;">Stay Connected with <span style="color:var(--primary);">Kuje Connect</span>!</h3>
-    <p style="font-size:0.9rem;color:#64748b;margin-bottom:20px;line-height:1.6;max-width:380px;margin-left:auto;margin-right:auto;">Get the latest business listings, community news, job alerts and exclusive offers delivered to your inbox.</p>
-    <form class="newsletter-popup-form" onsubmit="event.preventDefault(); newsletterPopupSubscribe();">
-        <input type="text" placeholder="Your full name" id="newsletterPopupName" required>
-        <input type="email" placeholder="Your email address" id="newsletterPopupEmail" required>
-        <button type="submit" class="btn btn-primary" style="width:100%;padding:13px;font-size:0.95rem;border-radius:10px;"><i class="fas fa-paper-plane"></i> Subscribe Now</button>
-    </form>
-    <label class="newsletter-popup-dismiss" style="display:flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--gray);cursor:pointer;margin-top:10px;justify-content:center;">
-        <input type="checkbox" id="newsletterPopupDontShow"> Don't show this again
-    </label>
 </div>
 
 <style>
 .newsletter-popup-overlay { position:fixed;inset:0;z-index:99995;background:rgba(0,0,0,0.6);opacity:0;visibility:hidden;transition:all 0.3s; }
 .newsletter-popup-overlay.active { opacity:1;visibility:visible; }
-.newsletter-popup { position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);z-index:99996;background:#fff;border-radius:16px;padding:40px 36px 32px;width:460px;max-width:90vw;text-align:center;opacity:0;visibility:hidden;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:0 28px 72px rgba(0,0,0,0.18); }
+.newsletter-popup { position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);z-index:99996;background:#fff;border-radius:18px;width:680px;max-width:90vw;overflow:hidden;opacity:0;visibility:hidden;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:0 30px 80px rgba(0,0,0,0.2); }
 .newsletter-popup.active { opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1); }
-.newsletter-popup-close { position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:none;background:#f1f5f9;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:0.9rem;transition:all 0.2s;z-index:2; }
-.newsletter-popup-close:hover { background:var(--primary);color:#fff;transform:rotate(90deg); }
-.newsletter-popup-logo-wrap { width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#15803d);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;overflow:hidden;box-shadow:0 4px 16px rgba(22,163,74,0.25); }
-.newsletter-popup-logo { width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid #fff; }
+.newsletter-popup-close { position:absolute;top:14px;right:14px;z-index:5;width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,255,255,0.95);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#333;font-size:0.9rem;transition:all 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+.newsletter-popup-close:hover { background:#16a34a;color:#fff;transform:rotate(90deg); }
+.newsletter-popup-inner { display:flex; }
+.newsletter-popup-img { position:relative;flex:0 0 45%;min-height:380px;overflow:hidden;background:linear-gradient(135deg,#16a34a,#15803d);display:flex;align-items:center;justify-content:center; }
+.newsletter-popup-img img { width:140px;height:140px;border-radius:50%;object-fit:cover;border:5px solid rgba(255,255,255,0.6);box-shadow:0 8px 32px rgba(0,0,0,0.15);z-index:2;position:relative; }
+.newsletter-popup-img-overlay { position:absolute;inset:0;background:linear-gradient(135deg,rgba(22,163,74,0.2),rgba(21,128,61,0.4));pointer-events:none;z-index:1; }
+.newsletter-popup-img-text { position:absolute;bottom:30px;left:0;right:0;text-align:center;color:rgba(255,255,255,0.15);font-size:2.5rem;font-weight:900;line-height:1;letter-spacing:2px;text-transform:uppercase;pointer-events:none;z-index:1; }
+.newsletter-popup-body { flex:1;padding:32px 30px;display:flex;flex-direction:column;justify-content:center; }
+.newsletter-popup-badge { display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:0.8px;background:#f0fdf4;padding:4px 12px;border-radius:4px;margin-bottom:12px;align-self:flex-start; }
+.newsletter-popup-body h3 { font-size:1.4rem;font-weight:800;color:#1e293b;margin-bottom:6px;line-height:1.2; }
+.newsletter-popup-body > p { font-size:0.88rem;color:#64748b;margin-bottom:18px;line-height:1.5; }
 .newsletter-popup-form { display:flex;flex-direction:column;gap:10px; }
 .newsletter-popup-form input { width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-family:inherit;font-size:0.88rem;transition:all 0.2s;box-sizing:border-box;background:#f8fafc; }
 .newsletter-popup-form input:focus { outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(22,163,74,0.12);background:#fff; }
-@media (max-width:480px) { .newsletter-popup { padding:32px 22px 28px;width:380px; } .newsletter-popup-logo-wrap { width:80px;height:80px; } .newsletter-popup-logo { width:64px;height:64px; } }
+.newsletter-popup-form .btn { width:100%;padding:13px;font-size:0.92rem;border-radius:10px;justify-content:center; }
+.newsletter-popup-dismiss { display:flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--gray);cursor:pointer;margin-top:14px;justify-content:center; }
+@media (max-width:640px) { .newsletter-popup { width:480px; } .newsletter-popup-inner { flex-direction:column; } .newsletter-popup-img { flex:0 0 auto;width:100%;min-height:140px;padding:30px 20px; } .newsletter-popup-img img { width:90px;height:90px; } .newsletter-popup-img-text { display:none; } .newsletter-popup-body { padding:24px 22px; } }
+@media (max-width:480px) { .newsletter-popup { width:94vw; } .newsletter-popup-img { min-height:120px;padding:24px 20px; } .newsletter-popup-img img { width:76px;height:76px; } .newsletter-popup-body { padding:20px 18px; } .newsletter-popup-body h3 { font-size:1.2rem; } }
 </style>
-
