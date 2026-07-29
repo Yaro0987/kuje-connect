@@ -31,7 +31,8 @@
 .newsletter-popup-close { position:absolute;top:14px;right:14px;z-index:5;width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,255,255,0.95);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#333;font-size:0.9rem;transition:all 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.1); }
 .newsletter-popup-close:hover { background:#16a34a;color:#fff;transform:rotate(90deg); }
 .newsletter-popup-inner { display:flex; }
-.newsletter-popup-img { position:relative;flex:0 0 45%;min-height:380px;overflow:hidden;background:linear-gradient(135deg,#16a34a,#15803d);display:flex;align-items:center;justify-content:center; }
+@keyframes nlBgAnim { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.newsletter-popup-img { position:relative;flex:0 0 45%;min-height:380px;overflow:hidden;background:linear-gradient(135deg,#f59e0b,#ef4444,#8b5cf6,#3b82f6,#ec4899,#f59e0b);background-size:400% 400%;animation:nlBgAnim 4s ease infinite;display:flex;align-items:center;justify-content:center; }
 .newsletter-popup-img img { width:180px;height:auto;object-fit:contain;z-index:2;position:relative;filter:brightness(1.1); }
 .newsletter-popup-img-overlay { position:absolute;inset:0;background:linear-gradient(135deg,rgba(22,163,74,0.2),rgba(21,128,61,0.4));pointer-events:none;z-index:1; }
 .newsletter-popup-img-text { position:absolute;bottom:30px;left:0;right:0;text-align:center;color:rgba(255,255,255,0.15);font-size:2.5rem;font-weight:900;line-height:1;letter-spacing:2px;text-transform:uppercase;pointer-events:none;z-index:1; }
