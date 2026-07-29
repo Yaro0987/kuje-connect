@@ -429,6 +429,7 @@
         if (overlay && popup) {
             overlay.classList.add('active');
             popup.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
     }
 
@@ -460,6 +461,7 @@
         var popup = document.getElementById('newsletterPopup');
         if (overlay) overlay.classList.remove('active');
         if (popup) popup.classList.remove('active');
+        document.body.style.overflow = '';
     }
 
     window.newsletterPopupSubscribe = function() {
@@ -541,6 +543,27 @@
         overlay.classList.add('active');
         popup.classList.add('active');
         adPopupShowing = true;
+        document.body.style.overflow = 'hidden';
+
+        // 6-second countdown on close button
+        var closeBtn = document.getElementById('adPopupClose');
+        var laterBtn = document.getElementById('adPopupLaterBtn');
+        var countdown = 6;
+        closeBtn.disabled = true;
+        closeBtn.innerHTML = '6';
+        closeBtn.style.cursor = 'not-allowed';
+        if (laterBtn) { laterBtn.disabled = true; laterBtn.style.opacity = '0.5'; laterBtn.style.cursor = 'not-allowed'; }
+        var cd = setInterval(function() {
+            countdown--;
+            closeBtn.innerHTML = countdown;
+            if (countdown <= 0) {
+                clearInterval(cd);
+                closeBtn.disabled = false;
+                closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                closeBtn.style.cursor = '';
+                if (laterBtn) { laterBtn.disabled = false; laterBtn.style.opacity = ''; laterBtn.style.cursor = ''; }
+            }
+        }, 1000);
     }
 
     function closeAdPopup() {
@@ -549,6 +572,7 @@
         if (overlay) overlay.classList.remove('active');
         if (popup) popup.classList.remove('active');
         adPopupShowing = false;
+        document.body.style.overflow = '';
         clearTimeout(adPopupTimer);
         adPopupTimer = setTimeout(function() {
             if (!adPopupShowing) {
