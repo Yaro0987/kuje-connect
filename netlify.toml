@@ -1,0 +1,241 @@
+[build]
+  publish = "."
+
+# Netlify redirects to replace .htaccess rewrites
+# More specific rules come first
+
+# Root → homepage
+[[redirects]]
+  from = "/"
+  to = "/public/pages/index.html"
+  status = 200
+
+# Category sub-pages - business/{cat}/{sub} → service/{cat}/{sub}.html
+[[redirects]]
+  from = "/business/agriculture/:sub"
+  to = "/public/pages/service/agriculture/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/automobile/:sub"
+  to = "/public/pages/service/automobile/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/beauty-and-personal-care/:sub"
+  to = "/public/pages/service/beauty-and-personal-care/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/construction/:sub"
+  to = "/public/pages/service/construction/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/creative-and-media/:sub"
+  to = "/public/pages/service/creative-and-media/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/education/:sub"
+  to = "/public/pages/service/education/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/event-and-rentals/:sub"
+  to = "/public/pages/service/event-and-rentals/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/fashion-and-clothing/:sub"
+  to = "/public/pages/service/fashion-and-clothing/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/food-and-restaurants/:sub"
+  to = "/public/pages/service/food-and-restaurants/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/health-and-medical/:sub"
+  to = "/public/pages/service/health-and-medical/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/home-and-furniture/:sub"
+  to = "/public/pages/service/home-and-furniture/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/logistics-and-transport/:sub"
+  to = "/public/pages/service/logistics-and-transport/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/phones-and-electronics/:sub"
+  to = "/public/pages/service/phones-and-electronics/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/professional-services/:sub"
+  to = "/public/pages/service/professional-services/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/real-estate/:sub"
+  to = "/public/pages/service/real-estate/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/retail-and-trading/:sub"
+  to = "/public/pages/service/retail-and-trading/:sub.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/technology/:sub"
+  to = "/public/pages/service/technology/:sub.html"
+  status = 200
+
+# Category pages - business/{cat} → service/{cat}.html
+[[redirects]]
+  from = "/business/agriculture"
+  to = "/public/pages/service/agriculture.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/automobile"
+  to = "/public/pages/service/automobile.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/beauty-and-personal-care"
+  to = "/public/pages/service/beauty-and-personal-care.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/construction"
+  to = "/public/pages/service/construction.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/creative-and-media"
+  to = "/public/pages/service/creative-and-media.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/education"
+  to = "/public/pages/service/education.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/event-and-rentals"
+  to = "/public/pages/service/event-and-rentals.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/fashion-and-clothing"
+  to = "/public/pages/service/fashion-and-clothing.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/food-and-restaurants"
+  to = "/public/pages/service/food-and-restaurants.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/health-and-medical"
+  to = "/public/pages/service/health-and-medical.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/home-and-furniture"
+  to = "/public/pages/service/home-and-furniture.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/logistics-and-transport"
+  to = "/public/pages/service/logistics-and-transport.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/phones-and-electronics"
+  to = "/public/pages/service/phones-and-electronics.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/professional-services"
+  to = "/public/pages/service/professional-services.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/real-estate"
+  to = "/public/pages/service/real-estate.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/retail-and-trading"
+  to = "/public/pages/service/retail-and-trading.html"
+  status = 200
+
+[[redirects]]
+  from = "/business/technology"
+  to = "/public/pages/service/technology.html"
+  status = 200
+
+# Business detail pages - business/{slug} → business/{slug}.html (fallthrough)
+[[redirects]]
+  from = "/business/*"
+  to = "/public/pages/business/:splat.html"
+  status = 200
+
+# User pages
+[[redirects]]
+  from = "/user/:page"
+  to = "/user/:page.html"
+  status = 200
+
+# Admin pages
+[[redirects]]
+  from = "/admin/:page"
+  to = "/admin/:page.html"
+  status = 200
+
+# Media posts
+[[redirects]]
+  from = "/media/:slug"
+  to = "/public/pages/media-post.html?slug=:slug"
+  status = 200
+
+# Other static pages (pricing, about, contact, etc.)
+[[redirects]]
+  from = "/:page"
+  to = "/public/pages/:page.html"
+  status = 200
+
+# Netlify headers for security and caching
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/public/pages/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

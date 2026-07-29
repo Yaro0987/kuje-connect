@@ -423,6 +423,218 @@
         setTimeout(hidePageLoader, 3000);
     }
 
+    // === Dynamic JSON-LD Structured Data Injection ===
+    var KNOWN_CATEGORIES = {
+        'agriculture': 1, 'automobile': 1, 'beauty-and-personal-care': 1, 'construction': 1,
+        'creative-and-media': 1, 'education': 1, 'event-and-rentals': 1, 'fashion-and-clothing': 1,
+        'food-and-restaurants': 1, 'health-and-medical': 1, 'home-and-furniture': 1,
+        'logistics-and-transport': 1, 'phones-and-electronics': 1, 'professional-services': 1,
+        'real-estate': 1, 'retail-and-trading': 1, 'technology': 1
+    };
+
+    function injectStructuredData() {
+        var path = window.location.pathname.replace(/\/+$/, '') || '/';
+        var host = 'https://kuje-connect.netlify.app';
+        var url = host + path;
+        var segments = path.split('/').filter(Boolean);
+        var pageTitle = document.title || 'Kuje Connect';
+        var mbDesc = document.querySelector('meta[name="description"]');
+        var pageDesc = mbDesc ? mbDesc.getAttribute('content') : 'Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria.';
+        var jsonld = [];
+
+        jsonld.push({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            'name': 'Kuje Connect',
+            'url': host,
+            'description': 'Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria.',
+            'potentialAction': {
+                '@type': 'SearchAction',
+                'target': host + '/services?q={search_term_string}',
+                'query-input': 'required name=search_term_string'
+            }
+        });
+        jsonld.push({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            '@id': host + '#organization',
+            'name': 'Kuje Connect',
+            'url': host,
+            'logo': { '@type': 'ImageObject', 'url': host + '/images/kuje.png', 'width': 512, 'height': 512 },
+            'description': 'Kuje Connect is a community-driven organization connecting people, businesses, and opportunities in Kuje, FCT Nigeria.',
+            'sameAs': ['https://facebook.com/kujeconnect', 'https://twitter.com/kujeconnect', 'https://instagram.com/kujeconnect'],
+            'contactPoint': { '@type': 'ContactPoint', 'contactType': 'customer service', 'areaServed': 'NG', 'availableLanguage': ['English', 'Hausa'] },
+            'address': { '@type': 'PostalAddress', 'addressLocality': 'Kuje', 'addressRegion': 'FCT', 'addressCountry': 'NG' }
+        });
+
+        // BreadcrumbList
+        var breadcrumbItems = [{ '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': host + '/' }];
+        if (path !== '/') {
+            for (var si = 0; si < segments.length; si++) {
+                var segName = segments[si].replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+                var segUrl = host + '/' + segments.slice(0, si + 1).join('/');
+                if (segments[si].length > 25) segName = 'Business Details';
+                breadcrumbItems.push({ '@type': 'ListItem', 'position': si + 2, 'name': segName, 'item': segUrl });
+            }
+        }
+        jsonld.push({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            'itemListElement': breadcrumbItems
+        });
+
+        // Determine page type
+        var isBizDetail = segments[0] === 'business' && segments.length === 2 && !KNOWN_CATEGORIES[segments[1]];
+        var isCategory = segments[0] === 'business' && segments.length === 2 && KNOWN_CATEGORIES[segments[1]];
+        var isSubCategory = segments[0] === 'business' && segments.length === 3;
+
+        // Business detail → LocalBusiness
+        if (isBizDetail) {
+            var bizName = pageTitle.split(' - ')[0] || segments[1].replace(/-/g, ' ');
+            var priceRange = '';
+            var phone = '';
+            var address = 'Kuje, FCT Nigeria';
+            var desc = pageDesc;
+            var priceMatch = pageDesc.match(/₦[\d,]+(\s*-\s*₦[\d,]+)?/);
+            if (priceMatch) priceRange = priceMatch[0];
+            var phoneMatch = pageDesc.match(/(0[789]\d{2}\s*\d{3}\s*\d{4})/);
+            if (phoneMatch) phone = phoneMatch[0];
+
+            jsonld.push({
+                '@context': 'https://schema.org',
+                '@type': 'LocalBusiness',
+                '@id': url + '#business',
+                'name': bizName,
+                'description': desc,
+                'url': url,
+                'image': host + '/images/kuje.png',
+                'telephone': phone || undefined,
+                'priceRange': priceRange || undefined,
+                'address': {
+                    '@type': 'PostalAddress',
+                    'addressLocality': 'Kuje',
+                    'addressRegion': 'FCT',
+                    'addressCountry': 'NG'
+                }
+            });
+        }
+
+        // Category → ItemList
+        if (isCategory) {
+            var catName = segments[1].replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+            jsonld.push({
+                '@context': 'https://schema.org',
+                '@type': 'ItemList',
+                'name': catName + ' in Kuje',
+                'description': pageDesc,
+                'url': url,
+                'itemListElement': []
+            });
+        }
+
+        // Sub-category → CollectionPage
+        if (isSubCategory) {
+            var subCatName = segments[2].replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+            jsonld.push({
+                '@context': 'https://schema.org',
+                '@type': 'CollectionPage',
+                'name': subCatName + ' in Kuje',
+                'description': pageDesc,
+                'url': url
+            });
+        }
+
+        // FAQ
+        if (segments[0] === 'help' || (segments.length > 0 && segments[segments.length - 1] === 'help')) {
+            jsonld.push({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                'mainEntity': [
+                    { '@type': 'Question', 'name': 'What is Kuje Connect?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Kuje Connect is a community-driven platform connecting people, businesses, and opportunities in Kuje, FCT Nigeria.' } },
+                    { '@type': 'Question', 'name': 'How do I list my business on Kuje Connect?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'You can submit a business listing request through our Request panel or contact us directly.' } },
+                    { '@type': 'Question', 'name': 'Is Kuje Connect free to use?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes, browsing the business directory is completely free. Premium advertising options are available for businesses.' } }
+                ]
+            });
+        }
+
+        // Contact
+        if (segments[0] === 'contact' && segments.length === 1) {
+            jsonld.push({
+                '@context': 'https://schema.org',
+                '@type': 'ContactPage',
+                'name': 'Contact Kuje Connect',
+                'description': 'Get in touch with Kuje Connect. Find our contact information, location in Kuje, FCT Nigeria, and send us a message.',
+                'url': url
+            });
+        }
+
+        function cleanJson(obj) {
+            for (var k in obj) {
+                if (obj[k] === undefined) delete obj[k];
+                if (typeof obj[k] === 'object' && obj[k] !== null) cleanJson(obj[k]);
+            }
+            return obj;
+        }
+
+        var script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(cleanJson(jsonld.length === 1 ? jsonld[0] : jsonld));
+        document.head.appendChild(script);
+    }
+
+    // Fix canonical URL to use current domain
+    function fixCanonical() {
+        var canon = document.querySelector('link[rel="canonical"]');
+        if (canon) {
+            var path = canon.getAttribute('href').replace(/^https?:\/\/[^\/]+/, '');
+            canon.setAttribute('href', window.location.origin + path);
+        }
+    }
+
+    // Inject additional SEO meta tags dynamically
+    function injectSeoMeta() {
+        var head = document.head;
+        if (!document.querySelector('meta[name="theme-color"]')) {
+            var tc = document.createElement('meta');
+            tc.name = 'theme-color';
+            tc.content = '#166534';
+            head.appendChild(tc);
+        }
+        if (!document.querySelector('meta[name="geo.region"]')) {
+            var gr = document.createElement('meta');
+            gr.name = 'geo.region';
+            gr.content = 'NG-FC';
+            head.appendChild(gr);
+        }
+        if (!document.querySelector('meta[name="geo.placename"]')) {
+            var gp = document.createElement('meta');
+            gp.name = 'geo.placename';
+            gp.content = 'Kuje, FCT, Nigeria';
+            head.appendChild(gp);
+        }
+        if (!document.querySelector('meta[property="og:locale"]')) {
+            var ol = document.createElement('meta');
+            ol.setAttribute('property', 'og:locale');
+            ol.content = 'en_NG';
+            head.appendChild(ol);
+        }
+        // Add mobile-friendly tag for Google
+        if (!document.querySelector('meta[name="format-detection"]')) {
+            var fd = document.createElement('meta');
+            fd.name = 'format-detection';
+            fd.content = 'telephone=yes';
+            head.appendChild(fd);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() { fixCanonical(); injectSeoMeta(); injectStructuredData(); });
+    } else {
+        fixCanonical();
+        injectSeoMeta();
+        injectStructuredData();
+    }
+
     function showNewsletterPopup() {
         var overlay = document.getElementById('newsletterPopupOverlay');
         var popup = document.getElementById('newsletterPopup');

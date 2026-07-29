@@ -4,4 +4,4 @@ Disallow: /user/
 Disallow: /admin/
 Disallow: /data/
 
-Sitemap: https://kujeconnect.com/sitemap.xml
+Sitemap: https://kuje-connect.netlify.app/sitemap.xml
