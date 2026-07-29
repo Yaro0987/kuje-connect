@@ -1,29 +1,47 @@
 RewriteEngine On
 
-# Only rewrite if the request doesn't match a real file or directory
+# / → public/pages/index.html (must be first — always rewrite even though / is a real directory)
+RewriteRule ^$ public/pages/index.html [L]
+
+# Only rewrite the following rules if the request doesn't match a real file or directory
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# / → public/pages/index.html
-RewriteRule ^$ public/pages/index.html [L]
 
 # /business/agriculture/farming-and-supplies → public/pages/service/agriculture/farming-and-supplies.html
 RewriteRule ^business/(agriculture|automobile|beauty-and-personal-care|construction|creative-and-media|education|event-and-rentals|fashion-and-clothing|food-and-restaurants|health-and-medical|home-and-furniture|logistics-and-transport|phones-and-electronics|professional-services|real-estate|retail-and-trading|technology)/([a-zA-Z0-9_-]+)$ public/pages/service/$1/$2.html [L]
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
 # /business/agriculture → public/pages/service/agriculture.html
 RewriteRule ^business/(agriculture|automobile|beauty-and-personal-care|construction|creative-and-media|education|event-and-rentals|fashion-and-clothing|food-and-restaurants|health-and-medical|home-and-furniture|logistics-and-transport|phones-and-electronics|professional-services|real-estate|retail-and-trading|technology)$ public/pages/service/$1.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 
 # /user/dashboard → user/dashboard.html
 RewriteRule ^user/([a-zA-Z0-9_-]+)$ user/$1.html [L]
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
 # /admin/dashboard → admin/dashboard.html
 RewriteRule ^admin/([a-zA-Z0-9_-]+)$ admin/$1.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 
 # /media/post-slug → public/pages/media-post.html?slug=post-slug
 RewriteRule ^media/([a-zA-Z0-9_-]+)$ public/pages/media-post.html?slug=$1 [L,QSA]
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
 # /business/business-name → public/pages/business/business-name.html
 RewriteRule ^business/([a-zA-Z0-9_-]+)$ public/pages/business/$1.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 
 # /pricing → public/pages/pricing.html, /about → public/pages/about.html, etc.
 RewriteRule ^([a-zA-Z0-9_-]+)$ public/pages/$1.html [L]
