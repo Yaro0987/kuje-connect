@@ -7,11 +7,11 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # / → public/pages/index.html
 RewriteRule ^$ public/pages/index.html [L]
 
-# /service/food-and-restaurants/poultry-farming → public/pages/service/food-and-restaurants/poultry-farming.html
-RewriteRule ^service/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ public/pages/service/$1/$2.html [L]
+# /business/agriculture/farming-and-supplies → public/pages/service/agriculture/farming-and-supplies.html
+RewriteRule ^business/(agriculture|automobile|beauty-and-personal-care|construction|creative-and-media|education|event-and-rentals|fashion-and-clothing|food-and-restaurants|health-and-medical|home-and-furniture|logistics-and-transport|phones-and-electronics|professional-services|real-estate|retail-and-trading|technology)/([a-zA-Z0-9_-]+)$ public/pages/service/$1/$2.html [L]
 
-# /service/food-and-restaurants → public/pages/service/food-and-restaurants.html
-RewriteRule ^service/([a-zA-Z0-9_-]+)$ public/pages/service/$1.html [L]
+# /business/agriculture → public/pages/service/agriculture.html
+RewriteRule ^business/(agriculture|automobile|beauty-and-personal-care|construction|creative-and-media|education|event-and-rentals|fashion-and-clothing|food-and-restaurants|health-and-medical|home-and-furniture|logistics-and-transport|phones-and-electronics|professional-services|real-estate|retail-and-trading|technology)$ public/pages/service/$1.html [L]
 
 # /user/dashboard → user/dashboard.html
 RewriteRule ^user/([a-zA-Z0-9_-]+)$ user/$1.html [L]
